@@ -77,6 +77,12 @@
           <span class="text-[11px] text-[#888888] mt-0.5">Transparent background recommended</span>
           <input id="sig-file-input" type="file" accept="image/*" class="hidden" />
         </label>
+        <div id="sig-upload-preview" class="hidden">
+          <p class="text-xs font-medium text-[#4d4d4d] mb-2">Preview</p>
+          <div class="border border-[#ebebeb] rounded-xl bg-white p-2 flex items-center justify-center max-h-40 overflow-hidden">
+            <img id="sig-preview-img" src="" alt="Signature preview" class="max-w-full max-h-32 object-contain" />
+          </div>
+        </div>
       </div>
 
       <!-- Signer Label -->
