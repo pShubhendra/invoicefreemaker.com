@@ -123,6 +123,12 @@ import { DOCUMENT_TYPES, ACCENT_COLORS, CURRENCIES, THEME_PRESETS } from '../../
             title={col}
           ></button>
         ))}
+        <label
+          class="w-6 h-6 rounded-full border border-dashed border-[#888888] overflow-hidden cursor-pointer hover:scale-105 transition-all"
+          title="Pick any color"
+        >
+          <input id="ctrl-accent-picker" type="color" value="#171717" class="w-8 h-8 -m-1 cursor-pointer border-0 p-0 bg-transparent" />
+        </label>
       </div>
     </div>
 

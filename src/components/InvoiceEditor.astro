@@ -482,6 +482,9 @@ function syncSidebar() {
     btn.classList.toggle('ring-[#171717]', active);
     btn.classList.toggle('scale-110', active);
   });
+
+  const accentPicker = document.getElementById('ctrl-accent-picker');
+  if (accentPicker) accentPicker.value = invoice.accentColor || '#171717';
 }
 
 // ─── BIND ALL EVENTS (single call) ──────────────────────────────────────────
@@ -556,6 +559,24 @@ function bindEvents() {
       renderAll();
       saveCurrentInvoiceToStorage(invoice);
     });
+  });
+
+  // Custom accent color picker — any color, any shade
+  const accentPicker = document.getElementById('ctrl-accent-picker');
+  accentPicker?.addEventListener('input', e => {
+    const col = e.target.value;
+    invoice.accentColor = col;
+    const paper = document.getElementById('invoice-paper');
+    if (paper) paper.style.setProperty('--inv-accent', col);
+    document.querySelectorAll('.ctrl-color-btn').forEach(b => {
+      b.classList.toggle('ring-2', false);
+      b.classList.toggle('ring-offset-2', false);
+      b.classList.toggle('scale-110', false);
+    });
+    const nameEl = document.getElementById('ctrl-active-color-name');
+    if (nameEl) nameEl.textContent = col;
+    renderAll();
+    saveCurrentInvoiceToStorage(invoice);
   });
 
   // Column toggles
