@@ -1,9 +1,9 @@
 ---
-// ItemCatalogModal.astro - Manage Products & Services Catalog
+// ItemCatalogModal.astro - Products & Services Catalog
 ---
 
-<div id="item-catalog-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-xs p-4 no-print">
-  <div class="bg-white rounded-2xl border border-[#ebebeb] shadow-level-5 max-w-xl w-full overflow-hidden flex flex-col max-h-[85vh] animate-scale-in">
+<div id="item-catalog-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-xs p-4 no-print flex items-center justify-center">
+  <div class="bg-white rounded-2xl border border-[#ebebeb] shadow-level-5 max-w-2xl w-full overflow-hidden flex flex-col max-h-[85vh] m-auto">
     <!-- Header -->
     <div class="px-6 py-4 border-b border-[#ebebeb] flex items-center justify-between bg-[#fafafa]">
       <div class="flex items-center gap-2">
@@ -14,7 +14,7 @@
         </div>
         <div>
           <h3 class="text-sm font-semibold text-[#171717]">Items & Services Catalog</h3>
-          <p class="text-xs text-[#888888]">1-Click add saved services/products to invoice</p>
+          <p class="text-xs text-[#888888]">Save reusable products and line items to insert into invoices in 1 click</p>
         </div>
       </div>
       <button id="btn-close-item-modal" type="button" class="text-[#888888] hover:text-[#171717] p-1.5 rounded-lg hover:bg-[#ebebeb] transition-colors cursor-pointer">
@@ -22,44 +22,24 @@
       </button>
     </div>
 
-    <!-- Add Item Form Accordion -->
-    <div class="p-4 border-b border-[#ebebeb] bg-[#fafafa]">
-      <details id="details-add-item" class="group">
-        <summary class="flex items-center justify-between text-xs font-semibold text-[#171717] cursor-pointer select-none">
-          <span>+ Add New Product / Service to Catalog</span>
-          <span class="text-[#888888] group-open:rotate-180 transition-transform">▼</span>
-        </summary>
-        <div class="pt-3 space-y-2">
-          <div>
-            <label class="block text-[11px] font-medium text-[#4d4d4d] mb-0.5">Item / Service Description</label>
-            <input id="catalog-desc-input" type="text" placeholder="e.g. Website Maintenance & Support" class="w-full px-3 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-white text-[#171717] focus:outline-hidden focus:border-[#171717]" />
-          </div>
-          <div class="grid grid-cols-3 gap-2">
-            <div>
-              <label class="block text-[11px] font-medium text-[#4d4d4d] mb-0.5">HSN / SAC</label>
-              <input id="catalog-hsn-input" type="text" placeholder="998314" class="w-full px-2.5 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-white text-[#171717]" />
-            </div>
-            <div>
-              <label class="block text-[11px] font-medium text-[#4d4d4d] mb-0.5">Unit</label>
-              <input id="catalog-unit-input" type="text" placeholder="Hours" class="w-full px-2.5 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-white text-[#171717]" />
-            </div>
-            <div>
-              <label class="block text-[11px] font-medium text-[#4d4d4d] mb-0.5">Default Rate</label>
-              <input id="catalog-rate-input" type="number" step="any" placeholder="100" class="w-full px-2.5 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-white text-[#171717] font-mono" />
-            </div>
-          </div>
-          <div class="flex justify-end pt-1">
-            <button id="btn-save-new-catalog-item" type="button" class="px-3 py-1.5 text-xs font-medium text-white bg-[#171717] hover:bg-black rounded-lg transition-colors cursor-pointer">
-              Save Item
-            </button>
-          </div>
+    <!-- Add Item Form -->
+    <div class="p-4 border-b border-[#ebebeb] bg-[#fafafa] space-y-2">
+      <span class="text-xs font-semibold text-[#171717] uppercase tracking-wider block">Add New Catalog Item</span>
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
+        <input id="catalog-desc-input" type="text" placeholder="Item / Service description *" class="sm:col-span-2 px-3 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-white" />
+        <input id="catalog-hsn-input" type="text" placeholder="HSN/SAC" class="px-3 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-white" />
+        <div class="flex items-center gap-1.5">
+          <input id="catalog-rate-input" type="number" placeholder="Rate *" class="w-full px-3 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-white" />
+          <button id="btn-save-new-catalog-item" type="button" class="px-3 py-1.5 text-xs font-medium text-white bg-[#171717] hover:bg-black rounded-lg transition-colors shrink-0 cursor-pointer">
+            Save
+          </button>
         </div>
-      </details>
+      </div>
     </div>
 
-    <!-- Items List -->
-    <div id="catalog-items-list" class="p-6 overflow-y-auto space-y-2.5 flex-1">
-      <!-- Populated via JS -->
+    <!-- Catalog List -->
+    <div id="catalog-items-list" class="p-6 overflow-y-auto space-y-2 flex-1">
+      <!-- Dynamic list -->
     </div>
   </div>
 </div>

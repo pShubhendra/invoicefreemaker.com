@@ -1,20 +1,20 @@
 ---
-// PaymentQrModal.astro - Instant Payment QR Code Generator
+// PaymentQrModal.astro - Dynamic QR Code Generator Studio
 ---
 
-<div id="payment-qr-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-xs p-4 no-print">
-  <div class="bg-white rounded-2xl border border-[#ebebeb] shadow-level-5 max-w-md w-full overflow-hidden flex flex-col max-h-[90vh] animate-scale-in">
-    <!-- Modal Header -->
+<div id="payment-qr-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-xs p-4 no-print flex items-center justify-center">
+  <div class="bg-white rounded-2xl border border-[#ebebeb] shadow-level-5 max-w-xl w-full overflow-hidden flex flex-col max-h-[85vh] m-auto animate-scale-in">
+    <!-- Header -->
     <div class="px-6 py-4 border-b border-[#ebebeb] flex items-center justify-between bg-[#fafafa]">
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-lg bg-[#0070f3] text-white flex items-center justify-center">
+        <div class="w-8 h-8 rounded-lg bg-[#171717] text-white flex items-center justify-center">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
           </svg>
         </div>
         <div>
-          <h3 class="text-sm font-semibold text-[#171717]">Payment QR Code Generator</h3>
-          <p class="text-xs text-[#888888]">Let clients scan and pay instantly</p>
+          <h3 class="text-sm font-semibold text-[#171717]">Payment QR Code Studio</h3>
+          <p class="text-xs text-[#888888]">Enable instant scan-to-pay on your invoice with dynamic amount</p>
         </div>
       </div>
       <button id="btn-close-qr-modal" type="button" class="text-[#888888] hover:text-[#171717] p-1.5 rounded-lg hover:bg-[#ebebeb] transition-colors cursor-pointer">
@@ -22,128 +22,66 @@
       </button>
     </div>
 
-    <!-- Mode Tabs -->
-    <div class="flex border-b border-[#ebebeb] bg-[#f5f5f5] p-1 gap-1">
-      <button id="qr-tab-upi" type="button" class="qr-mode-tab flex-1 py-2 text-xs font-medium rounded-lg text-[#171717] bg-white shadow-xs transition-all cursor-pointer">
-        UPI (India)
-      </button>
-      <button id="qr-tab-paypal" type="button" class="qr-mode-tab flex-1 py-2 text-xs font-medium rounded-lg text-[#4d4d4d] hover:text-[#171717] transition-all cursor-pointer">
-        PayPal
-      </button>
-      <button id="qr-tab-sepa" type="button" class="qr-mode-tab flex-1 py-2 text-xs font-medium rounded-lg text-[#4d4d4d] hover:text-[#171717] transition-all cursor-pointer">
-        SEPA / Bank
-      </button>
-      <button id="qr-tab-custom" type="button" class="qr-mode-tab flex-1 py-2 text-xs font-medium rounded-lg text-[#4d4d4d] hover:text-[#171717] transition-all cursor-pointer">
-        Custom Link
-      </button>
-    </div>
-
-    <!-- Modal Body -->
-    <div class="p-6 overflow-y-auto space-y-4">
-      <!-- 1. UPI Tab -->
-      <div id="qr-content-upi" class="qr-tab-content space-y-3">
-        <div>
-          <label class="block text-xs font-medium text-[#4d4d4d] mb-1">UPI ID / VPA</label>
-          <input
-            id="qr-upi-id"
-            type="text"
-            placeholder="e.g. acmebusiness@okaxis"
-            class="w-full px-3 py-2 text-sm rounded-lg border border-[#ebebeb] bg-white text-[#171717] focus:outline-hidden focus:border-[#171717]"
-          />
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-[#4d4d4d] mb-1">Payee Name</label>
-          <input
-            id="qr-upi-name"
-            type="text"
-            placeholder="e.g. Acme Design Studio"
-            class="w-full px-3 py-2 text-sm rounded-lg border border-[#ebebeb] bg-white text-[#171717] focus:outline-hidden focus:border-[#171717]"
-          />
-        </div>
-        <p class="text-[11px] text-[#888888]">Generates an instant QR compatible with Google Pay, PhonePe, Paytm, and BHIM.</p>
-      </div>
-
-      <!-- 2. PayPal Tab -->
-      <div id="qr-content-paypal" class="qr-tab-content hidden space-y-3">
-        <div>
-          <label class="block text-xs font-medium text-[#4d4d4d] mb-1">PayPal.me URL or Username</label>
-          <input
-            id="qr-paypal-url"
-            type="text"
-            placeholder="https://paypal.me/yourusername"
-            class="w-full px-3 py-2 text-sm rounded-lg border border-[#ebebeb] bg-white text-[#171717] focus:outline-hidden focus:border-[#171717]"
-          />
-        </div>
-        <p class="text-[11px] text-[#888888]">Clients can scan the QR code to open your PayPal payment page directly.</p>
-      </div>
-
-      <!-- 3. SEPA Tab -->
-      <div id="qr-content-sepa" class="qr-tab-content hidden space-y-3">
-        <div>
-          <label class="block text-xs font-medium text-[#4d4d4d] mb-1">IBAN</label>
-          <input
-            id="qr-sepa-iban"
-            type="text"
-            placeholder="DE89 3704 0044 0532 0130 00"
-            class="w-full px-3 py-2 text-sm rounded-lg border border-[#ebebeb] bg-white text-[#171717] focus:outline-hidden focus:border-[#171717]"
-          />
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-[#4d4d4d] mb-1">Account Holder Name</label>
-          <input
-            id="qr-sepa-name"
-            type="text"
-            placeholder="Acme Studio GmbH"
-            class="w-full px-3 py-2 text-sm rounded-lg border border-[#ebebeb] bg-white text-[#171717] focus:outline-hidden focus:border-[#171717]"
-          />
-        </div>
-        <div>
-          <label class="block text-xs font-medium text-[#4d4d4d] mb-1">BIC / SWIFT (Optional)</label>
-          <input
-            id="qr-sepa-bic"
-            type="text"
-            placeholder="DBEUT21D"
-            class="w-full px-3 py-2 text-sm rounded-lg border border-[#ebebeb] bg-white text-[#171717] focus:outline-hidden focus:border-[#171717]"
-          />
-        </div>
-      </div>
-
-      <!-- 4. Custom Link Tab -->
-      <div id="qr-content-custom" class="qr-tab-content hidden space-y-3">
-        <div>
-          <label class="block text-xs font-medium text-[#4d4d4d] mb-1">Payment Link / Crypto / Stripe URL</label>
-          <input
-            id="qr-custom-url"
-            type="text"
-            placeholder="https://buy.stripe.com/... or payment link"
-            class="w-full px-3 py-2 text-sm rounded-lg border border-[#ebebeb] bg-white text-[#171717] focus:outline-hidden focus:border-[#171717]"
-          />
-        </div>
-      </div>
-
-      <!-- QR Code Live Preview -->
-      <div class="border border-[#ebebeb] rounded-xl p-4 bg-[#fafafa] flex flex-col items-center justify-center text-center">
-        <div id="qr-preview-container" class="w-36 h-36 bg-white p-2 rounded-lg border border-[#ebebeb] shadow-xs flex items-center justify-center mb-2">
-          <img id="qr-preview-img" src="" alt="Payment QR Preview" class="w-full h-full object-contain hidden" />
-          <span id="qr-preview-placeholder" class="text-xs text-[#888888] font-mono">Generating QR...</span>
-        </div>
-        <span class="text-xs font-medium text-[#171717]">Scan with any camera or payment app</span>
+    <!-- Mode Selector Tabs -->
+    <div class="px-6 pt-4 pb-2 bg-white">
+      <div class="flex items-center p-1 rounded-xl bg-[#f5f5f5] text-xs font-medium">
+        <button id="qr-tab-upi" type="button" class="flex-1 py-1.5 rounded-lg bg-white text-[#171717] shadow-xs transition-all cursor-pointer text-center">
+          India UPI
+        </button>
+        <button id="qr-tab-paypal" type="button" class="flex-1 py-1.5 rounded-lg text-[#4d4d4d] hover:text-[#171717] transition-all cursor-pointer text-center">
+          PayPal
+        </button>
+        <button id="qr-tab-custom" type="button" class="flex-1 py-1.5 rounded-lg text-[#4d4d4d] hover:text-[#171717] transition-all cursor-pointer text-center">
+          Custom Link
+        </button>
       </div>
     </div>
 
-    <!-- Modal Footer -->
-    <div class="px-6 py-4 border-t border-[#ebebeb] bg-[#fafafa] flex items-center justify-between">
-      <button id="btn-remove-qr" type="button" class="text-xs text-red-600 hover:text-red-700 font-medium cursor-pointer">
-        Remove QR Code
-      </button>
-      <div class="flex items-center gap-2">
-        <button id="btn-cancel-qr" type="button" class="px-4 py-2 text-xs font-medium text-[#4d4d4d] hover:text-[#171717] bg-white border border-[#ebebeb] rounded-full hover:bg-[#f5f5f5] transition-colors cursor-pointer">
-          Cancel
-        </button>
-        <button id="btn-apply-qr" type="button" class="px-5 py-2 text-xs font-medium text-white bg-[#171717] hover:bg-black rounded-full shadow-sm hover:shadow transition-all cursor-pointer">
-          Insert QR to Invoice
-        </button>
+    <!-- Tab Contents & Live Preview -->
+    <div class="p-6 space-y-4 flex-1 overflow-y-auto">
+      <div class="flex flex-col sm:flex-row gap-6 items-center">
+        <!-- Live QR Preview Card -->
+        <div class="shrink-0 w-36 h-36 bg-[#fafafa] border border-[#ebebeb] rounded-xl p-2 flex flex-col items-center justify-center shadow-xs">
+          <img id="qr-preview-img" src="" alt="QR Preview" class="w-full h-full object-contain" />
+        </div>
+
+        <!-- Form fields -->
+        <div class="flex-1 space-y-3 w-full">
+          <!-- UPI Form -->
+          <div id="qr-content-upi" class="space-y-3">
+            <div>
+              <label class="block text-xs font-medium text-[#4d4d4d] mb-1">UPI ID / VPA (e.g. yourname@oksbi / merchant@upi)</label>
+              <input id="qr-upi-id" type="text" value="surabhihardwares@okhdfcbank" placeholder="name@upi" class="w-full px-3 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-[#fafafa] text-[#171717]" />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-[#4d4d4d] mb-1">Payee Name</label>
+              <input id="qr-upi-name" type="text" value="Surabhi Hardwares" placeholder="Business or personal name" class="w-full px-3 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-[#fafafa] text-[#171717]" />
+            </div>
+          </div>
+
+          <!-- PayPal Form -->
+          <div id="qr-content-paypal" class="hidden space-y-3">
+            <div>
+              <label class="block text-xs font-medium text-[#4d4d4d] mb-1">PayPal.me URL or Username</label>
+              <input id="qr-paypal-url" type="text" placeholder="https://paypal.me/yourname" class="w-full px-3 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-[#fafafa] text-[#171717]" />
+            </div>
+          </div>
+
+          <!-- Custom Link Form -->
+          <div id="qr-content-custom" class="hidden space-y-3">
+            <div>
+              <label class="block text-xs font-medium text-[#4d4d4d] mb-1">Payment Web Link (Stripe, Razorpay, Crypto, etc.)</label>
+              <input id="qr-custom-url" type="url" placeholder="https://buy.stripe.com/..." class="w-full px-3 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-[#fafafa] text-[#171717]" />
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- Modal Actions -->
+    <div class="px-6 py-3.5 border-t border-[#ebebeb] bg-[#fafafa] flex items-center justify-between">
+      <button id="btn-cancel-qr" type="button" class="px-4 py-2 text-xs font-medium text-[#4d4d4d] hover:text-[#171717] cursor-pointer">Cancel</button>
+      <button id="btn-apply-qr" type="button" class="px-5 py-2 text-xs font-medium text-white bg-[#171717] hover:bg-black rounded-full shadow-sm cursor-pointer">Apply QR Code</button>
     </div>
   </div>
 </div>

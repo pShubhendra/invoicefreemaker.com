@@ -8,11 +8,8 @@ export async function exportInvoiceToPDF(elementId = 'invoice-paper', filename =
     throw new Error('Invoice element not found');
   }
 
-  // Visual preparation
   const originalShadow = element.style.boxShadow;
-  const originalBorder = element.style.border;
   element.style.boxShadow = 'none';
-  element.style.border = 'none';
 
   try {
     const canvas = await html2canvas(element, {
@@ -20,13 +17,14 @@ export async function exportInvoiceToPDF(elementId = 'invoice-paper', filename =
       useCORS: true,
       allowTaint: true,
       logging: false,
-      backgroundColor: '#ffffff'
+      backgroundColor: '#ffffff',
+      scrollX: 0,
+      scrollY: -window.scrollY
     });
 
     element.style.boxShadow = originalShadow;
-    element.style.border = originalBorder;
 
-    const imgData = canvas.toDataURL('image/jpeg', 0.95);
+    const imgData = canvas.toDataURL('image/jpeg', 0.98);
     const pdf = new jsPDF({
       orientation: 'portrait',
       unit: 'mm',
@@ -56,14 +54,10 @@ export async function exportInvoiceToPDF(elementId = 'invoice-paper', filename =
     return true;
   } catch (error) {
     element.style.boxShadow = originalShadow;
-    element.style.border = originalBorder;
-    console.error('PDF Generation Error:', error);
-    
-    // Fallback: prompt print
-    if (confirm('PDF direct generation encountered a browser canvas limitation. Would you like to use your browser\'s Print to PDF instead?')) {
-      window.print();
-    }
-    throw error;
+    console.error('PDF Generation Error, falling back to print:', error);
+    // Fallback directly to print without annoying alerts
+    window.print();
+    return false;
   }
 }
 
@@ -71,28 +65,36 @@ export async function exportInvoiceToPNG(elementId = 'invoice-paper', filename =
   const element = document.getElementById(elementId);
   if (!element) return;
 
+  const originalShadow = element.style.boxShadow;
+  element.style.boxShadow = 'none';
+
   try {
     const canvas = await html2canvas(element, {
       scale: 2,
       useCORS: true,
       allowTaint: true,
-      backgroundColor: '#ffffff'
+      backgroundColor: '#ffffff',
+      scrollX: 0,
+      scrollY: -window.scrollY
     });
+
+    element.style.boxShadow = originalShadow;
 
     const link = document.createElement('a');
     link.download = filename;
     link.href = canvas.toDataURL('image/png');
     link.click();
   } catch (err) {
+    element.style.boxShadow = originalShadow;
     console.error('PNG Export Error:', err);
-    alert('Failed to export PNG. You can use the Print option to save as PDF/Image.');
+    window.print();
   }
 }
 
 export function generateWhatsAppShareLink(invoice, totals) {
   const clientName = invoice.client?.name || 'Valued Client';
   const invNumber = invoice.invoiceNumber || 'INV-001';
-  const currencySymbol = invoice.currency?.symbol || '$';
+  const currencySymbol = invoice.currency?.symbol || '₹';
   const amount = totals.grandTotal.toLocaleString(undefined, { minimumFractionDigits: 2 });
   const dueDate = invoice.dueDate || 'Upon Receipt';
   
@@ -105,7 +107,7 @@ export function generateEmailShareLink(invoice, totals) {
   const clientEmail = invoice.client?.email || '';
   const invNumber = invoice.invoiceNumber || 'INV-001';
   const senderName = invoice.sender?.name || 'Us';
-  const currencySymbol = invoice.currency?.symbol || '$';
+  const currencySymbol = invoice.currency?.symbol || '₹';
   const amount = totals.grandTotal.toLocaleString(undefined, { minimumFractionDigits: 2 });
   const dueDate = invoice.dueDate || 'Upon Receipt';
 

@@ -1,5 +1,4 @@
 ---
-// InvoiceEditor.astro - Master Container connecting Sidebar, Canvas, and Studio Modals
 import SidebarControls from './editor/SidebarControls.astro';
 import Canvas from './editor/Canvas.astro';
 import SignatureModal from './editor/SignatureModal.astro';
@@ -10,56 +9,41 @@ import CompanyManagerModal from './editor/CompanyManagerModal.astro';
 import ItemCatalogModal from './editor/ItemCatalogModal.astro';
 ---
 
-<section id="generator-section" class="py-8 md:py-12 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-  <!-- Section Title -->
-  <div class="mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 no-print">
+<section id="generator-section" class="py-8 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+  <div class="mb-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 no-print">
     <div>
-      <div class="flex items-center gap-2 mb-1">
-        <span class="px-2 py-0.5 text-[10px] font-mono font-medium uppercase tracking-wider bg-black text-white rounded">Live Studio</span>
-        <span class="text-xs text-[#888888]">Click on any invoice field to edit in real time</span>
-      </div>
-      <h2 class="text-2xl font-bold tracking-tight text-[#171717]">Interactive Invoice Generator</h2>
+      <span class="px-2 py-0.5 text-[10px] font-mono font-medium uppercase tracking-wider bg-black text-white rounded">Live Studio</span>
+      <h2 class="text-2xl font-bold tracking-tight text-[#171717] mt-1">Interactive Invoice Generator</h2>
     </div>
-
-    <!-- Quick Tool Pills -->
     <div class="flex items-center gap-2 flex-wrap">
-      <button id="quick-btn-companies" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-2xs transition-colors flex items-center gap-1.5 cursor-pointer">
-        <svg class="w-3.5 h-3.5 text-[#0070f3]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
-        <span>My Companies</span>
+      <button id="quick-btn-companies" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+        My Companies
       </button>
-
-      <button id="quick-btn-items" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-2xs transition-colors flex items-center gap-1.5 cursor-pointer">
-        <svg class="w-3.5 h-3.5 text-[#0070f3]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
-        <span>Item Catalog</span>
+      <button id="quick-btn-items" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+        Item Catalog
       </button>
-
-      <button id="quick-btn-clients" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-2xs transition-colors flex items-center gap-1.5 cursor-pointer">
-        <svg class="w-3.5 h-3.5 text-[#0070f3]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-        <span>Address Book</span>
+      <button id="quick-btn-clients" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+        Address Book
       </button>
-
-      <button id="quick-btn-sig" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-2xs transition-colors flex items-center gap-1.5 cursor-pointer">
-        <svg class="w-3.5 h-3.5 text-[#0070f3]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
-        <span>Signature Pad</span>
+      <button id="quick-btn-sig" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+        Signature
       </button>
-
-      <button id="quick-btn-qr" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-2xs transition-colors flex items-center gap-1.5 cursor-pointer">
-        <svg class="w-3.5 h-3.5 text-[#0070f3]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" /></svg>
-        <span>Payment QR</span>
+      <button id="quick-btn-qr" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" /></svg>
+        Payment QR
       </button>
     </div>
   </div>
 
-  <!-- Dual Column Layout: Canvas + Control Sidebar -->
-  <div class="flex flex-col lg:flex-row items-start gap-8">
-    <!-- Center / Left: WYSIWYG Sheet -->
+  <div class="flex flex-col lg:flex-row items-start gap-6">
     <Canvas />
-
-    <!-- Right: Sidebar Controller -->
     <SidebarControls />
   </div>
 
-  <!-- Studio Modals -->
   <SignatureModal />
   <PaymentQrModal />
   <InvoiceHistoryModal />
@@ -68,1724 +52,989 @@ import ItemCatalogModal from './editor/ItemCatalogModal.astro';
   <ItemCatalogModal />
 </section>
 
-<!-- Client Script: Reactive State Management & PDF / QR / Signature Engine -->
 <script>
-  import {
-    getDefaultInvoice,
-    calculateTotals,
-    saveCurrentInvoiceToStorage,
-    loadCurrentInvoiceFromStorage,
-    getInvoiceHistory,
-    saveInvoiceToHistory,
-    deleteInvoiceFromHistory,
-    getClientsVault,
-    saveClientToVault,
-    deleteClientFromVault,
-    getCompaniesVault,
-    saveCompanyToVault,
-    deleteCompanyFromVault,
-    getItemsCatalog,
-    saveItemToCatalog,
-    deleteItemFromCatalog,
-    CURRENCIES,
-    DOCUMENT_TYPES
-  } from '../scripts/invoice-state.js';
-  import { generatePaymentQRCode } from '../scripts/qr-generator.js';
-  import { exportInvoiceToPDF, exportInvoiceToPNG, generateWhatsAppShareLink, generateEmailShareLink } from '../scripts/pdf-generator.js';
-  import confetti from 'canvas-confetti';
+import {
+  getDefaultInvoice, calculateTotals, saveCurrentInvoiceToStorage,
+  loadCurrentInvoiceFromStorage, getInvoiceHistory, saveInvoiceToHistory,
+  deleteInvoiceFromHistory, duplicateInvoiceInHistory,
+  getClientsVault, saveClientToVault, deleteClientFromVault,
+  getCompaniesVault, saveCompanyToVault, deleteCompanyFromVault,
+  getItemsCatalog, saveItemToCatalog, deleteItemFromCatalog,
+  importInvoiceHistory,
+  CURRENCIES, DOCUMENT_TYPES
+} from '../scripts/invoice-state.js';
+import { generatePaymentQRCode } from '../scripts/qr-generator.js';
+import { exportInvoiceToPDF, exportInvoiceToPNG, generateWhatsAppShareLink, generateEmailShareLink } from '../scripts/pdf-generator.js';
 
-  // Global Reactive State
-  let invoice = loadCurrentInvoiceFromStorage();
-  let signaturePadDrawing = false;
-  let signatureUndoStack = [];
-  let currentSigColor = '#171717';
-  let currentSigTab = 'draw';
-  let currentQrTab = 'upi';
-  let isInitialized = false;
+let invoice = loadCurrentInvoiceFromStorage();
+let sigPadDrawing = false;
+let sigUndoStack = [];
+let sigColor = '#171717';
+let sigTab = 'draw';
+let qrTab = 'upi';
+let isInitialized = false;
 
-  // DOM Elements References
+// Modal open/close helpers (used by both bindEvents and bindPaperEvents)
+const openModal = id => document.getElementById(id)?.classList.remove('hidden');
+const closeModal = id => document.getElementById(id)?.classList.add('hidden');
+
+function init() {
+  if (isInitialized) return;
+  isInitialized = true;
+  applyTemplate();
+  bindEvents();
+  initSigCanvas();
+}
+
+function applyTemplate() {
   const paper = document.getElementById('invoice-paper');
-  const itemsBody = document.getElementById('inv-items-body');
-  const historyBadge = document.getElementById('history-count-badge');
+  if (!paper) return;
+  const themeId = invoice.theme || 'gst_tally';
+  const tpl = document.getElementById('tmpl-' + themeId) || document.getElementById('tmpl-gst_tally');
+  if (!tpl) return;
+  paper.innerHTML = '';
+  paper.appendChild(tpl.content.cloneNode(true));
+  bindPaperEvents();
+  renderAll();
+}
 
-  // Initialize UI & Bind Events strictly once
-  function init() {
-    if (isInitialized) return;
-    isInitialized = true;
+// Bind events for elements living inside the active invoice paper template.
+// Re-run after every applyTemplate() since cloning replaces the DOM.
+function bindPaperEvents() {
+  // Contenteditable invoice fields
+  const bindBlur = (id, setter) => {
+    document.getElementById(id)?.addEventListener('blur', e => {
+      setter(e.target.textContent?.trim() || '');
+      saveCurrentInvoiceToStorage(invoice);
+    });
+  };
+  bindBlur('inv-sender-name', v => invoice.sender.name = v);
+  bindBlur('inv-sender-address', v => invoice.sender.address = v);
+  bindBlur('inv-sender-email', v => invoice.sender.email = v);
+  bindBlur('inv-sender-phone', v => invoice.sender.phone = v);
+  bindBlur('inv-sender-taxid', v => invoice.sender.taxId = v);
+  bindBlur('inv-client-name', v => invoice.client.name = v);
+  bindBlur('inv-client-address', v => invoice.client.address = v);
+  bindBlur('inv-client-email', v => invoice.client.email = v);
+  bindBlur('inv-client-taxid', v => invoice.client.taxId = v);
+  bindBlur('inv-doc-title', v => invoice.docTitle = v);
+  bindBlur('inv-number', v => invoice.invoiceNumber = v);
+  bindBlur('inv-notes', v => invoice.notes = v);
+  bindBlur('inv-terms', v => invoice.terms = v);
+  bindBlur('bank-name', v => invoice.paymentDetails.bankName = v);
+  bindBlur('bank-holder', v => invoice.paymentDetails.accountName = v);
+  bindBlur('bank-account', v => invoice.paymentDetails.accountNumber = v);
+  bindBlur('bank-ifsc', v => invoice.paymentDetails.swift = v);
 
-    renderInvoice();
-    updateHistoryCount();
-    bindEvents();
-    initSignatureCanvas();
-    updateQRPreview();
+  // Input fields
+  document.getElementById('inv-issue-date')?.addEventListener('change', e => {
+    invoice.issueDate = e.target.value; saveCurrentInvoiceToStorage(invoice);
+  });
+  document.getElementById('inv-due-date')?.addEventListener('change', e => {
+    invoice.dueDate = e.target.value; saveCurrentInvoiceToStorage(invoice);
+  });
+  document.getElementById('inv-po-number')?.addEventListener('input', e => {
+    invoice.referenceNumber = e.target.value; saveCurrentInvoiceToStorage(invoice);
+  });
+
+  // Logo
+  const logoWrap = document.getElementById('logo-display-wrap');
+  const logoInput = document.getElementById('logo-file-input');
+  logoWrap?.addEventListener('click', () => logoInput?.click());
+  logoInput?.addEventListener('change', e => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = ev => { invoice.sender.logo = ev.target.result; renderAll(); };
+      reader.readAsDataURL(file);
+    }
+  });
+  document.getElementById('btn-remove-logo')?.addEventListener('click', e => {
+    e.stopPropagation(); invoice.sender.logo = ''; renderAll();
+  });
+
+  // Add line item
+  document.getElementById('btn-add-line-item')?.addEventListener('click', e => {
+    e.preventDefault();
+    invoice.items.push({ id: 'i' + Date.now(), description: 'New Item or Service', hsn: '1005', unit: 'No', quantity: 1, rate: 0, discount: 0, discountType: 'percent', taxRate: 18 });
+    renderAll();
+  });
+
+  // Paper-internal modal launchers (quick buttons inside the canvas)
+  document.getElementById('btn-quick-fill-client')?.addEventListener('click', () => { openModal('client-book-modal'); renderClientList(); });
+  document.getElementById('btn-quick-switch-company')?.addEventListener('click', () => { openModal('company-manager-modal'); renderCompanyList(); });
+  document.getElementById('btn-open-item-catalog')?.addEventListener('click', () => { openModal('item-catalog-modal'); renderCatalogList(); });
+}
+
+// ─── RENDER ENGINE ───────────────────────────────────────────────────────────
+
+function renderAll() {
+  const totals = calculateTotals(invoice);
+  const sym = invoice.currency?.symbol || '₹';
+
+  applyAccentColor();
+  renderHeader(sym);
+  renderLineItems(sym, totals);
+  renderTotals(totals, sym);
+  renderSignature();
+  renderQR(totals.grandTotal);
+  syncSidebar();
+  saveCurrentInvoiceToStorage(invoice);
+
+  const badge = document.getElementById('history-count-badge');
+  if (badge) badge.textContent = getInvoiceHistory().length.toString();
+}
+
+function applyAccentColor() {
+  const paper = document.getElementById('invoice-paper');
+  if (!paper) return;
+  const accent = invoice.accentColor || '#171717';
+  paper.style.setProperty('--inv-accent', accent);
+
+  // Update rate header cell text
+  const rateHeader = document.getElementById('inv-rate-header');
+  if (rateHeader) rateHeader.textContent = `Rate (${invoice.currency?.symbol || '₹'})`;
+}
+
+function renderHeader(sym) {
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val || ''; };
+  const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ''; };
+
+  set('inv-sender-name', invoice.sender?.name);
+  set('inv-sender-address', invoice.sender?.address);
+  set('inv-sender-email', invoice.sender?.email);
+  set('inv-sender-phone', invoice.sender?.phone);
+  set('inv-sender-taxid', invoice.sender?.taxId);
+  set('inv-doc-title', invoice.docTitle || 'TAX INVOICE');
+  set('inv-number', invoice.invoiceNumber);
+  setVal('inv-issue-date', invoice.issueDate);
+  setVal('inv-due-date', invoice.dueDate);
+  setVal('inv-po-number', invoice.referenceNumber || '');
+  set('inv-client-name', invoice.client?.name);
+  set('inv-client-address', invoice.client?.address);
+  set('inv-client-email', invoice.client?.email);
+  set('inv-client-taxid', invoice.client?.taxId);
+  set('inv-notes', invoice.notes);
+  set('inv-terms', invoice.terms);
+  set('bank-name', invoice.paymentDetails?.bankName);
+  set('bank-holder', invoice.paymentDetails?.accountName);
+  set('bank-account', invoice.paymentDetails?.accountNumber);
+  set('bank-ifsc', invoice.paymentDetails?.swift || invoice.paymentDetails?.routingNumber);
+
+  // Logo
+  const logoImg = document.getElementById('sender-logo-img');
+  const logoPlh = document.getElementById('logo-placeholder');
+  const removeLogo = document.getElementById('btn-remove-logo');
+  if (invoice.sender?.logo) {
+    logoImg?.setAttribute('src', invoice.sender.logo);
+    logoImg?.classList.remove('hidden');
+    logoPlh?.classList.add('hidden');
+    removeLogo?.classList.remove('hidden');
+  } else {
+    logoImg?.classList.add('hidden');
+    logoPlh?.classList.remove('hidden');
+    removeLogo?.classList.add('hidden');
   }
+}
 
-  // Render complete invoice state to canvas and controls
-  function renderInvoice() {
-    const totals = calculateTotals(invoice);
+function renderLineItems(sym, totals) {
+  const tbody = document.getElementById('inv-items-body');
+  if (!tbody) return;
+  tbody.innerHTML = '';
 
-    // 1. Doc Title & Number
-    const docTitleEl = document.getElementById('inv-doc-title');
-    if (docTitleEl) docTitleEl.textContent = invoice.docTitle || 'TAX INVOICE';
-    
-    const invNumEl = document.getElementById('inv-number');
-    if (invNumEl) invNumEl.textContent = invoice.invoiceNumber;
+  const showHsn = invoice.columns?.hsn !== false;
+  const showUnit = invoice.columns?.unit !== false;
+  const showDisc = invoice.columns?.discount !== false;
 
-    const issueDateEl = document.getElementById('inv-issue-date') as HTMLInputElement;
-    if (issueDateEl) issueDateEl.value = invoice.issueDate;
+  // Sync column header visibility
+  document.querySelectorAll('.col-hsn').forEach(el => el.classList.toggle('hidden', !showHsn));
+  document.querySelectorAll('.col-unit').forEach(el => el.classList.toggle('hidden', !showUnit));
+  document.querySelectorAll('.col-discount').forEach(el => el.classList.toggle('hidden', !showDisc));
 
-    const dueDateEl = document.getElementById('inv-due-date') as HTMLInputElement;
-    if (dueDateEl) dueDateEl.value = invoice.dueDate;
-
-    const poEl = document.getElementById('inv-po-number') as HTMLInputElement;
-    if (poEl) poEl.value = invoice.referenceNumber || '';
-
-    // 2. Sender Info
-    const senderNameEl = document.getElementById('inv-sender-name');
-    if (senderNameEl) senderNameEl.textContent = invoice.sender?.name || '';
-
-    const senderAddrEl = document.getElementById('inv-sender-address');
-    if (senderAddrEl) senderAddrEl.textContent = invoice.sender?.address || '';
-
-    const senderEmailEl = document.getElementById('inv-sender-email');
-    if (senderEmailEl) senderEmailEl.textContent = invoice.sender?.email || '';
-
-    const senderPhoneEl = document.getElementById('inv-sender-phone');
-    if (senderPhoneEl) senderPhoneEl.textContent = invoice.sender?.phone || '';
-
-    const senderTaxEl = document.getElementById('inv-sender-taxid');
-    if (senderTaxEl) senderTaxEl.textContent = invoice.sender?.taxId || '';
-
-    // Logo
-    const logoImg = document.getElementById('sender-logo-img') as HTMLImageElement;
-    const logoPlh = document.getElementById('logo-placeholder');
-    const btnRemoveLogo = document.getElementById('btn-remove-logo');
-    if (invoice.sender?.logo) {
-      if (logoImg) {
-        logoImg.src = invoice.sender.logo;
-        logoImg.classList.remove('hidden');
-      }
-      if (logoPlh) logoPlh.classList.add('hidden');
-      if (btnRemoveLogo) btnRemoveLogo.classList.remove('hidden');
-    } else {
-      if (logoImg) logoImg.classList.add('hidden');
-      if (logoPlh) logoPlh.classList.remove('hidden');
-      if (btnRemoveLogo) btnRemoveLogo.classList.add('hidden');
+  invoice.items.forEach((item, idx) => {
+    const qty = Number(item.quantity) || 0;
+    const rate = Number(item.rate) || 0;
+    let lineTotal = qty * rate;
+    if (showDisc && item.discount) {
+      const d = Number(item.discount);
+      lineTotal -= item.discountType === 'fixed' ? d : (lineTotal * d / 100);
     }
-
-    // 3. Client Info
-    const clientNameEl = document.getElementById('inv-client-name');
-    if (clientNameEl) clientNameEl.textContent = invoice.client?.name || '';
-
-    const clientAddrEl = document.getElementById('inv-client-address');
-    if (clientAddrEl) clientAddrEl.textContent = invoice.client?.address || '';
-
-    const clientEmailEl = document.getElementById('inv-client-email');
-    if (clientEmailEl) clientEmailEl.textContent = invoice.client?.email || '';
-
-    const clientPhoneEl = document.getElementById('inv-client-phone');
-    if (clientPhoneEl) clientPhoneEl.textContent = invoice.client?.phone || '';
-
-    const clientTaxEl = document.getElementById('inv-client-taxid');
-    if (clientTaxEl) clientTaxEl.textContent = invoice.client?.taxId || '';
-
-    // 4. Line Items Table
-    renderLineItems();
-
-    // 5. Totals & Summaries
-    const currSymbol = invoice.currency?.symbol || '$';
-    const subtotalEl = document.getElementById('sum-subtotal');
-    if (subtotalEl) subtotalEl.textContent = `${currSymbol}${totals.subtotal.toFixed(2)}`;
-
-    // Line Discount row
-    const rowLineDisc = document.getElementById('sum-row-linedisc');
-    const sumLineDisc = document.getElementById('sum-linedisc');
-    if (totals.totalLineDiscount > 0) {
-      rowLineDisc?.classList.remove('hidden');
-      rowLineDisc?.classList.add('flex');
-      if (sumLineDisc) sumLineDisc.textContent = `-${currSymbol}${totals.totalLineDiscount.toFixed(2)}`;
-    } else {
-      rowLineDisc?.classList.add('hidden');
-      rowLineDisc?.classList.remove('flex');
-    }
-
-    // Invoice Discount row
-    const rowInvDisc = document.getElementById('sum-row-invdisc');
-    const sumInvDisc = document.getElementById('sum-invdisc');
-    const sumInvDiscLabel = document.getElementById('sum-invdisc-label');
-    if (totals.invoiceDiscount > 0) {
-      rowInvDisc?.classList.remove('hidden');
-      rowInvDisc?.classList.add('flex');
-      if (sumInvDiscLabel) sumInvDiscLabel.textContent = `Discount (${invoice.discountType === 'percent' ? invoice.discountValue + '%' : currSymbol + invoice.discountValue})`;
-      if (sumInvDisc) sumInvDisc.textContent = `-${currSymbol}${totals.invoiceDiscount.toFixed(2)}`;
-    } else {
-      rowInvDisc?.classList.add('hidden');
-      rowInvDisc?.classList.remove('flex');
-    }
-
-    // Tax rows
-    const rowTax = document.getElementById('sum-row-tax');
-    const rowCGST = document.getElementById('sum-row-cgst');
-    const rowSGST = document.getElementById('sum-row-sgst');
-    const rowIGST = document.getElementById('sum-row-igst');
-
-    if (invoice.taxMode === 'gst') {
-      rowTax?.classList.add('hidden');
-      if (invoice.isInterstateGST) {
-        rowCGST?.classList.add('hidden');
-        rowSGST?.classList.add('hidden');
-        rowIGST?.classList.remove('hidden');
-        rowIGST?.classList.add('flex');
-        const sumIgst = document.getElementById('sum-igst');
-        const sumIgstLabel = document.getElementById('sum-igst-label');
-        if (sumIgst) sumIgst.textContent = `${currSymbol}${totals.igstAmount.toFixed(2)}`;
-        if (sumIgstLabel) sumIgstLabel.textContent = `IGST (${invoice.igstRate}%)`;
-      } else {
-        rowIGST?.classList.add('hidden');
-        rowCGST?.classList.remove('hidden');
-        rowCGST?.classList.add('flex');
-        rowSGST?.classList.remove('hidden');
-        rowSGST?.classList.add('flex');
-        const sumCgst = document.getElementById('sum-cgst');
-        const sumCgstLabel = document.getElementById('sum-cgst-label');
-        if (sumCgst) sumCgst.textContent = `${currSymbol}${totals.cgstAmount.toFixed(2)}`;
-        if (sumCgstLabel) sumCgstLabel.textContent = `CGST (${invoice.cgstRate}%)`;
-
-        const sumSgst = document.getElementById('sum-sgst');
-        const sumSgstLabel = document.getElementById('sum-sgst-label');
-        if (sumSgst) sumSgst.textContent = `${currSymbol}${totals.sgstAmount.toFixed(2)}`;
-        if (sumSgstLabel) sumSgstLabel.textContent = `SGST (${invoice.sgstRate}%)`;
-      }
-    } else if (invoice.taxMode === 'none') {
-      rowTax?.classList.add('hidden');
-      rowCGST?.classList.add('hidden');
-      rowSGST?.classList.add('hidden');
-      rowIGST?.classList.add('hidden');
-    } else {
-      // Single tax or VAT
-      rowCGST?.classList.add('hidden');
-      rowSGST?.classList.add('hidden');
-      rowIGST?.classList.add('hidden');
-      rowTax?.classList.remove('hidden');
-      rowTax?.classList.add('flex');
-      const sumTax = document.getElementById('sum-tax');
-      const sumTaxLabel = document.getElementById('sum-tax-label');
-      if (sumTax) sumTax.textContent = `${currSymbol}${totals.taxAmount.toFixed(2)}`;
-      if (sumTaxLabel) sumTaxLabel.textContent = `Tax (${invoice.taxRate}%)`;
-    }
-
-    // Shipping row
-    const rowShipping = document.getElementById('sum-row-shipping');
-    const sumShipping = document.getElementById('sum-shipping');
-    if (totals.shipping > 0) {
-      rowShipping?.classList.remove('hidden');
-      rowShipping?.classList.add('flex');
-      if (sumShipping) sumShipping.textContent = `${currSymbol}${totals.shipping.toFixed(2)}`;
-    } else {
-      rowShipping?.classList.add('hidden');
-      rowShipping?.classList.remove('flex');
-    }
-
-    // Roundoff row
-    const rowRoundoff = document.getElementById('sum-row-roundoff');
-    const sumRoundoff = document.getElementById('sum-roundoff');
-    if (invoice.roundOff && totals.roundOffAdjustment !== 0) {
-      rowRoundoff?.classList.remove('hidden');
-      rowRoundoff?.classList.add('flex');
-      if (sumRoundoff) sumRoundoff.textContent = `${totals.roundOffAdjustment > 0 ? '+' : ''}${currSymbol}${totals.roundOffAdjustment.toFixed(2)}`;
-    } else {
-      rowRoundoff?.classList.add('hidden');
-      rowRoundoff?.classList.remove('flex');
-    }
-
-    // Grand Total & Words
-    const sumGrand = document.getElementById('sum-grandtotal');
-    if (sumGrand) sumGrand.textContent = `${currSymbol}${totals.grandTotal.toFixed(2)}`;
-
-    const wordsEl = document.getElementById('inv-amount-words');
-    if (wordsEl) wordsEl.textContent = totals.amountInWords;
-
-    // Bank Details
-    const bankName = document.getElementById('bank-name');
-    if (bankName) bankName.textContent = invoice.paymentDetails?.bankName || '';
-    const bankHolder = document.getElementById('bank-holder');
-    if (bankHolder) bankHolder.textContent = invoice.paymentDetails?.accountName || '';
-    const bankAcc = document.getElementById('bank-account');
-    if (bankAcc) bankAcc.textContent = invoice.paymentDetails?.accountNumber || '';
-    const bankIfsc = document.getElementById('bank-ifsc');
-    if (bankIfsc) bankIfsc.textContent = invoice.paymentDetails?.swift || invoice.paymentDetails?.routingNumber || '';
-
-    // Terms & Notes
-    const termsEl = document.getElementById('inv-terms');
-    if (termsEl) termsEl.textContent = invoice.terms || '';
-    const notesEl = document.getElementById('inv-notes');
-    if (notesEl) notesEl.textContent = invoice.notes || '';
-
-    // 6. Signature display
-    renderSignature();
-
-    // 7. QR Code display
-    renderQRCode(totals.grandTotal);
-
-    // 8. Column Visibility
-    toggleColumnVisibility();
-
-    // 9. Theme and Color Styling
-    applyThemeStyling();
-
-    // 10. Sync Sidebar Form Controls
-    syncSidebarInputs();
-
-    // Save to LocalStorage
-    saveCurrentInvoiceToStorage(invoice);
-  }
-
-  // Render line items in the table
-  function renderLineItems() {
-    if (!itemsBody) return;
-    itemsBody.innerHTML = '';
-    const currSymbol = invoice.currency?.symbol || '$';
-
-    invoice.items.forEach((item: any, index: number) => {
-      const tr = document.createElement('tr');
-      tr.className = 'group hover:bg-[#fafafa] transition-colors';
-      tr.dataset.index = index.toString();
-
-      const qty = Number(item.quantity) || 0;
-      const rate = Number(item.rate) || 0;
-      let lineTotal = qty * rate;
-      if (invoice.columns?.discount && item.discount) {
-        const disc = Number(item.discount);
-        lineTotal -= item.discountType === 'fixed' ? disc : (lineTotal * disc) / 100;
-      }
-
-      tr.innerHTML = `
-        <td class="py-3 px-3 text-center text-[#888888] font-mono text-xs">${index + 1}</td>
-        <td class="py-3 px-3">
-          <div class="item-desc font-medium text-[#171717] outline-hidden whitespace-pre-line" contenteditable="true" placeholder="Item name or service description...">${item.description || ''}</div>
-        </td>
-        <td class="py-3 px-2 text-center col-hsn ${invoice.columns?.hsn ? '' : 'hidden'}">
-          <input type="text" value="${item.hsn || ''}" placeholder="HSN" class="item-hsn w-full text-center text-xs font-mono bg-transparent outline-hidden border border-transparent focus:border-[#171717] rounded px-1" />
-        </td>
-        <td class="py-3 px-2 text-center col-unit ${invoice.columns?.unit ? '' : 'hidden'}">
-          <input type="text" value="${item.unit || 'Hours'}" placeholder="Unit" class="item-unit w-full text-center text-xs bg-transparent outline-hidden border border-transparent focus:border-[#171717] rounded px-1" />
-        </td>
-        <td class="py-3 px-3 text-right">
-          <input type="number" min="0" step="any" value="${item.quantity}" class="item-qty w-16 text-right text-xs font-mono font-medium bg-transparent outline-hidden border border-transparent focus:border-[#171717] rounded px-1 py-0.5" />
-        </td>
-        <td class="py-3 px-3 text-right">
-          <input type="number" min="0" step="any" value="${item.rate}" class="item-rate w-24 text-right text-xs font-mono font-medium bg-transparent outline-hidden border border-transparent focus:border-[#171717] rounded px-1 py-0.5" />
-        </td>
-        <td class="py-3 px-2 text-right col-discount ${invoice.columns?.discount ? '' : 'hidden'}">
-          <input type="number" min="0" step="any" value="${item.discount || 0}" class="item-discount w-14 text-right text-xs font-mono bg-transparent outline-hidden border border-transparent focus:border-[#171717] rounded px-1 py-0.5" />
-        </td>
-        <td class="py-3 px-3 text-right font-mono font-semibold text-[#171717]">
-          ${currSymbol}${Math.max(0, lineTotal).toFixed(2)}
-        </td>
-        <td class="py-3 px-2 text-center no-print">
-          <button type="button" class="btn-delete-row text-[#888888] hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity p-1 cursor-pointer" title="Delete line item">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-          </button>
-        </td>
-      `;
-
-      // Item Input Event Listeners
-      const descEl = tr.querySelector('.item-desc');
-      const hsnEl = tr.querySelector('.item-hsn') as HTMLInputElement;
-      const unitEl = tr.querySelector('.item-unit') as HTMLInputElement;
-      const qtyEl = tr.querySelector('.item-qty') as HTMLInputElement;
-      const rateEl = tr.querySelector('.item-rate') as HTMLInputElement;
-      const discEl = tr.querySelector('.item-discount') as HTMLInputElement;
-      const delBtn = tr.querySelector('.btn-delete-row');
-
-      descEl?.addEventListener('blur', () => {
-        invoice.items[index].description = descEl.textContent || '';
-        saveCurrentInvoiceToStorage(invoice);
-      });
-
-      hsnEl?.addEventListener('input', () => {
-        invoice.items[index].hsn = hsnEl.value;
-        saveCurrentInvoiceToStorage(invoice);
-      });
-
-      unitEl?.addEventListener('input', () => {
-        invoice.items[index].unit = unitEl.value;
-        saveCurrentInvoiceToStorage(invoice);
-      });
-
-      qtyEl?.addEventListener('input', () => {
-        invoice.items[index].quantity = parseFloat(qtyEl.value) || 0;
-        renderInvoice();
-      });
-
-      rateEl?.addEventListener('input', () => {
-        invoice.items[index].rate = parseFloat(rateEl.value) || 0;
-        renderInvoice();
-      });
-
-      discEl?.addEventListener('input', () => {
-        invoice.items[index].discount = parseFloat(discEl.value) || 0;
-        renderInvoice();
-      });
-
-      delBtn?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (invoice.items.length > 1) {
-          invoice.items.splice(index, 1);
-          renderInvoice();
-        } else {
-          alert('An invoice must have at least one line item.');
-        }
-      });
-
-      itemsBody.appendChild(tr);
-    });
-  }
-
-  // Render Signature Stamp
-  function renderSignature() {
-    const sigSec = document.getElementById('inv-sig-section');
-    const sigImg = document.getElementById('sig-display-img') as HTMLImageElement;
-    const sigText = document.getElementById('sig-display-text');
-    const sigName = document.getElementById('inv-sig-name');
-    const sigTitle = document.getElementById('inv-sig-title');
-    const statusBadge = document.getElementById('sig-status-badge');
-
-    if (!invoice.signature?.enabled) {
-      if (sigSec) sigSec.classList.add('opacity-40');
-      if (statusBadge) statusBadge.textContent = 'Disabled';
-      return;
-    }
-
-    if (sigSec) sigSec.classList.remove('opacity-40');
-    if (statusBadge) statusBadge.textContent = 'Active';
-
-    if (sigName) sigName.textContent = invoice.signature.typedName || 'Alex Morgan';
-    if (sigTitle) sigTitle.textContent = invoice.signature.title || 'Authorized Signatory';
-
-    if (invoice.signature.type === 'draw' || invoice.signature.type === 'upload') {
-      if (invoice.signature.dataUrl && sigImg) {
-        sigImg.src = invoice.signature.dataUrl;
-        sigImg.classList.remove('hidden');
-      }
-      if (sigText) sigText.classList.add('hidden');
-    } else {
-      if (sigImg) sigImg.classList.add('hidden');
-      if (sigText) {
-        sigText.classList.remove('hidden');
-        sigText.textContent = invoice.signature.typedName || 'Alex Morgan';
-        sigText.style.fontFamily = `'${invoice.signature.fontFamily || 'Caveat'}', cursive`;
-      }
-    }
-  }
-
-  // Render Payment QR Code
-  async function renderQRCode(grandTotal: number) {
-    const qrSection = document.getElementById('inv-qr-section');
-    const qrImg = document.getElementById('inv-qr-img') as HTMLImageElement;
-    const qrDesc = document.getElementById('inv-qr-desc');
-    const statusBadge = document.getElementById('qr-status-badge');
-
-    if (!invoice.qrCode?.enabled) {
-      if (qrSection) qrSection.classList.add('hidden');
-      if (statusBadge) statusBadge.textContent = 'Disabled';
-      return;
-    }
-
-    if (qrSection) qrSection.classList.remove('hidden');
-    if (statusBadge) statusBadge.textContent = 'Active';
-
-    const qrResult = await generatePaymentQRCode(invoice.qrCode, grandTotal, invoice.currency?.code, invoice.invoiceNumber);
-    if (qrResult?.dataUrl && qrImg) {
-      qrImg.src = qrResult.dataUrl;
-      invoice.qrCode.qrDataUrl = qrResult.dataUrl;
-    }
-
-    if (qrDesc) {
-      if (invoice.qrCode.type === 'upi') {
-        qrDesc.textContent = `UPI: ${invoice.qrCode.upiId || 'acme@upi'}`;
-      } else if (invoice.qrCode.type === 'paypal') {
-        qrDesc.textContent = `PayPal Checkout`;
-      } else if (invoice.qrCode.type === 'sepa') {
-        qrDesc.textContent = `SEPA Instant Transfer`;
-      } else {
-        qrDesc.textContent = `Scan to Pay`;
-      }
-    }
-  }
-
-  // Toggle table columns visibility
-  function toggleColumnVisibility() {
-    const hsnCols = document.querySelectorAll('.col-hsn');
-    hsnCols.forEach(el => {
-      if (invoice.columns?.hsn) el.classList.remove('hidden');
-      else el.classList.add('hidden');
-    });
-
-    const unitCols = document.querySelectorAll('.col-unit');
-    unitCols.forEach(el => {
-      if (invoice.columns?.unit) el.classList.remove('hidden');
-      else el.classList.add('hidden');
-    });
-
-    const discCols = document.querySelectorAll('.col-discount');
-    discCols.forEach(el => {
-      if (invoice.columns?.discount) el.classList.remove('hidden');
-      else el.classList.add('hidden');
-    });
-  }
-
-  // Apply Theme & Accent Color Styling to Sheet
-  function applyThemeStyling() {
-    if (!paper) return;
-    const theme = invoice.theme || 'minimal';
-    const accent = invoice.accentColor || '#171717';
-
-    paper.style.setProperty('--inv-accent', accent);
-
-    const docTitle = document.getElementById('inv-doc-title');
-    if (docTitle) {
-      docTitle.style.color = accent;
-    }
-
-    const tableHeader = document.querySelector('#inv-items-table thead tr') as HTMLElement;
-    if (tableHeader) {
-      if (theme === 'executive') {
-        tableHeader.style.backgroundColor = accent;
-        tableHeader.style.color = '#ffffff';
-        tableHeader.style.borderColor = accent;
-      } else if (theme === 'contrast') {
-        tableHeader.style.backgroundColor = '#171717';
-        tableHeader.style.color = '#ffffff';
-        tableHeader.style.borderColor = '#171717';
-      } else {
-        tableHeader.style.backgroundColor = '#fafafa';
-        tableHeader.style.color = '#171717';
-        tableHeader.style.borderTopColor = accent;
-        tableHeader.style.borderBottomColor = accent;
-      }
-    }
-  }
-
-  // Sync Sidebar Controls with current state
-  function syncSidebarInputs() {
-    const docTypeSelect = document.getElementById('ctrl-doc-type') as HTMLSelectElement;
-    if (docTypeSelect) {
-      const match = DOCUMENT_TYPES.find(d => d.title === invoice.docTitle || d.label === invoice.docType);
-      if (match) docTypeSelect.value = match.id;
-    }
-
-    const currSelect = document.getElementById('ctrl-currency') as HTMLSelectElement;
-    if (currSelect && invoice.currency) currSelect.value = invoice.currency.code;
-
-    const taxModeSelect = document.getElementById('ctrl-tax-mode') as HTMLSelectElement;
-    if (taxModeSelect) taxModeSelect.value = invoice.taxMode || 'single';
-
-    const singleTaxWrap = document.getElementById('ctrl-single-tax-wrap');
-    const gstWrap = document.getElementById('ctrl-gst-wrap');
-    if (invoice.taxMode === 'gst') {
-      singleTaxWrap?.classList.add('hidden');
-      gstWrap?.classList.remove('hidden');
-    } else if (invoice.taxMode === 'none') {
-      singleTaxWrap?.classList.add('hidden');
-      gstWrap?.classList.add('hidden');
-    } else {
-      singleTaxWrap?.classList.remove('hidden');
-      gstWrap?.classList.add('hidden');
-    }
-
-    const taxRateInput = document.getElementById('ctrl-tax-rate') as HTMLInputElement;
-    if (taxRateInput) taxRateInput.value = invoice.taxRate?.toString() || '10';
-
-    const taxRateDisplay = document.getElementById('ctrl-tax-rate-display');
-    if (taxRateDisplay) taxRateDisplay.textContent = `${invoice.taxRate}%`;
-
-    const discountVal = document.getElementById('ctrl-discount-val') as HTMLInputElement;
-    if (discountVal) discountVal.value = invoice.discountValue?.toString() || '0';
-
-    const discountType = document.getElementById('ctrl-discount-type') as HTMLSelectElement;
-    if (discountType) discountType.value = invoice.discountType || 'percent';
-
-    const shippingVal = document.getElementById('ctrl-shipping-val') as HTMLInputElement;
-    if (shippingVal) shippingVal.value = invoice.shipping?.toString() || '0';
-
-    const roundOffToggle = document.getElementById('ctrl-roundoff-toggle') as HTMLInputElement;
-    if (roundOffToggle) roundOffToggle.checked = invoice.roundOff !== false;
-
-    // Checkboxes for columns
-    const colHsn = document.getElementById('ctrl-col-hsn') as HTMLInputElement;
-    if (colHsn) colHsn.checked = !!invoice.columns?.hsn;
-
-    const colUnit = document.getElementById('ctrl-col-unit') as HTMLInputElement;
-    if (colUnit) colUnit.checked = !!invoice.columns?.unit;
-
-    const colDisc = document.getElementById('ctrl-col-discount') as HTMLInputElement;
-    if (colDisc) colDisc.checked = !!invoice.columns?.discount;
-  }
-
-  // Update Invoices Vault Badge Count
-  function updateHistoryCount() {
-    const history = getInvoiceHistory();
-    if (historyBadge) historyBadge.textContent = history.length.toString();
-  }
-
-  // Bind All Event Handlers
-  function bindEvents() {
-    // 1. In-place contenteditable listeners on paper
-    const editableFields = [
-      { id: 'inv-doc-title', key: 'docTitle' },
-      { id: 'inv-number', key: 'invoiceNumber' },
-      { id: 'inv-terms', key: 'terms' },
-      { id: 'inv-notes', key: 'notes' }
-    ];
-
-    editableFields.forEach(({ id, key }) => {
-      const el = document.getElementById(id);
-      el?.addEventListener('blur', () => {
-        // @ts-ignore
-        invoice[key] = el.textContent || '';
-        saveCurrentInvoiceToStorage(invoice);
-      });
-    });
-
-    // PO Number input listener
-    document.getElementById('inv-po-number')?.addEventListener('input', (e) => {
-      invoice.referenceNumber = (e.target as HTMLInputElement).value;
+    lineTotal = Math.max(0, lineTotal);
+
+    const tr = document.createElement('tr');
+    tr.className = 'group hover:bg-[#fafafa] transition-colors';
+    tr.innerHTML = `
+      <td class="py-2.5 px-3 text-center text-[#888888] font-mono">${idx + 1}</td>
+      <td class="py-2.5 px-3">
+        <div class="item-desc font-medium text-[#171717] outline-none min-w-[80px]" contenteditable="true">${escHtml(item.description || '')}</div>
+      </td>
+      <td class="py-2.5 px-2 text-center col-hsn ${showHsn ? '' : 'hidden'}">
+        <input type="text" value="${escHtml(item.hsn || '')}" class="item-hsn w-full text-center font-mono text-xs bg-transparent border-0 outline-none focus:bg-[#fafafa] focus:ring-1 focus:ring-[#171717] rounded px-1 py-0.5" />
+      </td>
+      <td class="py-2.5 px-2 text-center col-unit ${showUnit ? '' : 'hidden'}">
+        <input type="text" value="${escHtml(item.unit || 'No')}" class="item-unit w-full text-center text-xs bg-transparent border-0 outline-none focus:bg-[#fafafa] focus:ring-1 focus:ring-[#171717] rounded px-1 py-0.5" />
+      </td>
+      <td class="py-2.5 px-3 text-right">
+        <input type="number" value="${qty}" min="0" step="any" class="item-qty w-16 text-right font-mono font-medium bg-transparent border-0 outline-none focus:bg-[#fafafa] focus:ring-1 focus:ring-[#171717] rounded px-1 py-0.5" />
+      </td>
+      <td class="py-2.5 px-3 text-right">
+        <input type="number" value="${rate}" min="0" step="any" class="item-rate w-20 text-right font-mono font-medium bg-transparent border-0 outline-none focus:bg-[#fafafa] focus:ring-1 focus:ring-[#171717] rounded px-1 py-0.5" />
+      </td>
+      <td class="py-2.5 px-2 text-right col-discount ${showDisc ? '' : 'hidden'}">
+        <input type="number" value="${item.discount || 0}" min="0" step="any" class="item-disc w-14 text-right font-mono bg-transparent border-0 outline-none focus:bg-[#fafafa] focus:ring-1 focus:ring-[#171717] rounded px-1 py-0.5" />
+      </td>
+      <td class="py-2.5 px-3 text-right font-mono font-bold text-[#171717]">
+        ${sym}${lineTotal.toFixed(2)}
+      </td>
+      <td class="py-2.5 px-2 text-center no-print">
+        <button type="button" class="btn-del-row opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 font-bold cursor-pointer p-1 transition-opacity">×</button>
+      </td>
+    `;
+
+    // Inline events
+    tr.querySelector('.item-desc')?.addEventListener('blur', e => {
+      invoice.items[idx].description = e.target.textContent.trim();
       saveCurrentInvoiceToStorage(invoice);
     });
-
-    // Sender details blur
-    document.getElementById('inv-sender-name')?.addEventListener('blur', (e) => {
-      invoice.sender.name = (e.target as HTMLElement).textContent?.trim() || '';
+    tr.querySelector('.item-hsn')?.addEventListener('input', e => {
+      invoice.items[idx].hsn = e.target.value;
       saveCurrentInvoiceToStorage(invoice);
     });
-    document.getElementById('inv-sender-address')?.addEventListener('blur', (e) => {
-      invoice.sender.address = (e.target as HTMLElement).textContent?.trim() || '';
+    tr.querySelector('.item-unit')?.addEventListener('input', e => {
+      invoice.items[idx].unit = e.target.value;
       saveCurrentInvoiceToStorage(invoice);
     });
-    document.getElementById('inv-sender-email')?.addEventListener('blur', (e) => {
-      invoice.sender.email = (e.target as HTMLElement).textContent?.trim() || '';
-      saveCurrentInvoiceToStorage(invoice);
+    tr.querySelector('.item-qty')?.addEventListener('input', e => {
+      invoice.items[idx].quantity = parseFloat(e.target.value) || 0;
+      renderAll();
     });
-    document.getElementById('inv-sender-phone')?.addEventListener('blur', (e) => {
-      invoice.sender.phone = (e.target as HTMLElement).textContent?.trim() || '';
-      saveCurrentInvoiceToStorage(invoice);
+    tr.querySelector('.item-rate')?.addEventListener('input', e => {
+      invoice.items[idx].rate = parseFloat(e.target.value) || 0;
+      renderAll();
     });
-    document.getElementById('inv-sender-taxid')?.addEventListener('blur', (e) => {
-      invoice.sender.taxId = (e.target as HTMLElement).textContent?.trim() || '';
-      saveCurrentInvoiceToStorage(invoice);
+    tr.querySelector('.item-disc')?.addEventListener('input', e => {
+      invoice.items[idx].discount = parseFloat(e.target.value) || 0;
+      renderAll();
     });
-
-    // Client details blur
-    document.getElementById('inv-client-name')?.addEventListener('blur', (e) => {
-      invoice.client.name = (e.target as HTMLElement).textContent?.trim() || '';
-      saveCurrentInvoiceToStorage(invoice);
-    });
-    document.getElementById('inv-client-address')?.addEventListener('blur', (e) => {
-      invoice.client.address = (e.target as HTMLElement).textContent?.trim() || '';
-      saveCurrentInvoiceToStorage(invoice);
-    });
-    document.getElementById('inv-client-email')?.addEventListener('blur', (e) => {
-      invoice.client.email = (e.target as HTMLElement).textContent?.trim() || '';
-      saveCurrentInvoiceToStorage(invoice);
-    });
-    document.getElementById('inv-client-phone')?.addEventListener('blur', (e) => {
-      invoice.client.phone = (e.target as HTMLElement).textContent?.trim() || '';
-      saveCurrentInvoiceToStorage(invoice);
-    });
-    document.getElementById('inv-client-taxid')?.addEventListener('blur', (e) => {
-      invoice.client.taxId = (e.target as HTMLElement).textContent?.trim() || '';
-      saveCurrentInvoiceToStorage(invoice);
-    });
-
-    // Date inputs
-    document.getElementById('inv-issue-date')?.addEventListener('change', (e) => {
-      invoice.issueDate = (e.target as HTMLInputElement).value;
-      saveCurrentInvoiceToStorage(invoice);
-    });
-    document.getElementById('inv-due-date')?.addEventListener('change', (e) => {
-      invoice.dueDate = (e.target as HTMLInputElement).value;
-      saveCurrentInvoiceToStorage(invoice);
-    });
-
-    // Logo Uploader
-    const logoWrap = document.getElementById('logo-display-wrap');
-    const logoInput = document.getElementById('logo-file-input') as HTMLInputElement;
-    const btnRemoveLogo = document.getElementById('btn-remove-logo');
-
-    logoWrap?.addEventListener('click', () => logoInput?.click());
-    logoInput?.addEventListener('change', (e) => {
-      const file = (e.target as HTMLInputElement).files?.[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (evt) => {
-          invoice.sender.logo = evt.target?.result as string;
-          renderInvoice();
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-    btnRemoveLogo?.addEventListener('click', (e) => {
+    tr.querySelector('.btn-del-row')?.addEventListener('click', e => {
       e.stopPropagation();
-      invoice.sender.logo = '';
-      renderInvoice();
-    });
-
-    // Add Line Item
-    document.getElementById('btn-add-line-item')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      invoice.items.push({
-        id: 'item_' + Date.now(),
-        description: 'New service item or product description',
-        hsn: '',
-        unit: 'Qty',
-        quantity: 1,
-        rate: 100,
-        discount: 0,
-        discountType: 'percent',
-        taxRate: 0
-      });
-      renderInvoice();
-    });
-
-    // 2. Sidebar Form Controls
-    document.getElementById('ctrl-doc-type')?.addEventListener('change', (e) => {
-      const val = (e.target as HTMLSelectElement).value;
-      const found = DOCUMENT_TYPES.find(d => d.id === val);
-      if (found) {
-        invoice.docType = found.label;
-        invoice.docTitle = found.title;
-        renderInvoice();
+      if (invoice.items.length > 1) {
+        invoice.items.splice(idx, 1);
+        renderAll();
       }
     });
 
-    document.getElementById('ctrl-currency')?.addEventListener('change', (e) => {
-      const val = (e.target as HTMLSelectElement).value;
-      const found = CURRENCIES.find(c => c.code === val);
-      if (found) {
-        invoice.currency = found;
-        renderInvoice();
-      }
-    });
+    tbody.appendChild(tr);
+  });
+}
 
-    document.getElementById('ctrl-tax-mode')?.addEventListener('change', (e) => {
-      invoice.taxMode = (e.target as HTMLSelectElement).value;
-      renderInvoice();
-    });
+function renderTotals(totals, sym) {
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  const show = (id, visible) => { const el = document.getElementById(id); if (el) el.classList.toggle('hidden', !visible); el?.classList.toggle('flex', visible); };
 
-    document.getElementById('ctrl-tax-rate')?.addEventListener('input', (e) => {
-      invoice.taxRate = parseFloat((e.target as HTMLInputElement).value) || 0;
-      renderInvoice();
-    });
+  set('sum-subtotal', `${sym}${totals.subtotal.toFixed(2)}`);
+  set('sum-grandtotal', `${sym}${totals.grandTotal.toFixed(2)}`);
 
-    document.getElementById('ctrl-cgst-rate')?.addEventListener('input', (e) => {
-      invoice.cgstRate = parseFloat((e.target as HTMLInputElement).value) || 0;
-      renderInvoice();
-    });
-
-    document.getElementById('ctrl-sgst-rate')?.addEventListener('input', (e) => {
-      invoice.sgstRate = parseFloat((e.target as HTMLInputElement).value) || 0;
-      renderInvoice();
-    });
-
-    document.getElementById('ctrl-igst-rate')?.addEventListener('input', (e) => {
-      invoice.igstRate = parseFloat((e.target as HTMLInputElement).value) || 0;
-      renderInvoice();
-    });
-
-    document.getElementById('ctrl-gst-interstate')?.addEventListener('change', (e) => {
-      invoice.isInterstateGST = (e.target as HTMLInputElement).checked;
-      const intra = document.getElementById('ctrl-intra-rates');
-      const inter = document.getElementById('ctrl-inter-rate');
-      if (invoice.isInterstateGST) {
-        intra?.classList.add('hidden');
-        inter?.classList.remove('hidden');
-      } else {
-        intra?.classList.remove('hidden');
-        inter?.classList.add('hidden');
-      }
-      renderInvoice();
-    });
-
-    document.getElementById('ctrl-discount-val')?.addEventListener('input', (e) => {
-      invoice.discountValue = parseFloat((e.target as HTMLInputElement).value) || 0;
-      renderInvoice();
-    });
-
-    document.getElementById('ctrl-discount-type')?.addEventListener('change', (e) => {
-      invoice.discountType = (e.target as HTMLSelectElement).value;
-      renderInvoice();
-    });
-
-    document.getElementById('ctrl-shipping-val')?.addEventListener('input', (e) => {
-      invoice.shipping = parseFloat((e.target as HTMLInputElement).value) || 0;
-      renderInvoice();
-    });
-
-    document.getElementById('ctrl-roundoff-toggle')?.addEventListener('change', (e) => {
-      invoice.roundOff = (e.target as HTMLInputElement).checked;
-      renderInvoice();
-    });
-
-    document.getElementById('ctrl-col-hsn')?.addEventListener('change', (e) => {
-      invoice.columns.hsn = (e.target as HTMLInputElement).checked;
-      renderInvoice();
-    });
-
-    document.getElementById('ctrl-col-unit')?.addEventListener('change', (e) => {
-      invoice.columns.unit = (e.target as HTMLInputElement).checked;
-      renderInvoice();
-    });
-
-    document.getElementById('ctrl-col-discount')?.addEventListener('change', (e) => {
-      invoice.columns.discount = (e.target as HTMLInputElement).checked;
-      renderInvoice();
-    });
-
-    // Theme preset buttons
-    document.querySelectorAll('.ctrl-theme-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const themeId = (btn as HTMLElement).dataset.theme;
-        if (themeId) {
-          invoice.theme = themeId;
-          document.querySelectorAll('.ctrl-theme-btn').forEach(b => {
-            b.classList.remove('border-[#171717]', 'bg-[#fafafa]', 'font-medium', 'text-[#171717]', 'ring-1', 'ring-[#171717]');
-            b.classList.add('border-[#ebebeb]', 'text-[#4d4d4d]');
-          });
-          btn.classList.add('border-[#171717]', 'bg-[#fafafa]', 'font-medium', 'text-[#171717]', 'ring-1', 'ring-[#171717]');
-          btn.classList.remove('border-[#ebebeb]', 'text-[#4d4d4d]');
-          renderInvoice();
-        }
-      });
-    });
-
-    // Accent color buttons
-    document.querySelectorAll('.ctrl-color-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const col = (btn as HTMLElement).dataset.color;
-        if (col) {
-          invoice.accentColor = col;
-          document.querySelectorAll('.ctrl-color-btn').forEach(b => b.classList.remove('ring-2', 'ring-offset-2', 'ring-[#171717]', 'scale-110'));
-          btn.classList.add('ring-2', 'ring-offset-2', 'ring-[#171717]', 'scale-110');
-          renderInvoice();
-        }
-      });
-    });
-
-    // 3. Export & Download Actions
-    const handleDownloadPDF = async (e: Event) => {
-      e.preventDefault();
-      const btn = document.getElementById('btn-download-pdf');
-      const originalHtml = btn?.innerHTML;
-      if (btn) {
-        btn.innerHTML = `<svg class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg> <span>Generating PDF...</span>`;
-      }
-
-      try {
-        const fname = `${invoice.invoiceNumber || 'Invoice'}_${invoice.client?.name?.replace(/\s+/g, '_') || 'Client'}.pdf`;
-        await exportInvoiceToPDF('invoice-paper', fname);
-        
-        saveInvoiceToHistory(invoice);
-        updateHistoryCount();
-
-        confetti({
-          particleCount: 80,
-          spread: 60,
-          origin: { y: 0.6 }
-        });
-      } catch (err) {
-        console.error('Download PDF error:', err);
-      } finally {
-        if (btn && originalHtml) btn.innerHTML = originalHtml;
-      }
-    };
-
-    document.getElementById('btn-download-pdf')?.addEventListener('click', handleDownloadPDF);
-    document.getElementById('btn-header-pdf')?.addEventListener('click', handleDownloadPDF);
-
-    document.getElementById('btn-print-invoice')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.print();
-    });
-
-    document.getElementById('btn-download-png')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      const fname = `${invoice.invoiceNumber || 'Invoice'}.png`;
-      exportInvoiceToPNG('invoice-paper', fname);
-    });
-
-    document.getElementById('btn-share-whatsapp')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      const totals = calculateTotals(invoice);
-      const url = generateWhatsAppShareLink(invoice, totals);
-      window.open(url, '_blank');
-    });
-
-    document.getElementById('btn-share-email')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      const totals = calculateTotals(invoice);
-      const url = generateEmailShareLink(invoice, totals);
-      window.location.href = url;
-    });
-
-    document.getElementById('btn-new-invoice')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (confirm('Create a new blank invoice? Your current invoice will be saved in your Vault.')) {
-        saveInvoiceToHistory(invoice);
-        const blank = getDefaultInvoice();
-        blank.invoiceNumber = `INV-${new Date().getFullYear()}-${Math.floor(100 + Math.random() * 900)}`;
-        blank.items = [{ id: '1', description: 'Consulting or Service', hsn: '', unit: '', quantity: 1, rate: 0, discount: 0, discountType: 'percent', taxRate: 0 }];
-        invoice = blank;
-        renderInvoice();
-        updateHistoryCount();
-      }
-    });
-
-    document.getElementById('btn-reset-sample')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (confirm('Reload default sample invoice data?')) {
-        invoice = getDefaultInvoice();
-        renderInvoice();
-      }
-    });
-
-    // 4. Modal Openers
-    const sigModal = document.getElementById('signature-modal');
-    const qrModal = document.getElementById('payment-qr-modal');
-    const historyModal = document.getElementById('invoice-history-modal');
-    const clientModal = document.getElementById('client-book-modal');
-    const companyModal = document.getElementById('company-manager-modal');
-    const itemCatalogModal = document.getElementById('item-catalog-modal');
-
-    // Signature Studio Triggers
-    const openSigModal = () => {
-      if (sigModal) {
-        sigModal.classList.remove('hidden');
-        sigModal.classList.add('flex');
-        const signerNameInput = document.getElementById('sig-signer-name') as HTMLInputElement;
-        const signerTitleInput = document.getElementById('sig-signer-title') as HTMLInputElement;
-        const typedInput = document.getElementById('sig-typed-input') as HTMLInputElement;
-        if (signerNameInput) signerNameInput.value = invoice.signature?.typedName || '';
-        if (signerTitleInput) signerTitleInput.value = invoice.signature?.title || '';
-        if (typedInput) typedInput.value = invoice.signature?.typedName || '';
-      }
-    };
-    document.getElementById('btn-sidebar-open-sig')?.addEventListener('click', openSigModal);
-    document.getElementById('quick-btn-sig')?.addEventListener('click', openSigModal);
-    document.getElementById('btn-edit-sig-badge')?.addEventListener('click', openSigModal);
-
-    // Payment QR Triggers
-    const openQrModal = () => {
-      if (qrModal) {
-        qrModal.classList.remove('hidden');
-        qrModal.classList.add('flex');
-        const upiId = document.getElementById('qr-upi-id') as HTMLInputElement;
-        const upiName = document.getElementById('qr-upi-name') as HTMLInputElement;
-        const paypalUrl = document.getElementById('qr-paypal-url') as HTMLInputElement;
-        const customUrl = document.getElementById('qr-custom-url') as HTMLInputElement;
-        if (upiId) upiId.value = invoice.qrCode?.upiId || '';
-        if (upiName) upiName.value = invoice.qrCode?.upiName || '';
-        if (paypalUrl) paypalUrl.value = invoice.qrCode?.paypalUrl || '';
-        if (customUrl) customUrl.value = invoice.qrCode?.customUrl || '';
-        updateQRPreview();
-      }
-    };
-    document.getElementById('btn-sidebar-open-qr')?.addEventListener('click', openQrModal);
-    document.getElementById('quick-btn-qr')?.addEventListener('click', openQrModal);
-    document.getElementById('btn-edit-qr-badge')?.addEventListener('click', openQrModal);
-
-    // Vault / History Triggers
-    const openHistoryModal = () => {
-      if (historyModal) {
-        historyModal.classList.remove('hidden');
-        historyModal.classList.add('flex');
-        renderHistoryList();
-      }
-    };
-    document.getElementById('btn-open-history')?.addEventListener('click', openHistoryModal);
-
-    // Client Address Book Triggers
-    const openClientModal = () => {
-      if (clientModal) {
-        clientModal.classList.remove('hidden');
-        clientModal.classList.add('flex');
-        renderClientList();
-      }
-    };
-    document.getElementById('btn-sidebar-open-clients')?.addEventListener('click', openClientModal);
-    document.getElementById('quick-btn-clients')?.addEventListener('click', openClientModal);
-    document.getElementById('btn-quick-fill-client')?.addEventListener('click', openClientModal);
-
-    // Company Manager Triggers (Requirement 1)
-    const openCompanyModal = () => {
-      if (companyModal) {
-        companyModal.classList.remove('hidden');
-        companyModal.classList.add('flex');
-        renderCompanyList();
-      }
-    };
-    document.getElementById('btn-sidebar-open-companies')?.addEventListener('click', openCompanyModal);
-    document.getElementById('quick-btn-companies')?.addEventListener('click', openCompanyModal);
-    document.getElementById('btn-quick-switch-company')?.addEventListener('click', openCompanyModal);
-
-    // Item Catalog Triggers (Requirement 3)
-    const openItemCatalogModal = () => {
-      if (itemCatalogModal) {
-        itemCatalogModal.classList.remove('hidden');
-        itemCatalogModal.classList.add('flex');
-        renderCatalogItemsList();
-      }
-    };
-    document.getElementById('btn-sidebar-open-catalog')?.addEventListener('click', openItemCatalogModal);
-    document.getElementById('quick-btn-items')?.addEventListener('click', openItemCatalogModal);
-    document.getElementById('btn-open-item-catalog')?.addEventListener('click', openItemCatalogModal);
-
-    // Close Modals
-    document.getElementById('btn-close-sig-modal')?.addEventListener('click', () => sigModal?.classList.add('hidden'));
-    document.getElementById('btn-cancel-sig')?.addEventListener('click', () => sigModal?.classList.add('hidden'));
-
-    document.getElementById('btn-close-qr-modal')?.addEventListener('click', () => qrModal?.classList.add('hidden'));
-    document.getElementById('btn-cancel-qr')?.addEventListener('click', () => qrModal?.classList.add('hidden'));
-
-    document.getElementById('btn-close-history-modal')?.addEventListener('click', () => historyModal?.classList.add('hidden'));
-    document.getElementById('btn-close-client-modal')?.addEventListener('click', () => clientModal?.classList.add('hidden'));
-    document.getElementById('btn-close-company-modal')?.addEventListener('click', () => companyModal?.classList.add('hidden'));
-    document.getElementById('btn-close-item-modal')?.addEventListener('click', () => itemCatalogModal?.classList.add('hidden'));
-
-    // Bind Signature Pad Interactions
-    bindSignatureStudioEvents();
-
-    // Bind QR Modal Interactions
-    bindQRModalEvents();
-
-    // Bind Vault & Client Events
-    bindVaultAndClientEvents();
-
-    // Bind Company & Item Catalog Events
-    bindCompanyAndCatalogEvents();
+  if (totals.invoiceDiscount > 0) {
+    show('sum-row-invdisc', true);
+    set('sum-invdisc', `-${sym}${totals.invoiceDiscount.toFixed(2)}`);
+  } else {
+    show('sum-row-invdisc', false);
   }
 
-  // Signature Studio Canvas & Tabs
-  function initSignatureCanvas() {
-    const canvas = document.getElementById('sig-canvas') as HTMLCanvasElement;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    ctx.lineWidth = 2.5;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.strokeStyle = currentSigColor;
-
-    const startDraw = (e: MouseEvent | TouchEvent) => {
-      signaturePadDrawing = true;
-      const rect = canvas.getBoundingClientRect();
-      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
-      ctx.beginPath();
-      ctx.moveTo(clientX - rect.left, clientY - rect.top);
-    };
-
-    const draw = (e: MouseEvent | TouchEvent) => {
-      if (!signaturePadDrawing) return;
-      const rect = canvas.getBoundingClientRect();
-      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
-      ctx.lineTo(clientX - rect.left, clientY - rect.top);
-      ctx.stroke();
-    };
-
-    const stopDraw = () => {
-      if (signaturePadDrawing) {
-        signaturePadDrawing = false;
-        signatureUndoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
-      }
-    };
-
-    canvas.addEventListener('mousedown', startDraw);
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', stopDraw);
-    canvas.addEventListener('mouseleave', stopDraw);
-
-    canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDraw(e); }, { passive: false });
-    canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e); }, { passive: false });
-    canvas.addEventListener('touchend', (e) => { e.preventDefault(); stopDraw(); }, { passive: false });
-  }
-
-  function bindSignatureStudioEvents() {
-    const tabDraw = document.getElementById('sig-tab-draw');
-    const tabType = document.getElementById('sig-tab-type');
-    const tabUpload = document.getElementById('sig-tab-upload');
-
-    const contentDraw = document.getElementById('sig-content-draw');
-    const contentType = document.getElementById('sig-content-type');
-    const contentUpload = document.getElementById('sig-content-upload');
-
-    const setSigTab = (tab: 'draw' | 'type' | 'upload') => {
-      currentSigTab = tab;
-      [tabDraw, tabType, tabUpload].forEach(t => {
-        t?.classList.remove('bg-white', 'text-[#171717]', 'shadow-xs');
-        t?.classList.add('text-[#4d4d4d]');
-      });
-      [contentDraw, contentType, contentUpload].forEach(c => c?.classList.add('hidden'));
-
-      if (tab === 'draw') {
-        tabDraw?.classList.add('bg-white', 'text-[#171717]', 'shadow-xs');
-        contentDraw?.classList.remove('hidden');
-      } else if (tab === 'type') {
-        tabType?.classList.add('bg-white', 'text-[#171717]', 'shadow-xs');
-        contentType?.classList.remove('hidden');
-      } else {
-        tabUpload?.classList.add('bg-white', 'text-[#171717]', 'shadow-xs');
-        contentUpload?.classList.remove('hidden');
-      }
-    };
-
-    tabDraw?.addEventListener('click', () => setSigTab('draw'));
-    tabType?.addEventListener('click', () => setSigTab('type'));
-    tabUpload?.addEventListener('click', () => setSigTab('upload'));
-
-    // Color pickers in draw tab
-    document.querySelectorAll('.sig-color-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const col = (btn as HTMLElement).dataset.color || '#171717';
-        currentSigColor = col;
-        const canvas = document.getElementById('sig-canvas') as HTMLCanvasElement;
-        const ctx = canvas?.getContext('2d');
-        if (ctx) ctx.strokeStyle = col;
-        document.querySelectorAll('.sig-color-btn').forEach(b => b.classList.remove('ring-2', 'ring-offset-1', 'ring-[#171717]'));
-        btn.classList.add('ring-2', 'ring-offset-1', 'ring-[#171717]');
-      });
-    });
-
-    // Clear & Undo
-    document.getElementById('btn-clear-sig')?.addEventListener('click', () => {
-      const canvas = document.getElementById('sig-canvas') as HTMLCanvasElement;
-      const ctx = canvas?.getContext('2d');
-      if (ctx && canvas) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        signatureUndoStack = [];
-      }
-    });
-
-    document.getElementById('btn-undo-sig')?.addEventListener('click', () => {
-      const canvas = document.getElementById('sig-canvas') as HTMLCanvasElement;
-      const ctx = canvas?.getContext('2d');
-      if (ctx && canvas && signatureUndoStack.length > 0) {
-        signatureUndoStack.pop();
-        if (signatureUndoStack.length > 0) {
-          ctx.putImageData(signatureUndoStack[signatureUndoStack.length - 1], 0, 0);
-        } else {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-        }
-      }
-    });
-
-    // Type signature live previews
-    const typedInput = document.getElementById('sig-typed-input') as HTMLInputElement;
-    typedInput?.addEventListener('input', () => {
-      const name = typedInput.value || 'Alex Morgan';
-      ['preview-font-1', 'preview-font-2', 'preview-font-3', 'preview-font-4'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.textContent = name;
-      });
-    });
-
-    // Radio selection cards
-    document.querySelectorAll('.sig-font-card').forEach(card => {
-      card.addEventListener('click', () => {
-        document.querySelectorAll('.sig-font-card').forEach(c => c.classList.remove('ring-2', 'ring-[#171717]'));
-        card.classList.add('ring-2', 'ring-[#171717]');
-        const radio = card.querySelector('input[type="radio"]') as HTMLInputElement;
-        if (radio) radio.checked = true;
-      });
-    });
-
-    // Signature upload file input
-    const sigFileInput = document.getElementById('sig-file-input') as HTMLInputElement;
-    const sigUploadPreviewWrap = document.getElementById('sig-upload-preview-wrap');
-    const sigUploadPreview = document.getElementById('sig-upload-preview') as HTMLImageElement;
-
-    sigFileInput?.addEventListener('change', (e) => {
-      const file = (e.target as HTMLInputElement).files?.[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (evt) => {
-          const dataUrl = evt.target?.result as string;
-          if (sigUploadPreview) sigUploadPreview.src = dataUrl;
-          sigUploadPreviewWrap?.classList.remove('hidden');
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
-    // Apply Signature Button
-    document.getElementById('btn-apply-sig')?.addEventListener('click', () => {
-      const signerName = (document.getElementById('sig-signer-name') as HTMLInputElement)?.value || 'Alex Morgan';
-      const signerTitle = (document.getElementById('sig-signer-title') as HTMLInputElement)?.value || 'Authorized Signatory';
-
-      invoice.signature.enabled = true;
-      invoice.signature.typedName = signerName;
-      invoice.signature.title = signerTitle;
-
-      if (currentSigTab === 'draw') {
-        const canvas = document.getElementById('sig-canvas') as HTMLCanvasElement;
-        invoice.signature.type = 'draw';
-        invoice.signature.dataUrl = canvas ? canvas.toDataURL('image/png') : '';
-      } else if (currentSigTab === 'type') {
-        invoice.signature.type = 'type';
-        const selectedFont = (document.querySelector('input[name="sig-font-choice"]:checked') as HTMLInputElement)?.value || 'Caveat';
-        invoice.signature.fontFamily = selectedFont;
-        invoice.signature.typedName = typedInput?.value || signerName;
-      } else {
-        invoice.signature.type = 'upload';
-        invoice.signature.dataUrl = sigUploadPreview?.src || '';
-      }
-
-      renderInvoice();
-      document.getElementById('signature-modal')?.classList.add('hidden');
-    });
-
-    // Remove Signature Button
-    document.getElementById('btn-remove-sig-from-inv')?.addEventListener('click', () => {
-      invoice.signature.enabled = false;
-      renderInvoice();
-      document.getElementById('signature-modal')?.classList.add('hidden');
-    });
-  }
-
-  // Payment QR Modal Tab & Preview
-  async function updateQRPreview() {
-    const upiId = (document.getElementById('qr-upi-id') as HTMLInputElement)?.value || 'acme@upi';
-    const upiName = (document.getElementById('qr-upi-name') as HTMLInputElement)?.value || 'Acme Design';
-    const paypalUrl = (document.getElementById('qr-paypal-url') as HTMLInputElement)?.value || 'https://paypal.me/acmedesign';
-    const customUrl = (document.getElementById('qr-custom-url') as HTMLInputElement)?.value || 'https://invoicefreemaker.com/pay';
-
-    const tempConfig = {
-      enabled: true,
-      type: currentQrTab,
-      upiId,
-      upiName,
-      paypalUrl,
-      customUrl
-    };
-
-    const qrResult = await generatePaymentQRCode(tempConfig, 100, 'USD', 'INV-PREVIEW');
-    const previewImg = document.getElementById('qr-preview-img') as HTMLImageElement;
-    const placeholder = document.getElementById('qr-preview-placeholder');
-
-    if (qrResult?.dataUrl && previewImg) {
-      previewImg.src = qrResult.dataUrl;
-      previewImg.classList.remove('hidden');
-      placeholder?.classList.add('hidden');
-    }
-  }
-
-  function bindQRModalEvents() {
-    const tabs = ['upi', 'paypal', 'sepa', 'custom'];
-    tabs.forEach(tab => {
-      document.getElementById(`qr-tab-${tab}`)?.addEventListener('click', () => {
-        currentQrTab = tab;
-        tabs.forEach(t => {
-          const btn = document.getElementById(`qr-tab-${t}`);
-          const content = document.getElementById(`qr-content-${t}`);
-          if (t === tab) {
-            btn?.classList.add('bg-white', 'text-[#171717]', 'shadow-xs');
-            btn?.classList.remove('text-[#4d4d4d]');
-            content?.classList.remove('hidden');
-          } else {
-            btn?.classList.remove('bg-white', 'text-[#171717]', 'shadow-xs');
-            btn?.classList.add('text-[#4d4d4d]');
-            content?.classList.add('hidden');
-          }
-        });
-        updateQRPreview();
-      });
-    });
-
-    ['qr-upi-id', 'qr-upi-name', 'qr-paypal-url', 'qr-sepa-iban', 'qr-custom-url'].forEach(id => {
-      document.getElementById(id)?.addEventListener('input', updateQRPreview);
-    });
-
-    document.getElementById('btn-apply-qr')?.addEventListener('click', () => {
-      invoice.qrCode.enabled = true;
-      invoice.qrCode.type = currentQrTab;
-      invoice.qrCode.upiId = (document.getElementById('qr-upi-id') as HTMLInputElement)?.value || '';
-      invoice.qrCode.upiName = (document.getElementById('qr-upi-name') as HTMLInputElement)?.value || '';
-      invoice.qrCode.paypalUrl = (document.getElementById('qr-paypal-url') as HTMLInputElement)?.value || '';
-      invoice.qrCode.customUrl = (document.getElementById('qr-custom-url') as HTMLInputElement)?.value || '';
-
-      renderInvoice();
-      document.getElementById('payment-qr-modal')?.classList.add('hidden');
-    });
-
-    document.getElementById('btn-remove-qr')?.addEventListener('click', () => {
-      invoice.qrCode.enabled = false;
-      renderInvoice();
-      document.getElementById('payment-qr-modal')?.classList.add('hidden');
-    });
-  }
-
-  // Vault & Client Book Management
-  function renderHistoryList(filterQuery = '') {
-    const container = document.getElementById('history-items-container');
-    const totalSummary = document.getElementById('history-total-summary');
-    if (!container) return;
-
-    const history = getInvoiceHistory();
-    const filtered = filterQuery
-      ? history.filter((item: any) =>
-          item.invoiceNumber?.toLowerCase().includes(filterQuery.toLowerCase()) ||
-          item.clientName?.toLowerCase().includes(filterQuery.toLowerCase())
-        )
-      : history;
-
-    if (totalSummary) totalSummary.textContent = `${history.length} Invoices stored in your browser`;
-
-    if (filtered.length === 0) {
-      container.innerHTML = `
-        <div class="text-center py-12 text-[#888888] space-y-2">
-          <svg class="w-8 h-8 mx-auto text-[#a1a1a1]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-          <p class="text-xs font-medium">No saved invoices found</p>
-          <p class="text-[11px]">Click "Save Current Invoice to Vault" or download a PDF to auto-save.</p>
-        </div>
-      `;
-      return;
-    }
-
-    container.innerHTML = filtered.map((item: any) => `
-      <div class="p-3.5 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] transition-all flex items-center justify-between gap-4 group">
-        <div class="space-y-1">
-          <div class="flex items-center gap-2">
-            <span class="font-bold text-xs text-[#171717] font-mono">${item.invoiceNumber}</span>
-            <span class="px-2 py-0.5 text-[10px] font-medium rounded-full ${item.status === 'Paid' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-gray-100 text-gray-700'}">${item.status || 'Draft'}</span>
-          </div>
-          <p class="text-xs text-[#4d4d4d] font-medium">${item.clientName}</p>
-          <p class="text-[11px] text-[#888888]">Due: ${item.dueDate || 'N/A'}</p>
-        </div>
-
-        <div class="flex items-center gap-4">
-          <span class="text-sm font-bold font-mono text-[#171717]">${item.currencySymbol || '$'}${Number(item.grandTotal).toFixed(2)}</span>
-          <div class="flex items-center gap-1.5">
-            <button type="button" data-load-id="${item.id}" class="btn-load-history px-3 py-1.5 text-xs font-medium text-white bg-[#171717] hover:bg-black rounded-lg transition-colors cursor-pointer">
-              Load
-            </button>
-            <button type="button" data-del-id="${item.id}" class="btn-del-history p-1.5 text-[#888888] hover:text-red-600 rounded-lg hover:bg-red-50 transition-colors cursor-pointer" title="Delete">
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    `).join('');
-
-    container.querySelectorAll('.btn-load-history').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const id = (btn as HTMLElement).dataset.loadId;
-        const target = history.find((h: any) => h.id === id);
-        if (target?.fullData) {
-          invoice = target.fullData;
-          renderInvoice();
-          document.getElementById('invoice-history-modal')?.classList.add('hidden');
-        }
-      });
-    });
-
-    container.querySelectorAll('.btn-del-history').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const id = (btn as HTMLElement).dataset.delId;
-        if (id && confirm('Delete this invoice from your vault?')) {
-          deleteInvoiceFromHistory(id);
-          renderHistoryList(filterQuery);
-          updateHistoryCount();
-        }
-      });
-    });
-  }
-
-  // Client Address Book Renderer & Actions (Requirement 6 & 7)
-  function renderClientList(filterQuery = '') {
-    const container = document.getElementById('client-book-list');
-    if (!container) return;
-
-    const clients = getClientsVault();
-    const filtered = filterQuery
-      ? clients.filter((c: any) => c.name?.toLowerCase().includes(filterQuery.toLowerCase()) || c.email?.toLowerCase().includes(filterQuery.toLowerCase()) || c.taxId?.toLowerCase().includes(filterQuery.toLowerCase()))
-      : clients;
-
-    if (filtered.length === 0) {
-      container.innerHTML = `
-        <div class="text-center py-8 text-[#888888] space-y-1">
-          <p class="text-xs">No saved clients found.</p>
-          <p class="text-[11px]">Click "+ Save Current Client" or add one above.</p>
-        </div>
-      `;
-      return;
-    }
-
-    container.innerHTML = filtered.map((c: any) => `
-      <div class="p-3.5 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-start justify-between gap-3 transition-all group">
-        <div class="space-y-1 flex-1">
-          <div class="flex items-center gap-2">
-            <p class="text-xs font-bold text-[#171717]">${c.name}</p>
-            ${c.taxId ? `<span class="px-1.5 py-0.2 text-[10px] font-mono bg-[#f5f5f5] text-[#4d4d4d] border border-[#ebebeb] rounded">GST: ${c.taxId}</span>` : ''}
-          </div>
-          ${c.email || c.phone ? `<p class="text-[11px] text-[#4d4d4d]">${c.email || ''} ${c.phone ? '· ' + c.phone : ''}</p>` : ''}
-          ${c.address ? `<p class="text-[11px] text-[#888888] whitespace-pre-line leading-tight">${c.address}</p>` : ''}
-        </div>
-        <div class="flex items-center gap-1.5 shrink-0">
-          <button type="button" data-client-id="${c.id}" class="btn-autofill-client px-3 py-1 text-xs font-medium text-[#171717] bg-white border border-[#ebebeb] hover:bg-[#171717] hover:text-white rounded-lg transition-all cursor-pointer">
-            Use
-          </button>
-          <button type="button" data-del-client-id="${c.id}" class="btn-del-client p-1 text-[#888888] hover:text-red-600 rounded-lg hover:bg-red-50 transition-colors cursor-pointer" title="Delete client">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-          </button>
-        </div>
-      </div>
-    `).join('');
-
-    container.querySelectorAll('.btn-autofill-client').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const clientId = (btn as HTMLElement).dataset.clientId;
-        const target = clients.find((c: any) => c.id === clientId);
-        if (target) {
-          invoice.client.name = target.name || '';
-          invoice.client.email = target.email || '';
-          invoice.client.phone = target.phone || '';
-          invoice.client.address = target.address || '';
-          invoice.client.taxId = target.taxId || '';
-          renderInvoice();
-          document.getElementById('client-book-modal')?.classList.add('hidden');
-        }
-      });
-    });
-
-    container.querySelectorAll('.btn-del-client').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const clientId = (btn as HTMLElement).dataset.delClientId;
-        if (clientId && confirm('Delete this client from your address book?')) {
-          deleteClientFromVault(clientId);
-          renderClientList(filterQuery);
-        }
-      });
-    });
-  }
-
-  function bindVaultAndClientEvents() {
-    // History search
-    document.getElementById('history-search-input')?.addEventListener('input', (e) => {
-      renderHistoryList((e.target as HTMLInputElement).value);
-    });
-
-    // Save current to vault button
-    document.getElementById('btn-save-current-to-vault')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      saveInvoiceToHistory(invoice);
-      renderHistoryList();
-      updateHistoryCount();
-      alert('Invoice successfully saved to your browser vault!');
-    });
-
-    // Export Backup JSON
-    document.getElementById('btn-export-backup-json')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      const history = getInvoiceHistory();
-      const blob = new Blob([JSON.stringify(history, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `Invoice_Free_Maker_Backup_${new Date().toISOString().split('T')[0]}.json`;
-      a.click();
-      URL.revokeObjectURL(url);
-    });
-
-    // Import Backup JSON
-    document.getElementById('input-import-backup-json')?.addEventListener('change', (e) => {
-      const file = (e.target as HTMLInputElement).files?.[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (evt) => {
-          try {
-            const imported = JSON.parse(evt.target?.result as string);
-            if (Array.isArray(imported)) {
-              localStorage.setItem('ifm_invoice_history_v1', JSON.stringify(imported));
-              renderHistoryList();
-              updateHistoryCount();
-              alert('Invoices backup successfully imported!');
-            }
-          } catch (err) {
-            alert('Invalid backup JSON file.');
-          }
-        };
-        reader.readAsText(file);
-      }
-    });
-
-    // Client search
-    document.getElementById('client-search-input')?.addEventListener('input', (e) => {
-      renderClientList((e.target as HTMLInputElement).value);
-    });
-
-    // Save current client directly from active DOM fields (Requirement 6)
-    document.getElementById('btn-save-current-client')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      const clientName = document.getElementById('inv-client-name')?.textContent?.trim() || '';
-      const clientAddress = document.getElementById('inv-client-address')?.textContent?.trim() || '';
-      const clientEmail = document.getElementById('inv-client-email')?.textContent?.trim() || '';
-      const clientPhone = document.getElementById('inv-client-phone')?.textContent?.trim() || '';
-      const clientTaxId = document.getElementById('inv-client-taxid')?.textContent?.trim() || '';
-
-      if (clientName) {
-        saveClientToVault({
-          name: clientName,
-          address: clientAddress,
-          email: clientEmail,
-          phone: clientPhone,
-          taxId: clientTaxId
-        });
-        renderClientList();
-        alert(`Client "${clientName}" saved to Address Book with address & GST!`);
-      } else {
-        alert('Please enter a client name on the invoice first.');
-      }
-    });
-
-    // Add custom client from form inside modal
-    document.getElementById('btn-save-custom-client-form')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      const name = (document.getElementById('cb-new-name') as HTMLInputElement)?.value?.trim();
-      const email = (document.getElementById('cb-new-email') as HTMLInputElement)?.value?.trim();
-      const phone = (document.getElementById('cb-new-phone') as HTMLInputElement)?.value?.trim();
-      const address = (document.getElementById('cb-new-address') as HTMLTextAreaElement)?.value?.trim();
-      const taxId = (document.getElementById('cb-new-taxid') as HTMLInputElement)?.value?.trim();
-
-      if (name) {
-        saveClientToVault({ name, email, phone, address, taxId });
-        renderClientList();
-        (document.getElementById('cb-new-name') as HTMLInputElement).value = '';
-        (document.getElementById('cb-new-email') as HTMLInputElement).value = '';
-        (document.getElementById('cb-new-phone') as HTMLInputElement).value = '';
-        (document.getElementById('cb-new-address') as HTMLTextAreaElement).value = '';
-        (document.getElementById('cb-new-taxid') as HTMLInputElement).value = '';
-        alert(`Client "${name}" added to Address Book!`);
-      } else {
-        alert('Please enter a client name.');
-      }
-    });
-  }
-
-  // Company Profiles Manager Renderer & Actions (Requirement 1)
-  function renderCompanyList() {
-    const container = document.getElementById('company-profiles-list');
-    if (!container) return;
-
-    const companies = getCompaniesVault();
-    if (companies.length === 0) {
-      container.innerHTML = `
-        <div class="text-center py-8 text-[#888888] space-y-1">
-          <p class="text-xs">No saved company profiles yet.</p>
-          <p class="text-[11px]">Click "+ Save Current as Company" to save your business details.</p>
-        </div>
-      `;
-      return;
-    }
-
-    container.innerHTML = companies.map((c: any) => `
-      <div class="p-3.5 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-start justify-between gap-3 transition-all group">
-        <div class="space-y-1 flex-1">
-          <div class="flex items-center gap-2">
-            <p class="text-xs font-bold text-[#171717]">${c.name}</p>
-            ${c.taxId ? `<span class="px-1.5 py-0.2 text-[10px] font-mono bg-[#f5f5f5] text-[#4d4d4d] border border-[#ebebeb] rounded">GST: ${c.taxId}</span>` : ''}
-          </div>
-          ${c.email || c.phone ? `<p class="text-[11px] text-[#4d4d4d]">${c.email || ''} ${c.phone ? '· ' + c.phone : ''}</p>` : ''}
-          ${c.address ? `<p class="text-[11px] text-[#888888] whitespace-pre-line leading-tight">${c.address}</p>` : ''}
-          ${c.bankName ? `<p class="text-[10px] text-[#888888] font-mono">Bank: ${c.bankName} (${c.accountNumber || ''})</p>` : ''}
-        </div>
-        <div class="flex items-center gap-1.5 shrink-0">
-          <button type="button" data-company-id="${c.id}" class="btn-apply-company px-3 py-1 text-xs font-medium text-white bg-[#171717] hover:bg-black rounded-lg transition-all cursor-pointer">
-            Select
-          </button>
-          <button type="button" data-del-company-id="${c.id}" class="btn-del-company p-1 text-[#888888] hover:text-red-600 rounded-lg hover:bg-red-50 transition-colors cursor-pointer" title="Delete company">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-          </button>
-        </div>
-      </div>
-    `).join('');
-
-    container.querySelectorAll('.btn-apply-company').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const compId = (btn as HTMLElement).dataset.companyId;
-        const target = companies.find((c: any) => c.id === compId);
-        if (target) {
-          invoice.sender.name = target.name || '';
-          invoice.sender.email = target.email || '';
-          invoice.sender.phone = target.phone || '';
-          invoice.sender.address = target.address || '';
-          invoice.sender.taxId = target.taxId || '';
-          invoice.sender.logo = target.logo || invoice.sender.logo || '';
-          if (target.bankName) invoice.paymentDetails.bankName = target.bankName;
-          if (target.accountName) invoice.paymentDetails.accountName = target.accountName;
-          if (target.accountNumber) invoice.paymentDetails.accountNumber = target.accountNumber;
-          if (target.ifsc) invoice.paymentDetails.swift = target.ifsc;
-
-          renderInvoice();
-          document.getElementById('company-manager-modal')?.classList.add('hidden');
-        }
-      });
-    });
-
-    container.querySelectorAll('.btn-del-company').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const compId = (btn as HTMLElement).dataset.delCompanyId;
-        if (compId && confirm('Delete this company profile?')) {
-          deleteCompanyFromVault(compId);
-          renderCompanyList();
-        }
-      });
-    });
-  }
-
-  // Item Catalog Renderer & Actions (Requirement 3)
-  function renderCatalogItemsList() {
-    const container = document.getElementById('catalog-items-list');
-    if (!container) return;
-
-    const catalog = getItemsCatalog();
-    const currSymbol = invoice.currency?.symbol || '$';
-
-    if (catalog.length === 0) {
-      container.innerHTML = `
-        <div class="text-center py-8 text-[#888888] space-y-1">
-          <p class="text-xs">No catalog items saved yet.</p>
-          <p class="text-[11px]">Add products/services above to reuse them across invoices.</p>
-        </div>
-      `;
-      return;
-    }
-
-    container.innerHTML = catalog.map((item: any) => `
-      <div class="p-3 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-center justify-between gap-3 transition-all group">
-        <div class="space-y-0.5 flex-1">
-          <p class="text-xs font-bold text-[#171717] whitespace-pre-line">${item.description}</p>
-          <div class="flex items-center gap-2 text-[10px] text-[#888888] font-mono">
-            ${item.hsn ? `<span>HSN: ${item.hsn}</span>` : ''}
-            ${item.unit ? `<span>Unit: ${item.unit}</span>` : ''}
-          </div>
-        </div>
-        <div class="flex items-center gap-3 shrink-0">
-          <span class="text-xs font-bold font-mono text-[#171717]">${currSymbol}${Number(item.rate).toFixed(2)}</span>
-          <button type="button" data-catalog-id="${item.id}" class="btn-insert-catalog-item px-3 py-1 text-xs font-medium text-white bg-[#171717] hover:bg-black rounded-lg transition-all cursor-pointer">
-            + Add
-          </button>
-          <button type="button" data-del-catalog-id="${item.id}" class="btn-del-catalog-item p-1 text-[#888888] hover:text-red-600 rounded-lg hover:bg-red-50 transition-colors cursor-pointer" title="Delete item">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-          </button>
-        </div>
-      </div>
-    `).join('');
-
-    container.querySelectorAll('.btn-insert-catalog-item').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const itemId = (btn as HTMLElement).dataset.catalogId;
-        const target = catalog.find((i: any) => i.id === itemId);
-        if (target) {
-          invoice.items.push({
-            id: 'item_' + Date.now(),
-            description: target.description,
-            hsn: target.hsn || '',
-            unit: target.unit || 'Qty',
-            quantity: 1,
-            rate: target.rate || 0,
-            discount: 0,
-            discountType: 'percent',
-            taxRate: target.taxRate || 0
-          });
-          renderInvoice();
-          document.getElementById('item-catalog-modal')?.classList.add('hidden');
-        }
-      });
-    });
-
-    container.querySelectorAll('.btn-del-catalog-item').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const itemId = (btn as HTMLElement).dataset.delCatalogId;
-        if (itemId && confirm('Delete this item from catalog?')) {
-          deleteItemFromCatalog(itemId);
-          renderCatalogItemsList();
-        }
-      });
-    });
-  }
-
-  function bindCompanyAndCatalogEvents() {
-    // Save current sender details as company profile (Requirement 1)
-    document.getElementById('btn-save-current-as-company')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      const compName = document.getElementById('inv-sender-name')?.textContent?.trim() || '';
-      const compAddress = document.getElementById('inv-sender-address')?.textContent?.trim() || '';
-      const compEmail = document.getElementById('inv-sender-email')?.textContent?.trim() || '';
-      const compPhone = document.getElementById('inv-sender-phone')?.textContent?.trim() || '';
-      const compTaxId = document.getElementById('inv-sender-taxid')?.textContent?.trim() || '';
-      const bankName = document.getElementById('bank-name')?.textContent?.trim() || '';
-      const bankHolder = document.getElementById('bank-holder')?.textContent?.trim() || '';
-      const bankAcc = document.getElementById('bank-account')?.textContent?.trim() || '';
-      const bankIfsc = document.getElementById('bank-ifsc')?.textContent?.trim() || '';
-
-      if (compName) {
-        saveCompanyToVault({
-          name: compName,
-          address: compAddress,
-          email: compEmail,
-          phone: compPhone,
-          taxId: compTaxId,
-          logo: invoice.sender?.logo || '',
-          bankName,
-          accountName: bankHolder,
-          accountNumber: bankAcc,
-          ifsc: bankIfsc
-        });
-        renderCompanyList();
-        alert(`Company profile "${compName}" saved! You can switch back to it anytime.`);
-      } else {
-        alert('Please enter a company name on the invoice first.');
-      }
-    });
-
-    // Save new item to catalog (Requirement 3)
-    document.getElementById('btn-save-new-catalog-item')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      const desc = (document.getElementById('catalog-desc-input') as HTMLInputElement)?.value?.trim();
-      const hsn = (document.getElementById('catalog-hsn-input') as HTMLInputElement)?.value?.trim();
-      const unit = (document.getElementById('catalog-unit-input') as HTMLInputElement)?.value?.trim();
-      const rate = parseFloat((document.getElementById('catalog-rate-input') as HTMLInputElement)?.value) || 0;
-
-      if (desc) {
-        saveItemToCatalog({ description: desc, hsn, unit, rate });
-        renderCatalogItemsList();
-        (document.getElementById('catalog-desc-input') as HTMLInputElement).value = '';
-        (document.getElementById('catalog-hsn-input') as HTMLInputElement).value = '';
-        (document.getElementById('catalog-unit-input') as HTMLInputElement).value = '';
-        (document.getElementById('catalog-rate-input') as HTMLInputElement).value = '';
-        alert('New item added to your catalog!');
-      } else {
-        alert('Please enter an item description.');
-      }
-    });
-  }
-
-  // Run on initial page load strictly once
-  if (typeof window !== 'undefined') {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
+  if (invoice.taxMode === 'gst') {
+    show('sum-row-tax', false);
+    if (invoice.isInterstateGST) {
+      show('sum-row-cgst', false);
+      show('sum-row-sgst', false);
+      show('sum-row-igst', true);
+      set('sum-igst-label', `IGST (${invoice.igstRate}%)`);
+      set('sum-igst', `${sym}${totals.igstAmount.toFixed(2)}`);
     } else {
-      init();
+      show('sum-row-igst', false);
+      show('sum-row-cgst', true);
+      show('sum-row-sgst', true);
+      set('sum-cgst-label', `CGST (${invoice.cgstRate}%)`);
+      set('sum-cgst', `${sym}${totals.cgstAmount.toFixed(2)}`);
+      set('sum-sgst-label', `SGST (${invoice.sgstRate}%)`);
+      set('sum-sgst', `${sym}${totals.sgstAmount.toFixed(2)}`);
+    }
+  } else if (invoice.taxMode === 'none') {
+    show('sum-row-tax', false); show('sum-row-cgst', false); show('sum-row-sgst', false); show('sum-row-igst', false);
+  } else {
+    show('sum-row-cgst', false); show('sum-row-sgst', false); show('sum-row-igst', false);
+    show('sum-row-tax', true);
+    set('sum-tax-label', `Tax (${invoice.taxRate}%)`);
+    set('sum-tax', `${sym}${totals.taxAmount.toFixed(2)}`);
+  }
+
+  if (totals.shipping > 0) {
+    show('sum-row-shipping', true);
+    set('sum-shipping', `${sym}${totals.shipping.toFixed(2)}`);
+  } else {
+    show('sum-row-shipping', false);
+  }
+
+  set('inv-amount-words', totals.amountInWords);
+}
+
+function renderSignature() {
+  const sigType = invoice.signature?.type || 'type';
+  const sigName = invoice.signature?.typedName || 'Authorised Signatory';
+  const sigTitle = invoice.signature?.title || '';
+
+  const img = document.getElementById('sig-display-img');
+  const txt = document.getElementById('sig-display-text');
+  const nameEl = document.getElementById('inv-sig-name');
+  const titleEl = document.getElementById('inv-sig-title');
+
+  if (nameEl) nameEl.textContent = sigName;
+  if (titleEl) titleEl.textContent = sigTitle || `for ${invoice.sender?.name || ''}`;
+
+  if (sigType === 'draw' || sigType === 'upload') {
+    if (invoice.signature?.dataUrl && img) {
+      img.src = invoice.signature.dataUrl;
+      img.classList.remove('hidden');
+    }
+    txt?.classList.add('hidden');
+  } else {
+    img?.classList.add('hidden');
+    if (txt) {
+      txt.classList.remove('hidden');
+      txt.textContent = sigName;
+      txt.style.fontFamily = `'${invoice.signature?.fontFamily || 'Caveat'}', cursive`;
     }
   }
+}
+
+async function renderQR(grandTotal) {
+  if (!invoice.qrCode?.enabled) {
+    document.getElementById('inv-qr-section')?.classList.add('hidden');
+    return;
+  }
+  document.getElementById('inv-qr-section')?.classList.remove('hidden');
+
+  const result = await generatePaymentQRCode(invoice.qrCode, grandTotal, invoice.currency?.code, invoice.invoiceNumber);
+  if (result?.dataUrl) {
+    const img = document.getElementById('inv-qr-img');
+    if (img) img.src = result.dataUrl;
+    invoice.qrCode.qrDataUrl = result.dataUrl;
+  }
+  const desc = document.getElementById('inv-qr-desc');
+  if (desc) {
+    const t = invoice.qrCode.type;
+    desc.textContent = t === 'upi' ? `UPI: ${invoice.qrCode.upiId || ''}` : t === 'paypal' ? 'PayPal Checkout' : 'Scan to Pay';
+  }
+}
+
+function syncSidebar() {
+  const taxMode = document.getElementById('ctrl-tax-mode');
+  if (taxMode) taxMode.value = invoice.taxMode || 'gst';
+
+  const gstWrap = document.getElementById('ctrl-gst-wrap');
+  const singleWrap = document.getElementById('ctrl-single-tax-wrap');
+  if (invoice.taxMode === 'gst') {
+    gstWrap?.classList.remove('hidden');
+    singleWrap?.classList.add('hidden');
+  } else if (invoice.taxMode === 'none') {
+    gstWrap?.classList.add('hidden');
+    singleWrap?.classList.add('hidden');
+  } else {
+    gstWrap?.classList.add('hidden');
+    singleWrap?.classList.remove('hidden');
+  }
+
+  const discVal = document.getElementById('ctrl-discount-val');
+  if (discVal) discVal.value = invoice.discountValue || 0;
+
+  const shippingVal = document.getElementById('ctrl-shipping-val');
+  if (shippingVal) shippingVal.value = invoice.shipping || 0;
+
+  const roundOff = document.getElementById('ctrl-roundoff-toggle');
+  if (roundOff) roundOff.checked = invoice.roundOff !== false;
+
+  const currSel = document.getElementById('ctrl-currency');
+  if (currSel && invoice.currency) currSel.value = invoice.currency.code;
+
+  const docType = document.getElementById('ctrl-doc-type');
+  if (docType) {
+    const match = DOCUMENT_TYPES.find(d => d.title === invoice.docTitle);
+    if (match) docType.value = match.id;
+  }
+
+  const tplSel = document.getElementById('ctrl-template');
+  if (tplSel && invoice.theme) tplSel.value = invoice.theme;
+
+  // Column checkboxes
+  const hsnCb = document.getElementById('ctrl-col-hsn');
+  if (hsnCb) hsnCb.checked = invoice.columns?.hsn !== false;
+  const unitCb = document.getElementById('ctrl-col-unit');
+  if (unitCb) unitCb.checked = invoice.columns?.unit !== false;
+  const discCb = document.getElementById('ctrl-col-discount');
+  if (discCb) discCb.checked = invoice.columns?.discount !== false;
+
+  // Accent color buttons
+  document.querySelectorAll('.ctrl-color-btn').forEach(btn => {
+    const active = btn.dataset.color === (invoice.accentColor || '#171717');
+    btn.classList.toggle('ring-2', active);
+    btn.classList.toggle('ring-offset-2', active);
+    btn.classList.toggle('ring-[#171717]', active);
+    btn.classList.toggle('scale-110', active);
+  });
+}
+
+// ─── BIND ALL EVENTS (single call) ──────────────────────────────────────────
+
+function bindEvents() {
+  // Sidebar controls
+  document.getElementById('ctrl-doc-type')?.addEventListener('change', e => {
+    const found = DOCUMENT_TYPES.find(d => d.id === e.target.value);
+    if (found) { invoice.docTitle = found.title; invoice.docType = found.label; renderAll(); }
+  });
+  document.getElementById('ctrl-template')?.addEventListener('change', e => {
+    invoice.theme = e.target.value;
+    applyTemplate();
+    saveCurrentInvoiceToStorage(invoice);
+  });
+  document.getElementById('ctrl-currency')?.addEventListener('change', e => {
+    const found = CURRENCIES.find(c => c.code === e.target.value);
+    if (found) { invoice.currency = found; renderAll(); }
+  });
+  document.getElementById('ctrl-tax-mode')?.addEventListener('change', e => {
+    invoice.taxMode = e.target.value; renderAll();
+  });
+  document.getElementById('ctrl-tax-rate')?.addEventListener('input', e => {
+    invoice.taxRate = parseFloat(e.target.value) || 0; renderAll();
+  });
+  document.getElementById('ctrl-cgst-rate')?.addEventListener('input', e => {
+    invoice.cgstRate = parseFloat(e.target.value) || 0; renderAll();
+  });
+  document.getElementById('ctrl-sgst-rate')?.addEventListener('input', e => {
+    invoice.sgstRate = parseFloat(e.target.value) || 0; renderAll();
+  });
+  document.getElementById('ctrl-igst-rate')?.addEventListener('input', e => {
+    invoice.igstRate = parseFloat(e.target.value) || 0; renderAll();
+  });
+  document.getElementById('ctrl-gst-interstate')?.addEventListener('change', e => {
+    invoice.isInterstateGST = e.target.checked;
+    document.getElementById('ctrl-intra-rates')?.classList.toggle('hidden', e.target.checked);
+    document.getElementById('ctrl-inter-rate')?.classList.toggle('hidden', !e.target.checked);
+    renderAll();
+  });
+  document.getElementById('ctrl-discount-val')?.addEventListener('input', e => {
+    invoice.discountValue = parseFloat(e.target.value) || 0; renderAll();
+  });
+  document.getElementById('ctrl-discount-type')?.addEventListener('change', e => {
+    invoice.discountType = e.target.value; renderAll();
+  });
+  document.getElementById('ctrl-shipping-val')?.addEventListener('input', e => {
+    invoice.shipping = parseFloat(e.target.value) || 0; renderAll();
+  });
+  document.getElementById('ctrl-roundoff-toggle')?.addEventListener('change', e => {
+    invoice.roundOff = e.target.checked; renderAll();
+  });
+
+  // Accent color buttons — update CSS custom property immediately
+  document.querySelectorAll('.ctrl-color-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const col = btn.dataset.color;
+      if (!col) return;
+      invoice.accentColor = col;
+      const paper = document.getElementById('invoice-paper');
+      if (paper) paper.style.setProperty('--inv-accent', col);
+      // Sync ring on buttons
+      document.querySelectorAll('.ctrl-color-btn').forEach(b => {
+        b.classList.toggle('ring-2', false);
+        b.classList.toggle('ring-offset-2', false);
+        b.classList.toggle('scale-110', false);
+      });
+      btn.classList.add('ring-2', 'ring-offset-2', 'scale-110');
+      const nameEl = document.getElementById('ctrl-active-color-name');
+      if (nameEl) nameEl.textContent = col;
+      // Re-render to update dynamic elements
+      renderAll();
+      saveCurrentInvoiceToStorage(invoice);
+    });
+  });
+
+  // Column toggles
+  document.getElementById('ctrl-col-hsn')?.addEventListener('change', e => {
+    if (!invoice.columns) invoice.columns = {};
+    invoice.columns.hsn = e.target.checked;
+    renderAll();
+  });
+  document.getElementById('ctrl-col-unit')?.addEventListener('change', e => {
+    if (!invoice.columns) invoice.columns = {};
+    invoice.columns.unit = e.target.checked;
+    renderAll();
+  });
+  document.getElementById('ctrl-col-discount')?.addEventListener('change', e => {
+    if (!invoice.columns) invoice.columns = {};
+    invoice.columns.discount = e.target.checked;
+    renderAll();
+  });
+
+  // Export / Share
+  const handlePDF = async e => {
+    e.preventDefault();
+    const btn = document.getElementById('btn-download-pdf');
+    const orig = btn?.innerHTML;
+    if (btn) btn.innerHTML = '<span>Generating...</span>';
+    try {
+      const fname = `${invoice.invoiceNumber || 'Invoice'}_${(invoice.client?.name || 'Client').replace(/\s+/g, '_')}.pdf`;
+      await exportInvoiceToPDF('invoice-paper', fname);
+      saveInvoiceToHistory(invoice);
+    } catch(e) { console.error(e); }
+    finally { if (btn && orig) btn.innerHTML = orig; }
+  };
+  document.getElementById('btn-download-pdf')?.addEventListener('click', handlePDF);
+  document.getElementById('btn-header-pdf')?.addEventListener('click', handlePDF);
+  document.getElementById('btn-print-invoice')?.addEventListener('click', e => { e.preventDefault(); window.print(); });
+  document.getElementById('btn-download-png')?.addEventListener('click', e => {
+    e.preventDefault(); exportInvoiceToPNG('invoice-paper', `${invoice.invoiceNumber || 'Invoice'}.png`);
+  });
+  document.getElementById('btn-share-whatsapp')?.addEventListener('click', e => {
+    e.preventDefault(); window.open(generateWhatsAppShareLink(invoice, calculateTotals(invoice)), '_blank');
+  });
+  document.getElementById('btn-share-email')?.addEventListener('click', e => {
+    e.preventDefault(); window.location.href = generateEmailShareLink(invoice, calculateTotals(invoice));
+  });
+
+  document.getElementById('btn-new-invoice')?.addEventListener('click', e => {
+    e.preventDefault();
+    if (confirm('Create a new blank invoice? Current will be saved to Vault.')) {
+      saveInvoiceToHistory(invoice);
+      invoice = getDefaultInvoice();
+      invoice.invoiceNumber = `INV-${new Date().getFullYear()}-${Math.floor(100 + Math.random()*900)}`;
+      renderAll();
+    }
+  });
+  document.getElementById('btn-reset-sample')?.addEventListener('click', e => {
+    e.preventDefault();
+    if (confirm('Load sample invoice data?')) { invoice = getDefaultInvoice(); renderAll(); }
+  });
+
+  // Modal open/close helpers
+  // (openModal/closeModal are module-level, defined above)
+
+  // Signature modal
+  const sigTriggers = ['btn-sidebar-open-sig', 'quick-btn-sig'];
+  sigTriggers.forEach(id => document.getElementById(id)?.addEventListener('click', () => openModal('signature-modal')));
+  document.getElementById('btn-close-sig-modal')?.addEventListener('click', () => closeModal('signature-modal'));
+  document.getElementById('btn-cancel-sig')?.addEventListener('click', () => closeModal('signature-modal'));
+
+  // QR modal
+  const qrTriggers = ['btn-sidebar-open-qr', 'quick-btn-qr'];
+  qrTriggers.forEach(id => document.getElementById(id)?.addEventListener('click', () => {
+    openModal('payment-qr-modal');
+    updateQRPreview();
+  }));
+  document.getElementById('btn-close-qr-modal')?.addEventListener('click', () => closeModal('payment-qr-modal'));
+  document.getElementById('btn-cancel-qr')?.addEventListener('click', () => closeModal('payment-qr-modal'));
+
+  // History modal
+  document.getElementById('btn-open-history')?.addEventListener('click', () => { openModal('invoice-history-modal'); renderHistoryList(); });
+  document.getElementById('btn-close-history-modal')?.addEventListener('click', () => closeModal('invoice-history-modal'));
+
+  // Client modal
+  ['btn-sidebar-open-clients', 'quick-btn-clients'].forEach(id =>
+    document.getElementById(id)?.addEventListener('click', () => { openModal('client-book-modal'); renderClientList(); })
+  );
+  document.getElementById('btn-close-client-modal')?.addEventListener('click', () => closeModal('client-book-modal'));
+
+  // Company modal
+  ['btn-sidebar-open-companies', 'quick-btn-companies'].forEach(id =>
+    document.getElementById(id)?.addEventListener('click', () => { openModal('company-manager-modal'); renderCompanyList(); })
+  );
+  document.getElementById('btn-close-company-modal')?.addEventListener('click', () => closeModal('company-manager-modal'));
+
+  // Catalog modal
+  ['btn-sidebar-open-catalog', 'quick-btn-items'].forEach(id =>
+    document.getElementById(id)?.addEventListener('click', () => { openModal('item-catalog-modal'); renderCatalogList(); })
+  );
+  document.getElementById('btn-close-item-modal')?.addEventListener('click', () => closeModal('item-catalog-modal'));
+
+  // Signature studio
+  bindSigStudio();
+
+  // QR studio
+  bindQRStudio();
+
+  // Vault events
+  document.getElementById('btn-save-current-to-vault')?.addEventListener('click', e => {
+    e.preventDefault();
+    saveInvoiceToHistory(invoice);
+    renderHistoryList();
+    const badge = document.getElementById('history-count-badge');
+    if (badge) badge.textContent = getInvoiceHistory().length.toString();
+    alert('Invoice saved to Vault!');
+  });
+  document.getElementById('history-search-input')?.addEventListener('input', e => renderHistoryList(e.target.value));
+
+  document.getElementById('btn-save-current-client')?.addEventListener('click', e => {
+    e.preventDefault();
+    if (invoice.client?.name) {
+      saveClientToVault(invoice.client);
+      renderClientList();
+      alert(`"${invoice.client.name}" saved!`);
+    }
+  });
+  document.getElementById('btn-save-current-as-company')?.addEventListener('click', e => {
+    e.preventDefault();
+    if (invoice.sender?.name) {
+      saveCompanyToVault(invoice.sender);
+      renderCompanyList();
+      alert(`"${invoice.sender.name}" company profile saved!`);
+    }
+  });
+  document.getElementById('btn-save-new-catalog-item')?.addEventListener('click', e => {
+    e.preventDefault();
+    const desc = document.getElementById('catalog-desc-input')?.value?.trim();
+    const hsn = document.getElementById('catalog-hsn-input')?.value?.trim();
+    const rate = parseFloat(document.getElementById('catalog-rate-input')?.value) || 0;
+    if (desc) {
+      saveItemToCatalog({ description: desc, hsn, unit: 'No', rate, taxRate: 18 });
+      renderCatalogList();
+      document.getElementById('catalog-desc-input').value = '';
+      document.getElementById('catalog-hsn-input').value = '';
+      document.getElementById('catalog-rate-input').value = '';
+    }
+  });
+
+  document.getElementById('btn-export-backup-json')?.addEventListener('click', e => {
+    e.preventDefault();
+    const h = getInvoiceHistory();
+    const blob = new Blob([JSON.stringify(h, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url;
+    a.download = `IFM_Backup_${new Date().toISOString().split('T')[0]}.json`; a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  document.getElementById('input-import-backup-json')?.addEventListener('change', e => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try {
+        const data = JSON.parse(ev.target.result);
+        const count = importInvoiceHistory(data);
+        renderHistoryList();
+        const badge = document.getElementById('history-count-badge');
+        if (badge) badge.textContent = getInvoiceHistory().length.toString();
+        alert(count > 0 ? `Imported ${count} invoice${count > 1 ? 's' : ''} to your Vault.` : 'No valid invoices found in that file.');
+      } catch (err) {
+        console.error(err);
+        alert('Invalid JSON backup file. Please select the JSON exported from the Vault.');
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  });
+}
+
+// ─── SIGNATURE STUDIO ────────────────────────────────────────────────────────
+
+function initSigCanvas() {
+  const canvas = document.getElementById('sig-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.lineWidth = 2.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = sigColor;
+
+  const pos = (e) => {
+    const r = canvas.getBoundingClientRect();
+    const src = e.touches ? e.touches[0] : e;
+    return { x: src.clientX - r.left, y: src.clientY - r.top };
+  };
+
+  canvas.addEventListener('mousedown', e => { sigPadDrawing = true; const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
+  canvas.addEventListener('mousemove', e => { if (!sigPadDrawing) return; const p = pos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
+  canvas.addEventListener('mouseup', () => { sigPadDrawing = false; sigUndoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height)); });
+  canvas.addEventListener('mouseleave', () => { sigPadDrawing = false; });
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); sigPadDrawing = true; const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); }, { passive: false });
+  canvas.addEventListener('touchmove', e => { e.preventDefault(); if (!sigPadDrawing) return; const p = pos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); }, { passive: false });
+  canvas.addEventListener('touchend', e => { e.preventDefault(); sigPadDrawing = false; sigUndoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height)); }, { passive: false });
+}
+
+function bindSigStudio() {
+  const tabs = { draw: { tab: 'sig-tab-draw', content: 'sig-content-draw' }, type: { tab: 'sig-tab-type', content: 'sig-content-type' }, upload: { tab: 'sig-tab-upload', content: 'sig-content-upload' } };
+  const switchTab = name => {
+    sigTab = name;
+    Object.entries(tabs).forEach(([k, v]) => {
+      document.getElementById(v.tab)?.classList.toggle('bg-white', k === name);
+      document.getElementById(v.tab)?.classList.toggle('text-[#171717]', k === name);
+      document.getElementById(v.tab)?.classList.toggle('shadow-xs', k === name);
+      document.getElementById(v.content)?.classList.toggle('hidden', k !== name);
+    });
+  };
+  Object.keys(tabs).forEach(k => document.getElementById(tabs[k].tab)?.addEventListener('click', () => switchTab(k)));
+
+  document.getElementById('btn-clear-sig')?.addEventListener('click', () => {
+    const c = document.getElementById('sig-canvas'); const ctx = c?.getContext('2d');
+    if (ctx && c) { ctx.clearRect(0, 0, c.width, c.height); sigUndoStack = []; }
+  });
+  document.getElementById('btn-undo-sig')?.addEventListener('click', () => {
+    const c = document.getElementById('sig-canvas'); const ctx = c?.getContext('2d');
+    if (ctx && c && sigUndoStack.length > 0) {
+      sigUndoStack.pop();
+      if (sigUndoStack.length > 0) ctx.putImageData(sigUndoStack[sigUndoStack.length-1], 0, 0);
+      else ctx.clearRect(0, 0, c.width, c.height);
+    }
+  });
+
+  const typedInput = document.getElementById('sig-typed-input');
+  typedInput?.addEventListener('input', () => {
+    const n = typedInput.value || 'Authorised Signatory';
+    ['preview-font-1','preview-font-2'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = n; });
+  });
+
+  document.querySelectorAll('.sig-font-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.sig-font-card').forEach(c => c.classList.remove('ring-2','ring-[#171717]'));
+      card.classList.add('ring-2','ring-[#171717]');
+      card.querySelector('input[type="radio"]').checked = true;
+    });
+  });
+
+  const sigFileInput = document.getElementById('sig-file-input');
+  sigFileInput?.addEventListener('change', e => {
+    const f = e.target.files?.[0];
+    if (f) { const r = new FileReader(); r.onload = ev => { invoice.signature.type='upload'; invoice.signature.dataUrl = ev.target.result; renderSignature(); }; r.readAsDataURL(f); }
+  });
+
+  document.getElementById('btn-apply-sig')?.addEventListener('click', () => {
+    const name = document.getElementById('sig-signer-name')?.value || 'Authorised Signatory';
+    invoice.signature.enabled = true;
+    invoice.signature.typedName = name;
+    invoice.signature.title = `for ${invoice.sender?.name || ''}`;
+
+    if (sigTab === 'draw') {
+      const c = document.getElementById('sig-canvas');
+      invoice.signature.type = 'draw';
+      invoice.signature.dataUrl = c?.toDataURL('image/png') || '';
+    } else if (sigTab === 'type') {
+      invoice.signature.type = 'type';
+      invoice.signature.fontFamily = document.querySelector('input[name="sig-font-choice"]:checked')?.value || 'Caveat';
+      invoice.signature.typedName = document.getElementById('sig-typed-input')?.value || name;
+    }
+    renderSignature();
+    document.getElementById('signature-modal')?.classList.add('hidden');
+  });
+}
+
+// ─── QR STUDIO ───────────────────────────────────────────────────────────────
+
+async function updateQRPreview() {
+  const upiId = document.getElementById('qr-upi-id')?.value || '';
+  const upiName = document.getElementById('qr-upi-name')?.value || '';
+  const paypalUrl = document.getElementById('qr-paypal-url')?.value || '';
+  const customUrl = document.getElementById('qr-custom-url')?.value || '';
+
+  const result = await generatePaymentQRCode({
+    enabled: true, type: qrTab, upiId, upiName, paypalUrl, customUrl
+  }, 0, 'INR', invoice.invoiceNumber);
+
+  const img = document.getElementById('qr-preview-img');
+  if (img && result?.dataUrl) { img.src = result.dataUrl; img.classList.remove('hidden'); }
+}
+
+function bindQRStudio() {
+  const qrTabs = ['upi','paypal','custom'];
+  qrTabs.forEach(t => {
+    document.getElementById(`qr-tab-${t}`)?.addEventListener('click', () => {
+      qrTab = t;
+      qrTabs.forEach(k => {
+        document.getElementById(`qr-tab-${k}`)?.classList.toggle('bg-white', k===t);
+        document.getElementById(`qr-tab-${k}`)?.classList.toggle('text-[#171717]', k===t);
+        document.getElementById(`qr-tab-${k}`)?.classList.toggle('shadow-xs', k===t);
+        document.getElementById(`qr-content-${k}`)?.classList.toggle('hidden', k!==t);
+      });
+      updateQRPreview();
+    });
+  });
+  ['qr-upi-id','qr-upi-name','qr-paypal-url','qr-custom-url'].forEach(id =>
+    document.getElementById(id)?.addEventListener('input', updateQRPreview)
+  );
+
+  document.getElementById('btn-apply-qr')?.addEventListener('click', () => {
+    invoice.qrCode.enabled = true;
+    invoice.qrCode.type = qrTab;
+    invoice.qrCode.upiId = document.getElementById('qr-upi-id')?.value || '';
+    invoice.qrCode.upiName = document.getElementById('qr-upi-name')?.value || '';
+    invoice.qrCode.paypalUrl = document.getElementById('qr-paypal-url')?.value || '';
+    invoice.qrCode.customUrl = document.getElementById('qr-custom-url')?.value || '';
+
+    // Pre-fill the sidebar QR fields from current invoice
+    const qrUpiId = document.getElementById('qr-upi-id');
+    if (qrUpiId) qrUpiId.value = invoice.qrCode.upiId;
+
+    renderAll();
+    document.getElementById('payment-qr-modal')?.classList.add('hidden');
+  });
+  document.getElementById('btn-remove-qr')?.addEventListener('click', () => {
+    invoice.qrCode.enabled = false;
+    renderAll();
+    document.getElementById('payment-qr-modal')?.classList.add('hidden');
+  });
+}
+
+// ─── VAULT & MODALS ──────────────────────────────────────────────────────────
+
+function renderHistoryList(q = '') {
+  const container = document.getElementById('history-items-container');
+  const summary = document.getElementById('history-total-summary');
+  if (!container) return;
+  const history = getInvoiceHistory();
+  const filtered = q ? history.filter(h => h.invoiceNumber?.toLowerCase().includes(q.toLowerCase()) || h.clientName?.toLowerCase().includes(q.toLowerCase())) : history;
+  if (summary) summary.textContent = `${history.length} invoices stored in your browser`;
+  if (!filtered.length) { container.innerHTML = '<p class="text-center text-[#888888] text-xs py-8">No saved invoices found.</p>'; return; }
+
+  container.innerHTML = filtered.map(h => `
+    <div class="p-3.5 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-center justify-between gap-3">
+      <div class="space-y-0.5 flex-1 min-w-0">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="font-bold text-xs font-mono text-[#171717] truncate">${escHtml(h.invoiceNumber)}</span>
+          <span class="px-1.5 text-[10px] rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">${h.status || 'Draft'}</span>
+        </div>
+        <p class="text-xs text-[#4d4d4d] truncate">${escHtml(h.clientName)}</p>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="text-sm font-bold font-mono">${h.currencySymbol || '₹'}${Number(h.grandTotal).toFixed(2)}</span>
+        <button data-load="${h.id}" class="btn-load px-2.5 py-1 text-xs font-medium text-white bg-[#171717] rounded-lg cursor-pointer">Load</button>
+        <button data-dup="${h.id}" class="btn-dup px-2.5 py-1 text-xs font-medium text-[#171717] bg-[#f5f5f5] border border-[#ebebeb] rounded-lg cursor-pointer">Dupe</button>
+        <button data-del="${h.id}" class="btn-del text-red-500 hover:text-red-700 font-bold p-1 cursor-pointer">×</button>
+      </div>
+    </div>
+  `).join('');
+
+  container.querySelectorAll('.btn-load').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const target = history.find(h => h.id === btn.dataset.load);
+    if (target?.fullData) { invoice = target.fullData; renderAll(); document.getElementById('invoice-history-modal')?.classList.add('hidden'); }
+  }));
+  container.querySelectorAll('.btn-dup').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const dup = duplicateInvoiceInHistory(btn.dataset.dup);
+    if (dup) { invoice = dup; renderAll(); renderHistoryList(q); alert(`Duplicated as "${dup.invoiceNumber}"`); }
+  }));
+  container.querySelectorAll('.btn-del').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    if (confirm('Delete this invoice?')) { deleteInvoiceFromHistory(btn.dataset.del); renderHistoryList(q); const badge = document.getElementById('history-count-badge'); if(badge) badge.textContent = getInvoiceHistory().length.toString(); }
+  }));
+}
+
+function renderClientList() {
+  const container = document.getElementById('client-book-list');
+  if (!container) return;
+  const clients = getClientsVault();
+  if (!clients.length) { container.innerHTML = '<p class="text-center text-xs text-[#888888] py-8">No saved clients. Click "+ Save Current Client" above.</p>'; return; }
+  container.innerHTML = clients.map(c => `
+    <div class="p-3 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-start justify-between gap-3">
+      <div class="flex-1 space-y-0.5 text-xs min-w-0">
+        <p class="font-bold text-[#171717] truncate">${escHtml(c.name)}</p>
+        ${c.taxId ? `<p class="font-mono text-[10px] text-[#888888]">GST: ${escHtml(c.taxId)}</p>` : ''}
+        ${c.address ? `<p class="text-[11px] text-[#4d4d4d] whitespace-pre-line">${escHtml(c.address)}</p>` : ''}
+      </div>
+      <div class="flex gap-1.5 shrink-0">
+        <button data-cid="${c.id}" class="btn-use-client px-2.5 py-1 text-xs font-medium text-white bg-[#171717] rounded-lg cursor-pointer">Use</button>
+        <button data-del="${c.id}" class="btn-del-client text-red-500 font-bold p-1 cursor-pointer">×</button>
+      </div>
+    </div>
+  `).join('');
+  container.querySelectorAll('.btn-use-client').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const target = clients.find(c => c.id === btn.dataset.cid);
+    if (target) { Object.assign(invoice.client, target); renderAll(); document.getElementById('client-book-modal')?.classList.add('hidden'); }
+  }));
+  container.querySelectorAll('.btn-del-client').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    if (confirm('Delete client?')) { deleteClientFromVault(btn.dataset.del); renderClientList(); }
+  }));
+}
+
+function renderCompanyList() {
+  const container = document.getElementById('company-profiles-list');
+  if (!container) return;
+  const companies = getCompaniesVault();
+  if (!companies.length) { container.innerHTML = '<p class="text-center text-xs text-[#888888] py-8">No saved company profiles yet.</p>'; return; }
+  container.innerHTML = companies.map(c => `
+    <div class="p-3 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-start justify-between gap-3">
+      <div class="flex-1 space-y-0.5 text-xs min-w-0">
+        <p class="font-bold text-[#171717] truncate">${escHtml(c.name)}</p>
+        ${c.taxId ? `<p class="font-mono text-[10px] text-[#888888]">GST: ${escHtml(c.taxId)}</p>` : ''}
+        ${c.address ? `<p class="text-[11px] text-[#4d4d4d] whitespace-pre-line">${escHtml(c.address)}</p>` : ''}
+      </div>
+      <div class="flex gap-1.5 shrink-0">
+        <button data-cid="${c.id}" class="btn-use-comp px-2.5 py-1 text-xs font-medium text-white bg-[#171717] rounded-lg cursor-pointer">Select</button>
+        <button data-del="${c.id}" class="btn-del-comp text-red-500 font-bold p-1 cursor-pointer">×</button>
+      </div>
+    </div>
+  `).join('');
+  container.querySelectorAll('.btn-use-comp').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const target = companies.find(c => c.id === btn.dataset.cid);
+    if (target) {
+      Object.assign(invoice.sender, target);
+      if (target.bankName) invoice.paymentDetails.bankName = target.bankName;
+      if (target.accountNumber) invoice.paymentDetails.accountNumber = target.accountNumber;
+      if (target.ifsc) invoice.paymentDetails.swift = target.ifsc;
+      renderAll();
+      document.getElementById('company-manager-modal')?.classList.add('hidden');
+    }
+  }));
+  container.querySelectorAll('.btn-del-comp').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    if (confirm('Delete company profile?')) { deleteCompanyFromVault(btn.dataset.del); renderCompanyList(); }
+  }));
+}
+
+function renderCatalogList() {
+  const container = document.getElementById('catalog-items-list');
+  if (!container) return;
+  const catalog = getItemsCatalog();
+  const sym = invoice.currency?.symbol || '₹';
+  if (!catalog.length) { container.innerHTML = '<p class="text-center text-xs text-[#888888] py-8">No catalog items yet. Add one above.</p>'; return; }
+  container.innerHTML = catalog.map(item => `
+    <div class="p-3 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-center justify-between gap-3">
+      <div class="flex-1 min-w-0">
+        <p class="font-bold text-xs text-[#171717] truncate">${escHtml(item.description)}</p>
+        <p class="text-[10px] font-mono text-[#888888]">HSN: ${item.hsn || '-'} · ${item.unit || 'No'}</p>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="font-mono font-bold text-sm">${sym}${Number(item.rate).toFixed(2)}</span>
+        <button data-iid="${item.id}" class="btn-add-cat px-2.5 py-1 text-xs font-medium text-white bg-[#171717] rounded-lg cursor-pointer">+ Add</button>
+        <button data-del="${item.id}" class="btn-del-cat text-red-500 font-bold p-1 cursor-pointer">×</button>
+      </div>
+    </div>
+  `).join('');
+  container.querySelectorAll('.btn-add-cat').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const target = catalog.find(i => i.id === btn.dataset.iid);
+    if (target) {
+      invoice.items.push({ id: 'i'+Date.now(), description: target.description, hsn: target.hsn||'', unit: target.unit||'No', quantity: 1, rate: target.rate||0, discount: 0, discountType: 'percent', taxRate: target.taxRate||18 });
+      renderAll();
+      document.getElementById('item-catalog-modal')?.classList.add('hidden');
+    }
+  }));
+  container.querySelectorAll('.btn-del-cat').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    if (confirm('Delete item from catalog?')) { deleteItemFromCatalog(btn.dataset.del); renderCatalogList(); }
+  }));
+}
+
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
+
+function escHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Start
+if (typeof window !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+}
 </script>

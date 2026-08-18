@@ -1,6 +1,6 @@
 ---
 // SidebarControls.astro - Control Panel for Invoice Settings & Export
-import { DOCUMENT_TYPES, THEME_PRESETS, ACCENT_COLORS, CURRENCIES } from '../../scripts/invoice-state.js';
+import { DOCUMENT_TYPES, ACCENT_COLORS, CURRENCIES, THEME_PRESETS } from '../../scripts/invoice-state.js';
 ---
 
 <aside class="w-full lg:w-80 shrink-0 space-y-4 no-print">
@@ -63,9 +63,9 @@ import { DOCUMENT_TYPES, THEME_PRESETS, ACCENT_COLORS, CURRENCIES } from '../../
       <button
         id="btn-share-email"
         type="button"
-        class="py-2 px-3 rounded-lg border border-blue-200 bg-blue-50/60 hover:bg-blue-100 text-xs font-medium text-blue-800 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
+        class="py-2 px-3 rounded-lg border border-[#ebebeb] bg-[#fafafa] hover:bg-white text-xs font-medium text-[#171717] transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
       >
-        <svg class="w-3.5 h-3.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <svg class="w-3.5 h-3.5 text-[#4d4d4d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
         <span>Email</span>
@@ -84,8 +84,18 @@ import { DOCUMENT_TYPES, THEME_PRESETS, ACCENT_COLORS, CURRENCIES } from '../../
   </div>
 
   <!-- Design & Document Customizer Card -->
-  <div class="bg-white rounded-2xl border border-[#ebebeb] p-5 shadow-level-2 space-y-4">
-    <span class="text-xs font-semibold uppercase tracking-wider text-[#888888] font-mono">Design & Format</span>
+  <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-level-2 space-y-4">
+    <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 font-mono">Design & Format</span>
+
+    <!-- Template Style -->
+    <div>
+      <label class="block text-xs font-medium text-slate-500 mb-1.5">Template Style</label>
+      <select id="ctrl-template" class="w-full px-3 py-2 text-xs rounded-lg border border-[#ebebeb] bg-[#fafafa] text-[#171717] focus:outline-hidden focus:border-[#171717] font-medium">
+        {THEME_PRESETS.map(t => (
+          <option value={t.id}>{t.name}</option>
+        ))}
+      </select>
+    </div>
 
     <!-- Document Type -->
     <div>
@@ -97,32 +107,18 @@ import { DOCUMENT_TYPES, THEME_PRESETS, ACCENT_COLORS, CURRENCIES } from '../../
       </select>
     </div>
 
-    <!-- Template Style -->
+    <!-- Accent Color Palette -->
     <div>
-      <label class="block text-xs font-medium text-[#4d4d4d] mb-1.5">Template Layout</label>
-      <div class="grid grid-cols-2 gap-1.5">
-        {THEME_PRESETS.map((th, i) => (
-          <button
-            type="button"
-            data-theme={th.id}
-            class={`ctrl-theme-btn px-2.5 py-1.5 text-xs text-left rounded-lg border transition-all cursor-pointer flex items-center gap-1.5 ${i === 0 ? 'border-[#171717] bg-[#fafafa] font-medium text-[#171717] ring-1 ring-[#171717]' : 'border-[#ebebeb] text-[#4d4d4d] hover:border-[#a1a1a1]'}`}
-          >
-            <span class="w-2 h-2 rounded-full" style={`background-color: ${th.previewColor};`}></span>
-            <span class="truncate">{th.name}</span>
-          </button>
-        ))}
+      <div class="flex items-center justify-between mb-1.5">
+        <label class="block text-xs font-medium text-[#4d4d4d]">Corporate Accent Color</label>
+        <span id="ctrl-active-color-name" class="text-[10px] font-mono text-[#888888]">#171717</span>
       </div>
-    </div>
-
-    <!-- Accent Color -->
-    <div>
-      <label class="block text-xs font-medium text-[#4d4d4d] mb-1.5">Accent Color</label>
-      <div class="flex items-center gap-1.5 flex-wrap">
+      <div class="flex items-center gap-2 flex-wrap">
         {ACCENT_COLORS.map((col, i) => (
           <button
             type="button"
             data-color={col}
-            class={`ctrl-color-btn w-6 h-6 rounded-full transition-transform cursor-pointer ${i === 0 ? 'ring-2 ring-offset-2 ring-[#171717] scale-110' : 'hover:scale-105'}`}
+            class={`ctrl-color-btn w-6 h-6 rounded-full transition-all cursor-pointer ${i === 0 ? 'ring-2 ring-offset-2 ring-[#171717] scale-110' : 'hover:scale-105'}`}
             style={`background-color: ${col};`}
             title={col}
           ></button>
@@ -149,23 +145,23 @@ import { DOCUMENT_TYPES, THEME_PRESETS, ACCENT_COLORS, CURRENCIES } from '../../
     <div>
       <label class="block text-xs font-medium text-[#4d4d4d] mb-1.5">Tax Calculation Mode</label>
       <select id="ctrl-tax-mode" class="w-full px-3 py-2 text-xs rounded-lg border border-[#ebebeb] bg-[#fafafa] text-[#171717] focus:outline-hidden focus:border-[#171717]">
+        <option value="gst" selected>India GST (CGST + SGST / IGST)</option>
+        <option value="single">Single Tax / VAT / Sales Tax (%)</option>
         <option value="none">No Tax (Tax Exempt)</option>
-        <option value="single" selected>Single Tax / VAT / Sales Tax (%)</option>
-        <option value="gst">India GST (CGST + SGST / IGST)</option>
       </select>
     </div>
 
     <!-- Single Tax Rate Input -->
-    <div id="ctrl-single-tax-wrap" class="space-y-1">
+    <div id="ctrl-single-tax-wrap" class="hidden space-y-1">
       <div class="flex items-center justify-between text-xs text-[#4d4d4d]">
         <span>Tax Rate (%)</span>
-        <span id="ctrl-tax-rate-display" class="font-mono font-medium">10%</span>
+        <span id="ctrl-tax-rate-display" class="font-mono font-medium">18%</span>
       </div>
-      <input id="ctrl-tax-rate" type="number" step="0.1" min="0" max="100" value="10" class="w-full px-3 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-[#fafafa] text-[#171717]" />
+      <input id="ctrl-tax-rate" type="number" step="0.1" min="0" max="100" value="18" class="w-full px-3 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-[#fafafa] text-[#171717]" />
     </div>
 
     <!-- GST Controls Wrap -->
-    <div id="ctrl-gst-wrap" class="hidden space-y-2 pt-1 border-t border-[#ebebeb]">
+    <div id="ctrl-gst-wrap" class="space-y-2 pt-1 border-t border-[#ebebeb]">
       <label class="flex items-center gap-2 text-xs text-[#171717] cursor-pointer">
         <input id="ctrl-gst-interstate" type="checkbox" class="rounded border-[#ebebeb] text-[#171717] focus:ring-0" />
         <span>Interstate Transaction (IGST)</span>
@@ -191,7 +187,7 @@ import { DOCUMENT_TYPES, THEME_PRESETS, ACCENT_COLORS, CURRENCIES } from '../../
       <div class="flex items-center justify-between gap-2">
         <label class="text-xs font-medium text-[#4d4d4d]">Invoice Discount</label>
         <div class="flex items-center gap-1">
-          <input id="ctrl-discount-val" type="number" min="0" value="5" class="w-16 px-2 py-1 text-xs rounded-lg border border-[#ebebeb] text-right font-mono" />
+          <input id="ctrl-discount-val" type="number" min="0" value="0" class="w-16 px-2 py-1 text-xs rounded-lg border border-[#ebebeb] text-right font-mono" />
           <select id="ctrl-discount-type" class="px-1.5 py-1 text-xs rounded-lg border border-[#ebebeb] bg-[#fafafa]">
             <option value="percent">%</option>
             <option value="fixed">Flat</option>
@@ -211,21 +207,21 @@ import { DOCUMENT_TYPES, THEME_PRESETS, ACCENT_COLORS, CURRENCIES } from '../../
     </div>
   </div>
 
-  <!-- Custom Columns & Features Toggle -->
+  <!-- Custom Columns & Features Toggle (Fully Functional) -->
   <div class="bg-white rounded-2xl border border-[#ebebeb] p-5 shadow-level-2 space-y-3">
     <span class="text-xs font-semibold uppercase tracking-wider text-[#888888] font-mono">Columns & Extra Fields</span>
     <div class="space-y-2 text-xs">
       <label class="flex items-center justify-between text-[#4d4d4d] cursor-pointer hover:text-[#171717]">
         <span>HSN / SAC Code Column</span>
-        <input id="ctrl-col-hsn" type="checkbox" class="rounded border-[#ebebeb] text-[#171717] focus:ring-0" />
+        <input id="ctrl-col-hsn" type="checkbox" checked class="rounded border-[#ebebeb] text-[#171717] focus:ring-0 cursor-pointer" />
       </label>
       <label class="flex items-center justify-between text-[#4d4d4d] cursor-pointer hover:text-[#171717]">
-        <span>Unit Column (e.g. Hours, Pcs)</span>
-        <input id="ctrl-col-unit" type="checkbox" class="rounded border-[#ebebeb] text-[#171717] focus:ring-0" />
+        <span>Unit Column (e.g. No, Hours)</span>
+        <input id="ctrl-col-unit" type="checkbox" checked class="rounded border-[#ebebeb] text-[#171717] focus:ring-0 cursor-pointer" />
       </label>
       <label class="flex items-center justify-between text-[#4d4d4d] cursor-pointer hover:text-[#171717]">
         <span>Item-Level Discount Column</span>
-        <input id="ctrl-col-discount" type="checkbox" class="rounded border-[#ebebeb] text-[#171717] focus:ring-0" />
+        <input id="ctrl-col-discount" type="checkbox" checked class="rounded border-[#ebebeb] text-[#171717] focus:ring-0 cursor-pointer" />
       </label>
     </div>
 

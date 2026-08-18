@@ -1,10 +1,10 @@
 // invoice-state.js - Reactive Invoice State & Local Persistence Engine
 
 export const CURRENCIES = [
+  { code: 'INR', symbol: '₹', name: 'Indian Rupee (INR)', position: 'prefix' },
   { code: 'USD', symbol: '$', name: 'US Dollar (USD)', position: 'prefix' },
   { code: 'EUR', symbol: '€', name: 'Euro (EUR)', position: 'prefix' },
   { code: 'GBP', symbol: '£', name: 'British Pound (GBP)', position: 'prefix' },
-  { code: 'INR', symbol: '₹', name: 'Indian Rupee (INR)', position: 'prefix' },
   { code: 'CAD', symbol: 'CA$', name: 'Canadian Dollar (CAD)', position: 'prefix' },
   { code: 'AUD', symbol: 'AU$', name: 'Australian Dollar (AUD)', position: 'prefix' },
   { code: 'SGD', symbol: 'SG$', name: 'Singapore Dollar (SGD)', position: 'prefix' },
@@ -16,25 +16,11 @@ export const CURRENCIES = [
   { code: 'NZD', symbol: 'NZ$', name: 'New Zealand Dollar (NZD)', position: 'prefix' },
   { code: 'BRL', symbol: 'R$', name: 'Brazilian Real (BRL)', position: 'prefix' },
   { code: 'MXN', symbol: 'MX$', name: 'Mexican Peso (MXN)', position: 'prefix' },
-  { code: 'ZAR', symbol: 'R ', name: 'South African Rand (ZAR)', position: 'prefix' },
-  { code: 'SEK', symbol: 'kr ', name: 'Swedish Krona (SEK)', position: 'suffix' },
-  { code: 'NOK', symbol: 'kr ', name: 'Norwegian Krone (NOK)', position: 'suffix' },
-  { code: 'DKK', symbol: 'kr ', name: 'Danish Krone (DKK)', position: 'suffix' },
-  { code: 'PLN', symbol: 'zł ', name: 'Polish Zloty (PLN)', position: 'suffix' },
-  { code: 'PHP', symbol: '₱', name: 'Philippine Peso (PHP)', position: 'prefix' },
-  { code: 'MYR', symbol: 'RM ', name: 'Malaysian Ringgit (MYR)', position: 'prefix' },
-  { code: 'THB', symbol: '฿', name: 'Thai Baht (THB)', position: 'prefix' },
-  { code: 'IDR', symbol: 'Rp ', name: 'Indonesian Rupiah (IDR)', position: 'prefix' },
-  { code: 'VND', symbol: '₫', name: 'Vietnamese Dong (VND)', position: 'suffix' },
-  { code: 'NGN', symbol: '₦', name: 'Nigerian Naira (NGN)', position: 'prefix' },
-  { code: 'KES', symbol: 'KSh ', name: 'Kenyan Shilling (KES)', position: 'prefix' },
-  { code: 'EGP', symbol: 'E£ ', name: 'Egyptian Pound (EGP)', position: 'prefix' },
-  { code: 'PKR', symbol: 'Rs ', name: 'Pakistani Rupee (PKR)', position: 'prefix' },
-  { code: 'BDT', symbol: '৳', name: 'Bangladeshi Taka (BDT)', position: 'prefix' }
+  { code: 'ZAR', symbol: 'R ', name: 'South African Rand (ZAR)', position: 'prefix' }
 ];
 
 export const DOCUMENT_TYPES = [
-  { id: 'tax_invoice', label: 'Tax Invoice', title: 'TAX INVOICE' },
+  { id: 'tax_invoice', label: 'Tax Invoice (GST)', title: 'TAX INVOICE' },
   { id: 'invoice', label: 'Standard Invoice', title: 'INVOICE' },
   { id: 'proforma', label: 'Proforma Invoice', title: 'PROFORMA INVOICE' },
   { id: 'quotation', label: 'Quotation / Estimate', title: 'QUOTATION' },
@@ -45,11 +31,9 @@ export const DOCUMENT_TYPES = [
 ];
 
 export const THEME_PRESETS = [
-  { id: 'minimal', name: 'Minimal Mono', font: 'Geist', previewColor: '#171717' },
-  { id: 'executive', name: 'Executive Slate', font: 'Inter', previewColor: '#0f172a' },
-  { id: 'modern', name: 'Modern Tech', font: 'Geist Mono', previewColor: '#0070f3' },
-  { id: 'contrast', name: 'High Contrast', font: 'Geist', previewColor: '#7928ca' },
-  { id: 'compact', name: 'Clean Receipt', font: 'Inter', previewColor: '#2563eb' }
+  { id: 'gst_tally', name: 'Corporate Pro', font: 'Inter', previewColor: '#171717' },
+  { id: 'minimal', name: 'Minimal Light', font: 'Geist', previewColor: '#171717' },
+  { id: 'executive', name: 'Executive Split', font: 'Inter', previewColor: '#171717' }
 ];
 
 export const ACCENT_COLORS = [
@@ -64,6 +48,26 @@ export const ACCENT_COLORS = [
   '#e11d48'  // Rose
 ];
 
+export const INDIAN_STATES = [
+  { code: '29', name: 'Karnataka' },
+  { code: '27', name: 'Maharashtra' },
+  { code: '07', name: 'Delhi' },
+  { code: '33', name: 'Tamil Nadu' },
+  { code: '36', name: 'Telangana' },
+  { code: '06', name: 'Haryana' },
+  { code: '09', name: 'Uttar Pradesh' },
+  { code: '19', name: 'West Bengal' },
+  { code: '24', name: 'Gujarat' },
+  { code: '32', name: 'Kerala' },
+  { code: '08', name: 'Rajasthan' },
+  { code: '23', name: 'Madhya Pradesh' },
+  { code: '03', name: 'Punjab' },
+  { code: '10', name: 'Bihar' },
+  { code: '21', name: 'Odisha' },
+  { code: '30', name: 'Goa' },
+  { code: '01', name: 'Jammu & Kashmir' }
+];
+
 export function getDefaultInvoice() {
   const today = new Date();
   const issueDate = today.toISOString().split('T')[0];
@@ -74,115 +78,119 @@ export function getDefaultInvoice() {
 
   return {
     id: 'inv_' + Date.now(),
-    docType: 'Tax Invoice',
+    docType: 'Tax Invoice (GST)',
     docTitle: 'TAX INVOICE',
-    invoiceNumber: 'INV-2026-001',
+    invoiceNumber: 'SHB/456/20',
     referenceNumber: 'PO-2026-98',
     issueDate,
     dueDate,
-    theme: 'minimal',
-    accentColor: '#171717',
-    currency: CURRENCIES[0], // USD default
+    theme: 'gst_tally', // Default to GST / Tally format matching reference
+    accentColor: '#171717', // Ink black — brand primary per DESIGN.md
+    currency: CURRENCIES[0], // INR default for GST/Universal
     status: 'Draft',
+
+    // e-Invoice & Transport Details (for GST template)
+    eInvoice: {
+      enabled: true,
+      irn: 'fef1df90406b928db26a62f816debc9bb5256d9375e60dc4226653cc23a8c595',
+      ackNo: '112010036563310',
+      ackDate: '21-Dec-20',
+      deliveryNote: '',
+      modeOfPayment: 'Bank Transfer / IMPS',
+      buyersOrderNo: 'ORD-98214',
+      buyersOrderDate: issueDate,
+      dispatchDocNo: '',
+      dispatchDate: '',
+      dispatchedThrough: 'Road Logistics',
+      destination: 'Bangalore',
+      termsOfDelivery: 'Door Delivery'
+    },
 
     sender: {
       logo: '',
-      name: 'Acme Design & Technology Inc.',
-      email: 'billing@acmedesign.io',
-      phone: '+1 (555) 234-5678',
-      address: '100 Innovation Way, Suite 400\nSan Francisco, CA 94107',
-      taxId: 'US-TAX-892341',
+      name: 'Surabhi Hardwares, Bangalore',
+      email: 'billing@surabhihardwares.com',
+      phone: '+91 98765 43210',
+      address: 'HSR Layout, 5th Main Road\nBangalore, Karnataka - 560102',
+      taxId: '29AACCT3705E000',
+      stateName: 'Karnataka',
+      stateCode: '29',
       customFields: []
     },
 
     client: {
-      name: 'Globex Software Enterprises',
-      email: 'accounts@globexcorp.com',
-      phone: '+1 (555) 987-6543',
-      address: '742 Evergreen Terrace, Floor 3\nSpringfield, OR 97477',
-      taxId: 'TAX-552190',
-      shippingAddress: '',
-      customFields: []
+      name: 'Kiran Enterprises',
+      email: 'accounts@kiranenterprises.com',
+      phone: '+91 98450 12345',
+      address: '12th Cross, Indiranagar\nBangalore, Karnataka - 560038',
+      taxId: '29AAFFC8126N1ZZ',
+      stateName: 'Karnataka',
+      stateCode: '29',
+      shippingSameAsBilling: true,
+      consigneeName: 'Kiran Enterprises',
+      consigneeAddress: '12th Cross, Indiranagar, Bangalore',
+      consigneeTaxId: '29AAFFC8126N1ZZ',
+      consigneeStateName: 'Karnataka',
+      consigneeStateCode: '29'
     },
 
     columns: {
-      hsn: false,
-      unit: false,
-      discount: false,
+      hsn: true,
+      unit: true,
+      discount: true,
       tax: false
     },
 
     items: [
       {
         id: '1',
-        description: 'Brand Identity & Design System Architecture\nComplete visual guidelines, UI token library, and typography system.',
-        hsn: '998314',
-        unit: 'Project',
-        quantity: 1,
-        rate: 2800,
+        description: '12MM Stainless Steel Fasteners & Brass Connectors',
+        hsn: '1005',
+        unit: 'No',
+        quantity: 7,
+        rate: 500,
         discount: 0,
         discountType: 'percent',
-        taxRate: 0
-      },
-      {
-        id: '2',
-        description: 'Fullstack Web Application Development\nHigh performance Astro frontend with modern backend integration.',
-        hsn: '998313',
-        unit: 'Hours',
-        quantity: 35,
-        rate: 75,
-        discount: 0,
-        discountType: 'percent',
-        taxRate: 0
-      },
-      {
-        id: '3',
-        description: 'Performance Optimization & SEO Audit\nCore Web Vitals tuning, structured schema implementation & accessibility pass.',
-        hsn: '998315',
-        unit: 'Audit',
-        quantity: 1,
-        rate: 650,
-        discount: 0,
-        discountType: 'percent',
-        taxRate: 0
+        taxRate: 18
       }
     ],
 
-    taxMode: 'single', // 'none', 'single', 'gst', 'vat'
-    taxRate: 10,
+    taxMode: 'gst', // 'gst', 'single', 'vat', 'none'
+    taxRate: 18,
     cgstRate: 9,
     sgstRate: 9,
     igstRate: 18,
     isInterstateGST: false,
 
-    discountType: 'percent', // 'percent' or 'fixed'
-    discountValue: 5,
+    discountType: 'percent',
+    discountValue: 0,
 
     shipping: 0,
     roundOff: true,
 
-    notes: 'Thank you for your business! We appreciate the opportunity to collaborate with your team.',
-    terms: '1. Payment is due within 14 days of invoice date.\n2. Please mention the invoice number in your wire/transfer memo.\n3. Late payments are subject to a 1.5% compounding monthly fee.',
+    declaration: 'We declare that this invoice shows the actual price of the goods described and that all particulars are true and correct.',
+    notes: 'This is a Computer Generated Invoice.',
+    terms: '1. Goods once sold will not be taken back.\n2. Interest @ 18% p.a. will be charged if payment is not made within due date.',
 
     paymentDetails: {
-      bankName: 'Silicon Valley Bank',
-      accountName: 'Acme Design & Technology Inc.',
-      accountNumber: '987654321098',
-      routingNumber: '121000358',
-      swift: 'SVBUS6S',
+      bankName: 'HDFC Bank Ltd',
+      accountName: 'Surabhi Hardwares',
+      accountNumber: '50200012345678',
+      routingNumber: '560240012',
+      swift: 'HDFCINBB',
       iban: '',
-      upiId: '',
-      paypalEmail: 'payments@acmedesign.io',
-      customMemo: 'ACH / Wire / Electronic Transfer accepted'
+      upiId: 'surabhihardwares@okhdfcbank',
+      paypalEmail: '',
+      customMemo: 'RTGS / NEFT / UPI Payment accepted'
     },
 
     qrCode: {
       enabled: true,
       type: 'upi',
-      upiId: 'acmedesign@okaxis',
-      upiName: 'Acme Design Inc',
-      paypalUrl: 'https://paypal.me/acmedesign',
-      customUrl: 'https://invoicefreemaker.com/pay',
+      upiId: 'surabhihardwares@okhdfcbank',
+      upiName: 'Surabhi Hardwares',
+      paypalUrl: '',
+      customUrl: '',
       qrDataUrl: ''
     },
 
@@ -190,18 +198,19 @@ export function getDefaultInvoice() {
       enabled: true,
       type: 'type',
       dataUrl: '',
-      typedName: 'Alex Morgan',
+      typedName: 'Authorised Signatory',
       fontFamily: 'Caveat',
-      title: 'Managing Director & Founder',
+      title: 'for Surabhi Hardwares, Bangalore',
       date: issueDate
     }
   };
 }
 
-// Calculate comprehensive totals
+// Calculate comprehensive totals including HSN/SAC breakdown table
 export function calculateTotals(invoice) {
   let subtotal = 0;
   let totalLineDiscount = 0;
+  const hsnMap = {};
 
   (invoice.items || []).forEach(item => {
     const qty = Number(item.quantity) || 0;
@@ -216,6 +225,13 @@ export function calculateTotals(invoice) {
     }
 
     subtotal += lineAmount;
+
+    // HSN aggregation
+    const hsnCode = item.hsn || 'General';
+    if (!hsnMap[hsnCode]) {
+      hsnMap[hsnCode] = { hsn: hsnCode, taxableValue: 0, cgstRate: invoice.cgstRate || 9, sgstRate: invoice.sgstRate || 9, igstRate: invoice.igstRate || 18 };
+    }
+    hsnMap[hsnCode].taxableValue += lineAmount;
   });
 
   // Invoice-level discount
@@ -248,6 +264,24 @@ export function calculateTotals(invoice) {
     }
   }
 
+  // Calculate HSN Breakdown Array
+  const hsnBreakdown = Object.values(hsnMap).map(h => {
+    const cgstAmt = (h.taxableValue * h.cgstRate) / 100;
+    const sgstAmt = (h.taxableValue * h.sgstRate) / 100;
+    const igstAmt = (h.taxableValue * h.igstRate) / 100;
+    return {
+      hsn: h.hsn,
+      taxableValue: Number(h.taxableValue.toFixed(2)),
+      cgstRate: h.cgstRate,
+      cgstAmount: Number(cgstAmt.toFixed(2)),
+      sgstRate: h.sgstRate,
+      sgstAmount: Number(sgstAmt.toFixed(2)),
+      igstRate: h.igstRate,
+      igstAmount: Number(igstAmt.toFixed(2)),
+      totalTax: Number((invoice.isInterstateGST ? igstAmt : (cgstAmt + sgstAmt)).toFixed(2))
+    };
+  });
+
   const shipping = Number(invoice.shipping) || 0;
   const rawTotal = taxableAmount + taxAmount + shipping;
   const grandTotal = invoice.roundOff ? Math.round(rawTotal * 100) / 100 : rawTotal;
@@ -262,21 +296,23 @@ export function calculateTotals(invoice) {
     cgstAmount: Number(cgstAmount.toFixed(2)),
     sgstAmount: Number(sgstAmount.toFixed(2)),
     igstAmount: Number(igstAmount.toFixed(2)),
+    hsnBreakdown,
     shipping: Number(shipping.toFixed(2)),
     roundOffAdjustment,
     grandTotal: Number(grandTotal.toFixed(2)),
-    amountInWords: numberToWords(grandTotal, invoice.currency?.code || 'USD')
+    amountInWords: numberToWords(grandTotal, invoice.currency?.code || 'INR'),
+    taxAmountInWords: numberToWords(taxAmount, invoice.currency?.code || 'INR')
   };
 }
 
 // Convert Number to English Words
-export function numberToWords(amount, currencyCode = 'USD') {
+export function numberToWords(amount, currencyCode = 'INR') {
   if (isNaN(amount) || amount === 0) return 'Zero';
 
   const singleDigits = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
   const teens = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
   const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
-  const scales = ['', 'Thousand', 'Million', 'Billion', 'Trillion'];
+  const scales = ['', 'Thousand', 'Lakh', 'Crore', 'Billion'];
 
   function convertChunk(num) {
     let chunkStr = '';
@@ -302,56 +338,85 @@ export function numberToWords(amount, currencyCode = 'USD') {
 
   if (integerPart === 0 && decimalPart === 0) return 'Zero';
 
-  let chunks = [];
-  let tempInt = integerPart;
-  while (tempInt > 0) {
-    chunks.push(tempInt % 1000);
-    tempInt = Math.floor(tempInt / 1000);
-  }
+  let words = '';
+  if (currencyCode === 'INR') {
+    // Indian Numbering System (Crore, Lakh, Thousand)
+    let num = integerPart;
+    const cr = Math.floor(num / 10000000);
+    num %= 10000000;
+    const lakh = Math.floor(num / 100000);
+    num %= 100000;
+    const th = Math.floor(num / 1000);
+    num %= 1000;
+    const rem = num;
 
-  let words = [];
-  for (let i = chunks.length - 1; i >= 0; i--) {
-    if (chunks[i] > 0) {
-      const chunkText = convertChunk(chunks[i]);
-      const scaleText = scales[i];
-      words.push(scaleText ? `${chunkText} ${scaleText}` : chunkText);
+    let parts = [];
+    if (cr > 0) parts.push(convertChunk(cr) + ' Crore');
+    if (lakh > 0) parts.push(convertChunk(lakh) + ' Lakh');
+    if (th > 0) parts.push(convertChunk(th) + ' Thousand');
+    if (rem > 0) parts.push(convertChunk(rem));
+    words = parts.join(' ').trim();
+  } else {
+    // Western Million/Billion
+    let chunks = [];
+    let tempInt = integerPart;
+    while (tempInt > 0) {
+      chunks.push(tempInt % 1000);
+      tempInt = Math.floor(tempInt / 1000);
     }
+    const westernScales = ['', 'Thousand', 'Million', 'Billion'];
+    let parts = [];
+    for (let i = chunks.length - 1; i >= 0; i--) {
+      if (chunks[i] > 0) {
+        const chunkText = convertChunk(chunks[i]);
+        const scaleText = westernScales[i];
+        parts.push(scaleText ? `${chunkText} ${scaleText}` : chunkText);
+      }
+    }
+    words = parts.join(' ').trim();
   }
 
-  let result = words.join(' ').trim();
-  
-  const currencyNames = {
-    USD: { unit: 'Dollars', sub: 'Cents' },
-    EUR: { unit: 'Euros', sub: 'Cents' },
-    GBP: { unit: 'Pounds', sub: 'Pence' },
-    INR: { unit: 'Rupees', sub: 'Paise' },
-    CAD: { unit: 'Dollars', sub: 'Cents' },
-    AUD: { unit: 'Dollars', sub: 'Cents' },
-    AED: { unit: 'Dirhams', sub: 'Fils' }
+  const currencyPrefixes = {
+    INR: 'Indian Rupee',
+    USD: 'US Dollars',
+    EUR: 'Euro',
+    GBP: 'British Pounds'
   };
 
-  const curr = currencyNames[currencyCode] || { unit: currencyCode, sub: 'Cents' };
-  
-  if (result) {
-    result += ` ${curr.unit}`;
-  }
+  const prefix = currencyPrefixes[currencyCode] || currencyCode;
+  let result = `${prefix} ${words}`;
 
   if (decimalPart > 0) {
     const decimalWords = convertChunk(decimalPart);
-    result += ` and ${decimalWords} ${curr.sub}`;
+    result += ` and ${decimalWords} Paise`;
   }
 
-  return result + ' Only';
+  return result.trim() + ' Only';
 }
 
-// Local Storage Vault keys
+// Increment invoice number helper (e.g. INV-2026-001 -> INV-2026-002, SHB/456/20 -> SHB/456/21) (Requirement 4)
+export function incrementInvoiceNumber(invNum) {
+  if (!invNum || !invNum.trim()) return 'INV-001';
+  const trimmed = invNum.trim();
+  
+  // Match trailing number sequence, e.g. "INV-2026-001" -> prefix="INV-2026-", digits="001"
+  const match = trimmed.match(/^(.*?)(\d+)$/);
+  if (match) {
+    const prefix = match[1];
+    const digits = match[2];
+    const nextVal = (parseInt(digits, 10) + 1).toString().padStart(digits.length, '0');
+    return `${prefix}${nextVal}`;
+  }
+  return `${trimmed}-2`;
+}
+
+// Local Storage Vault operations
 const STORAGE_CURRENT_KEY = 'ifm_current_invoice_v1';
 const STORAGE_HISTORY_KEY = 'ifm_invoice_history_v1';
 const STORAGE_CLIENTS_KEY = 'ifm_clients_vault_v1';
 const STORAGE_COMPANIES_KEY = 'ifm_companies_vault_v1';
 const STORAGE_ITEMS_KEY = 'ifm_items_catalog_v1';
 
-// Current Invoice
 export function saveCurrentInvoiceToStorage(invoice) {
   if (typeof window === 'undefined') return;
   try {
@@ -375,7 +440,6 @@ export function loadCurrentInvoiceFromStorage() {
   return getDefaultInvoice();
 }
 
-// Invoices Vault (History)
 export function getInvoiceHistory() {
   if (typeof window === 'undefined') return [];
   try {
@@ -400,10 +464,10 @@ export function saveInvoiceToHistory(invoice) {
       dueDate: invoice.dueDate,
       status: invoice.status || 'Draft',
       grandTotal: calculateTotals(invoice).grandTotal,
-      currencySymbol: invoice.currency?.symbol || '$',
-      currencyCode: invoice.currency?.code || 'USD',
+      currencySymbol: invoice.currency?.symbol || '₹',
+      currencyCode: invoice.currency?.code || 'INR',
       updatedAt: new Date().toISOString(),
-      fullData: invoice
+      fullData: JSON.parse(JSON.stringify(invoice))
     };
 
     if (existingIndex >= 0) {
@@ -431,7 +495,65 @@ export function deleteInvoiceFromHistory(id) {
   }
 }
 
-// Clients Vault
+// Import an array of history entries (or a single entry / raw invoice) from a JSON backup.
+// Returns the number of entries successfully merged into the vault.
+export function importInvoiceHistory(data) {
+  if (typeof window === 'undefined') return 0;
+  try {
+    let entries = Array.isArray(data) ? data : [data];
+    let imported = 0;
+
+    entries.forEach(raw => {
+      if (!raw || typeof raw !== 'object') return;
+      // Accept both history-summary shape ({ fullData }) and raw invoice shape
+      const invoiceData = raw.fullData || raw;
+      if (!invoiceData || typeof invoiceData !== 'object') return;
+      if (!invoiceData.invoiceNumber && !invoiceData.items) return;
+
+      const invoice = { ...getDefaultInvoice(), ...invoiceData };
+      if (!invoice.id) invoice.id = 'inv_' + Date.now();
+      if (!invoice.invoiceNumber) invoice.invoiceNumber = 'INV-001';
+
+      saveInvoiceToHistory(invoice);
+      imported++;
+    });
+
+    return imported;
+  } catch (e) {
+    console.error('Failed to import invoice history', e);
+    return 0;
+  }
+}
+
+// Duplicate an existing invoice from history with incremented invoice number (Requirement 4)
+export function duplicateInvoiceInHistory(id) {
+  if (typeof window === 'undefined') return null;
+  try {
+    const history = getInvoiceHistory();
+    const target = history.find(item => item.id === id);
+    if (!target || !target.fullData) return null;
+
+    const today = new Date();
+    const issueDate = today.toISOString().split('T')[0];
+    const due = new Date();
+    due.setDate(due.getDate() + 14);
+    const dueDate = due.toISOString().split('T')[0];
+
+    const newInvoice = JSON.parse(JSON.stringify(target.fullData));
+    newInvoice.id = 'inv_' + Date.now();
+    newInvoice.invoiceNumber = incrementInvoiceNumber(target.fullData.invoiceNumber || target.invoiceNumber);
+    newInvoice.issueDate = issueDate;
+    newInvoice.dueDate = dueDate;
+    newInvoice.status = 'Draft';
+
+    saveInvoiceToHistory(newInvoice);
+    return newInvoice;
+  } catch (e) {
+    console.error('Failed to duplicate invoice', e);
+    return null;
+  }
+}
+
 export function getClientsVault() {
   if (typeof window === 'undefined') return [];
   try {
@@ -456,6 +578,8 @@ export function saveClientToVault(client) {
       phone: client.phone?.trim() || '',
       address: client.address?.trim() || '',
       taxId: client.taxId?.trim() || '',
+      stateName: client.stateName?.trim() || '',
+      stateCode: client.stateCode?.trim() || '',
       updatedAt: new Date().toISOString()
     };
 
@@ -484,27 +608,27 @@ export function deleteClientFromVault(id) {
   }
 }
 
-// User Companies / Profiles Vault (Requirement 1)
 export function getCompaniesVault() {
   if (typeof window === 'undefined') return [];
   try {
     const data = localStorage.getItem(STORAGE_COMPANIES_KEY);
     if (data) return JSON.parse(data);
     
-    // Default initial profile
     const initial = [
       {
         id: 'comp_default',
-        name: 'Acme Design & Technology Inc.',
-        email: 'billing@acmedesign.io',
-        phone: '+1 (555) 234-5678',
-        address: '100 Innovation Way, Suite 400\nSan Francisco, CA 94107',
-        taxId: 'US-TAX-892341',
+        name: 'Surabhi Hardwares, Bangalore',
+        email: 'billing@surabhihardwares.com',
+        phone: '+91 98765 43210',
+        address: 'HSR Layout, 5th Main Road\nBangalore, Karnataka - 560102',
+        taxId: '29AACCT3705E000',
+        stateName: 'Karnataka',
+        stateCode: '29',
         logo: '',
-        bankName: 'Silicon Valley Bank',
-        accountName: 'Acme Studio Inc',
-        accountNumber: '987654321098',
-        ifsc: 'SVBUS6S',
+        bankName: 'HDFC Bank Ltd',
+        accountName: 'Surabhi Hardwares',
+        accountNumber: '50200012345678',
+        ifsc: 'HDFCINBB',
         isDefault: true,
         updatedAt: new Date().toISOString()
       }
@@ -530,6 +654,8 @@ export function saveCompanyToVault(company) {
       phone: company.phone?.trim() || '',
       address: company.address?.trim() || '',
       taxId: company.taxId?.trim() || '',
+      stateName: company.stateName?.trim() || '',
+      stateCode: company.stateCode?.trim() || '',
       logo: company.logo || '',
       bankName: company.bankName?.trim() || '',
       accountName: company.accountName?.trim() || '',
@@ -564,26 +690,24 @@ export function deleteCompanyFromVault(id) {
   }
 }
 
-// Items / Services Catalog Vault (Requirement 3)
 export function getItemsCatalog() {
   if (typeof window === 'undefined') return [];
   try {
     const data = localStorage.getItem(STORAGE_ITEMS_KEY);
     if (data) return JSON.parse(data);
 
-    // Initial default catalog
     const initial = [
       {
         id: 'item_1',
-        description: 'Brand Identity & Design System Architecture\nComplete visual guidelines, UI token library, and typography system.',
-        hsn: '998314',
-        unit: 'Project',
-        rate: 2800,
+        description: '12MM Stainless Steel Fasteners & Brass Connectors',
+        hsn: '1005',
+        unit: 'No',
+        rate: 500,
         taxRate: 18
       },
       {
         id: 'item_2',
-        description: 'Fullstack Web Application Development\nHigh performance Astro frontend with modern backend integration.',
+        description: 'Fullstack Web Application UI/UX & Frontend Integration',
         hsn: '998313',
         unit: 'Hours',
         rate: 75,
@@ -591,18 +715,10 @@ export function getItemsCatalog() {
       },
       {
         id: 'item_3',
-        description: 'Performance Optimization & SEO Audit\nCore Web Vitals tuning, structured schema implementation & accessibility pass.',
+        description: 'Cloud Infrastructure Setup & Security Hardening',
         hsn: '998315',
-        unit: 'Audit',
-        rate: 650,
-        taxRate: 18
-      },
-      {
-        id: 'item_4',
-        description: 'Monthly Maintenance & Cloud Server Hosting',
-        hsn: '998316',
-        unit: 'Month',
-        rate: 350,
+        unit: 'Project',
+        rate: 1200,
         taxRate: 18
       }
     ];
