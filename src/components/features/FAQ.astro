@@ -1,0 +1,62 @@
+---
+// FAQ.astro - Comprehensive FAQ Section with Interactive Accordions
+const faqs = [
+  {
+    q: "Is Invoice Free Maker really 100% free with no watermark?",
+    a: "Yes, 100% free forever. There are no monthly invoice limits, no mandatory sign-up walls, and absolutely zero watermarks on your downloaded PDF invoices."
+  },
+  {
+    q: "How does the Digital Signature Studio work?",
+    a: "You can sign your invoices in 3 ways: 1. Draw your signature smoothly using your mouse or touchscreen pad. 2. Type your name and select from 4 elegant cursive calligraphy fonts. 3. Upload a pre-existing PNG or JPG image of your signature with transparent background support."
+  },
+  {
+    q: "How do the Payment QR Codes work?",
+    a: "Our system generates standard payment QR codes directly stamped on your invoice. For Indian businesses, it encodes your UPI ID (compatible with Google Pay, PhonePe, Paytm, BHIM). For international clients, it supports European SEPA/IBAN transfers, PayPal.me links, or custom Stripe/crypto payment URLs. Clients simply scan the code with their smartphone camera to pay immediately."
+  },
+  {
+    q: "Is my business and financial data private and secure?",
+    a: "Yes! Invoice Free Maker runs entirely on your browser using client-side Web APIs and LocalStorage. Your financial figures, client addresses, and invoices are never sent to external tracking servers or third-party databases. You can also export full JSON backups of your invoices at any time."
+  },
+  {
+    q: "Can I generate GST-compliant invoices for India or VAT for Europe?",
+    a: "Yes. Our smart tax engine allows you to switch between Single Tax/VAT, Interstate GST (IGST), and Intra-state GST (CGST + SGST) with customizable percentage rates and HSN/SAC codes."
+  },
+  {
+    q: "What formats can I export my invoice in?",
+    a: "You can download high-resolution 300 DPI vector PDFs formatted for standard A4 and US Letter printing, export high-definition PNG images, share pre-formatted summaries directly via WhatsApp, launch pre-filled email drafts, or print directly through your browser."
+  }
+];
+---
+
+<section id="faq-section" class="py-16 md:py-24 border-t border-[#ebebeb] bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fafafa] border border-[#ebebeb] text-[11px] font-mono text-[#171717] mb-3">
+        <span>Frequently Asked Questions</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[#171717] mb-4">
+        Everything you need to know.
+      </h2>
+      <p class="text-sm sm:text-base text-[#4d4d4d]">
+        Clear answers about our free invoice generator, privacy, and export options.
+      </p>
+    </div>
+
+    <!-- Accordion List -->
+    <div class="space-y-3">
+      {faqs.map((faq, index) => (
+        <details class="group bg-[#fafafa] rounded-2xl border border-[#ebebeb] p-5 transition-all open:bg-white open:shadow-level-2 open:border-[#171717]/20">
+          <summary class="flex items-center justify-between text-sm sm:text-base font-semibold text-[#171717] cursor-pointer list-none select-none">
+            <span>{faq.q}</span>
+            <span class="w-6 h-6 rounded-full bg-white border border-[#ebebeb] flex items-center justify-center text-xs group-open:rotate-180 transition-transform text-[#4d4d4d] shrink-0 ml-4">
+              ↓
+            </span>
+          </summary>
+          <div class="pt-3 text-xs sm:text-sm text-[#4d4d4d] leading-relaxed border-t border-[#ebebeb]/60 mt-3">
+            {faq.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

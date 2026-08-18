@@ -1,0 +1,67 @@
+---
+// TemplatesShowcase.astro - Showcase of 5 Modern Invoice Styles
+import { THEME_PRESETS } from '../../scripts/invoice-state.js';
+---
+
+<section id="templates-section" class="py-16 md:py-24 border-t border-[#ebebeb] bg-[#fafafa]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#ebebeb] text-[11px] font-mono text-[#171717] mb-3">
+        <span>Designer Templates</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[#171717] mb-4">
+        Curated invoice templates for every brand.
+      </h2>
+      <p class="text-sm sm:text-base text-[#4d4d4d] leading-relaxed">
+        Choose from clean monochrome minimalism to high-contrast executive styles. Switch instantly with zero data loss.
+      </p>
+    </div>
+
+    <!-- Template Grid Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {THEME_PRESETS.map((theme, i) => (
+        <div class="bg-white rounded-2xl border border-[#ebebeb] p-5 shadow-level-2 hover:shadow-level-4 hover:border-[#171717] transition-all flex flex-col justify-between group">
+          <div class="space-y-3 mb-4">
+            <!-- Simulated Miniature Invoice Sheet Preview -->
+            <div class="aspect-4/3 rounded-xl bg-[#fafafa] border border-[#ebebeb] p-4 flex flex-col justify-between overflow-hidden shadow-2xs group-hover:scale-[1.02] transition-transform">
+              <div class="flex items-center justify-between pb-2 border-b border-[#ebebeb]">
+                <div class="w-12 h-3 rounded bg-[#171717]/20"></div>
+                <div class="w-16 h-3 rounded" style={`background-color: ${theme.previewColor};`}></div>
+              </div>
+              <div class="space-y-1.5 py-2">
+                <div class="w-full h-2 rounded bg-black/10"></div>
+                <div class="w-3/4 h-2 rounded bg-black/5"></div>
+                <div class="w-1/2 h-2 rounded bg-black/5"></div>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-[#ebebeb]">
+                <div class="w-10 h-2.5 rounded bg-black/10"></div>
+                <div class="w-12 h-3 rounded font-mono font-bold" style={`color: ${theme.previewColor};`}>$$$</div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-bold text-[#171717]">{theme.name}</h3>
+                <span class="text-[10px] font-mono text-[#888888] px-1.5 py-0.5 rounded bg-[#f5f5f5]">{theme.font}</span>
+              </div>
+              <p class="text-xs text-[#4d4d4d] mt-1">
+                {i === 0 && "Sleek, hairline-separated layout inspired by modern developer platforms."}
+                {i === 1 && "Bold slate header band with clean corporate tabular hierarchy."}
+                {i === 2 && "Monospace typography with cyber-clean accent lines for tech founders."}
+                {i === 3 && "High contrast black and violet elements for creative agencies."}
+                {i === 4 && "Compact receipt format optimized for fast billing and retail services."}
+              </p>
+            </div>
+          </div>
+
+          <a
+            href="#generator-section"
+            class="w-full py-2 px-3 text-xs font-medium text-center text-[#171717] bg-[#fafafa] hover:bg-[#171717] hover:text-white rounded-xl border border-[#ebebeb] transition-all"
+          >
+            Use this Template →
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

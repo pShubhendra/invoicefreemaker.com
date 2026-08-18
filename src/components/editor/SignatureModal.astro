@@ -1,0 +1,154 @@
+---
+// SignatureModal.astro - Advanced 3-in-1 Digital Signature Studio (Draw, Type, Upload)
+---
+
+<div id="signature-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-xs p-4 no-print">
+  <div class="bg-white rounded-2xl border border-[#ebebeb] shadow-level-5 max-w-lg w-full overflow-hidden flex flex-col max-h-[90vh] animate-scale-in">
+    <!-- Modal Header -->
+    <div class="px-6 py-4 border-b border-[#ebebeb] flex items-center justify-between bg-[#fafafa]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-[#171717] text-white flex items-center justify-center">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-[#171717]">Digital Signature Studio</h3>
+          <p class="text-xs text-[#888888]">Add your legal signature to the invoice</p>
+        </div>
+      </div>
+      <button id="btn-close-sig-modal" type="button" class="text-[#888888] hover:text-[#171717] p-1.5 rounded-lg hover:bg-[#ebebeb] transition-colors cursor-pointer">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+
+    <!-- Mode Selector Tabs -->
+    <div class="flex border-b border-[#ebebeb] bg-[#f5f5f5] p-1 gap-1">
+      <button id="sig-tab-draw" type="button" class="sig-mode-tab flex-1 py-2 text-xs font-medium rounded-lg text-[#171717] bg-white shadow-xs transition-all cursor-pointer">
+        Draw Signature
+      </button>
+      <button id="sig-tab-type" type="button" class="sig-mode-tab flex-1 py-2 text-xs font-medium rounded-lg text-[#4d4d4d] hover:text-[#171717] transition-all cursor-pointer">
+        Type Cursive
+      </button>
+      <button id="sig-tab-upload" type="button" class="sig-mode-tab flex-1 py-2 text-xs font-medium rounded-lg text-[#4d4d4d] hover:text-[#171717] transition-all cursor-pointer">
+        Upload Image
+      </button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="p-6 overflow-y-auto space-y-4">
+      <!-- 1. DRAW TAB CONTENT -->
+      <div id="sig-content-draw" class="sig-tab-content space-y-3">
+        <div class="relative border-2 border-dashed border-[#ebebeb] rounded-xl bg-[#fafafa] overflow-hidden">
+          <canvas id="sig-canvas" width="460" height="180" class="w-full h-[180px] cursor-crosshair touch-none bg-white"></canvas>
+          <div class="absolute bottom-2 left-3 text-[11px] text-[#a1a1a1] pointer-events-none font-mono">Sign above line</div>
+        </div>
+        <div class="flex items-center justify-between text-xs">
+          <div class="flex items-center gap-2">
+            <span class="text-[#888888]">Pen Color:</span>
+            <div class="flex gap-1.5">
+              <button type="button" data-color="#171717" class="sig-color-btn w-5 h-5 rounded-full bg-[#171717] ring-2 ring-offset-1 ring-[#171717] cursor-pointer"></button>
+              <button type="button" data-color="#0070f3" class="sig-color-btn w-5 h-5 rounded-full bg-[#0070f3] cursor-pointer"></button>
+              <button type="button" data-color="#059669" class="sig-color-btn w-5 h-5 rounded-full bg-[#059669] cursor-pointer"></button>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="btn-undo-sig" type="button" class="px-2.5 py-1 text-xs text-[#4d4d4d] hover:text-[#171717] bg-[#f5f5f5] rounded-md hover:bg-[#ebebeb] transition-colors cursor-pointer">Undo</button>
+            <button id="btn-clear-sig" type="button" class="px-2.5 py-1 text-xs text-red-600 hover:text-red-700 bg-red-50 rounded-md hover:bg-red-100 transition-colors cursor-pointer">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. TYPE TAB CONTENT -->
+      <div id="sig-content-type" class="sig-tab-content hidden space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-[#4d4d4d] mb-1.5">Your Full Name</label>
+          <input
+            id="sig-typed-input"
+            type="text"
+            placeholder="e.g. Alex Morgan"
+            class="w-full px-3 py-2 text-sm rounded-lg border border-[#ebebeb] bg-white text-[#171717] focus:outline-hidden focus:border-[#171717] focus:ring-1 focus:ring-[#171717]"
+          />
+        </div>
+        
+        <div class="space-y-2">
+          <label class="block text-xs font-medium text-[#4d4d4d]">Select Signature Font Style</label>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="border border-[#ebebeb] rounded-xl p-3 cursor-pointer hover:border-[#171717] transition-all flex flex-col items-center justify-center bg-white sig-font-card active-font ring-2 ring-[#171717]">
+              <input type="radio" name="sig-font-choice" value="Caveat" checked class="hidden" />
+              <span id="preview-font-1" class="text-2xl text-[#171717] font-['Caveat'] py-1">Alex Morgan</span>
+              <span class="text-[10px] text-[#888888] font-mono mt-1">Natural Flow</span>
+            </label>
+            <label class="border border-[#ebebeb] rounded-xl p-3 cursor-pointer hover:border-[#171717] transition-all flex flex-col items-center justify-center bg-white sig-font-card">
+              <input type="radio" name="sig-font-choice" value="Dancing Script" class="hidden" />
+              <span id="preview-font-2" class="text-xl text-[#171717] font-['Dancing_Script'] py-1">Alex Morgan</span>
+              <span class="text-[10px] text-[#888888] font-mono mt-1">Executive Script</span>
+            </label>
+            <label class="border border-[#ebebeb] rounded-xl p-3 cursor-pointer hover:border-[#171717] transition-all flex flex-col items-center justify-center bg-white sig-font-card">
+              <input type="radio" name="sig-font-choice" value="Sacramento" class="hidden" />
+              <span id="preview-font-3" class="text-2xl text-[#171717] font-['Sacramento'] py-1">Alex Morgan</span>
+              <span class="text-[10px] text-[#888888] font-mono mt-1">Elegant Quill</span>
+            </label>
+            <label class="border border-[#ebebeb] rounded-xl p-3 cursor-pointer hover:border-[#171717] transition-all flex flex-col items-center justify-center bg-white sig-font-card">
+              <input type="radio" name="sig-font-choice" value="Great Vibes" class="hidden" />
+              <span id="preview-font-4" class="text-xl text-[#171717] font-['Great_Vibes'] py-1">Alex Morgan</span>
+              <span class="text-[10px] text-[#888888] font-mono mt-1">Classic Formal</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. UPLOAD TAB CONTENT -->
+      <div id="sig-content-upload" class="sig-tab-content hidden space-y-3">
+        <label class="border-2 border-dashed border-[#ebebeb] rounded-xl p-6 flex flex-col items-center justify-center bg-[#fafafa] hover:bg-white hover:border-[#171717] transition-all cursor-pointer">
+          <input id="sig-file-input" type="file" accept="image/png, image/jpeg, image/webp" class="hidden" />
+          <svg class="w-8 h-8 text-[#888888] mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span class="text-xs font-medium text-[#171717]">Upload signature image (PNG, JPG)</span>
+          <span class="text-[11px] text-[#888888] mt-0.5">Transparent PNG works best</span>
+        </label>
+        <div id="sig-upload-preview-wrap" class="hidden text-center p-3 bg-[#fafafa] rounded-xl border border-[#ebebeb]">
+          <img id="sig-upload-preview" src="" alt="Uploaded signature" class="max-h-24 mx-auto object-contain" />
+        </div>
+      </div>
+
+      <!-- Signer Details -->
+      <div class="grid grid-cols-2 gap-3 pt-2 border-t border-[#ebebeb]">
+        <div>
+          <label class="block text-[11px] font-medium text-[#4d4d4d] mb-1">Signer Name</label>
+          <input
+            id="sig-signer-name"
+            type="text"
+            placeholder="Alex Morgan"
+            class="w-full px-3 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-white text-[#171717] focus:outline-hidden focus:border-[#171717]"
+          />
+        </div>
+        <div>
+          <label class="block text-[11px] font-medium text-[#4d4d4d] mb-1">Designation / Title</label>
+          <input
+            id="sig-signer-title"
+            type="text"
+            placeholder="Managing Director"
+            class="w-full px-3 py-1.5 text-xs rounded-lg border border-[#ebebeb] bg-white text-[#171717] focus:outline-hidden focus:border-[#171717]"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="px-6 py-4 border-t border-[#ebebeb] bg-[#fafafa] flex items-center justify-between">
+      <button id="btn-remove-sig-from-inv" type="button" class="text-xs text-red-600 hover:text-red-700 font-medium cursor-pointer">
+        Remove Signature
+      </button>
+      <div class="flex items-center gap-2">
+        <button id="btn-cancel-sig" type="button" class="px-4 py-2 text-xs font-medium text-[#4d4d4d] hover:text-[#171717] bg-white border border-[#ebebeb] rounded-full hover:bg-[#f5f5f5] transition-colors cursor-pointer">
+          Cancel
+        </button>
+        <button id="btn-apply-sig" type="button" class="px-5 py-2 text-xs font-medium text-white bg-[#171717] hover:bg-black rounded-full shadow-sm hover:shadow transition-all cursor-pointer">
+          Apply Signature
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

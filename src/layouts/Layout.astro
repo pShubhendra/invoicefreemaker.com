@@ -1,0 +1,82 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Invoice Free Maker - 100% Free Online Invoice Generator with Digital Signature & Instant PDF",
+  description = "Create, edit, sign, and download professional invoices in seconds for free. Features signature pad, payment QR codes, multiple currencies, tax calculation, and instant vector PDF export. No sign-up required.",
+  canonicalUrl = "https://invoicefreemaker.com",
+  ogImage = "https://invoicefreemaker.com/og-image.png"
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="invoice generator, free invoice maker, online bill generator, invoice with signature, pdf invoice generator, gst invoice, upi qr invoice, invoice templates, refrens alternative" />
+    <meta name="author" content="Invoice Free Maker" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Google Fonts: Geist, Geist Mono, Inter & Calligraphy fonts for Signatures -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=Geist+Mono:wght@300;400;500;600&family=Geist:wght@300;400;500;600;700&family=Great+Vibes&family=Inter:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet" />
+
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Invoice Free Maker",
+      "url": "https://invoicefreemaker.com",
+      "description": description,
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "100% Free Invoice Generation",
+        "Digital Signature Pad (Draw, Type, Upload)",
+        "Instant Payment QR Code (UPI, SEPA, PayPal)",
+        "Multi-Currency & Smart Tax Engine",
+        "Offline Local Storage Persistence",
+        "Vector PDF Export"
+      ]
+    })} />
+  </head>
+  <body class="min-h-screen bg-[#fafafa] text-[#171717] antialiased flex flex-col selection:bg-[#171717] selection:text-white">
+    <slot />
+  </body>
+</html>

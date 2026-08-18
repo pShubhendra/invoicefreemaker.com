@@ -1,0 +1,80 @@
+---
+// Footer.astro - Clean Footer with Categorized Links and Legal Badges
+---
+
+<footer class="border-t border-[#ebebeb] bg-white no-print">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+      <!-- Brand & Mission Column -->
+      <div class="space-y-4 md:col-span-1">
+        <a href="/" class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-[#171717] flex items-center justify-center text-white shadow-xs">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <span class="font-bold text-base tracking-tight text-[#171717]">Invoice Free Maker</span>
+        </a>
+        <p class="text-xs text-[#4d4d4d] leading-relaxed">
+          The fastest, 100% free online invoice maker with digital signatures, instant payment QR codes, and high-definition vector PDF export.
+        </p>
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-[#fafafa] border border-[#ebebeb] text-[#4d4d4d]">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>100% Client-Side Private</span>
+        </div>
+      </div>
+
+      <!-- Document Tools Column -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-[#171717] font-mono">Document Formats</h4>
+        <ul class="space-y-2 text-xs text-[#4d4d4d]">
+          <li><a href="#generator-section" class="hover:text-[#171717] transition-colors">GST / Tax Invoice Maker</a></li>
+          <li><a href="#generator-section" class="hover:text-[#171717] transition-colors">Proforma Invoice Generator</a></li>
+          <li><a href="#generator-section" class="hover:text-[#171717] transition-colors">Quotation & Estimate Maker</a></li>
+          <li><a href="#generator-section" class="hover:text-[#171717] transition-colors">Payment Receipt Voucher</a></li>
+          <li><a href="#generator-section" class="hover:text-[#171717] transition-colors">Purchase Order Generator</a></li>
+        </ul>
+      </div>
+
+      <!-- Studio Tools Column -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-[#171717] font-mono">Special Features</h4>
+        <ul class="space-y-2 text-xs text-[#4d4d4d]">
+          <li><a href="#generator-section" class="hover:text-[#171717] transition-colors">Digital Signature Pad (Draw & Type)</a></li>
+          <li><a href="#generator-section" class="hover:text-[#171717] transition-colors">UPI & PayPal QR Code Generator</a></li>
+          <li><a href="#generator-section" class="hover:text-[#171717] transition-colors">160+ Multi-Currency Engine</a></li>
+          <li><a href="#generator-section" class="hover:text-[#171717] transition-colors">Number to English Words Converter</a></li>
+          <li><a href="#generator-section" class="hover:text-[#171717] transition-colors">Browser Invoices Vault & Backup</a></li>
+        </ul>
+      </div>
+
+      <!-- Comparison & Guides -->
+      <div class="space-y-3">
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-[#171717] font-mono">Compare & Guides</h4>
+        <ul class="space-y-2 text-xs text-[#4d4d4d]">
+          <li><a href="#comparison-section" class="hover:text-[#171717] transition-colors">Invoice Free Maker vs Refrens</a></li>
+          <li><a href="#comparison-section" class="hover:text-[#171717] transition-colors">Why Invoicing Software vs Excel</a></li>
+          <li><a href="#faq-section" class="hover:text-[#171717] transition-colors">How to Add Digital Signatures</a></li>
+          <li><a href="#faq-section" class="hover:text-[#171717] transition-colors">GST Invoicing Rules Explained</a></li>
+          <li><a href="#faq-section" class="hover:text-[#171717] transition-colors">Privacy & Data Security</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Attribution -->
+    <div class="pt-8 border-t border-[#ebebeb] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#888888]">
+      <p>© {new Date().getFullYear()} Invoice Free Maker (<a href="https://invoicefreemaker.com" class="hover:underline text-[#171717]">invoicefreemaker.com</a>). All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <span>No Sign-Up Required</span>
+        <span>·</span>
+        <span>No Watermark</span>
+        <span>·</span>
+        <span>100% Free Forever</span>
+      </div>
+    </div>
+  </div>
+</footer>

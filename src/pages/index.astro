@@ -1,0 +1,29 @@
+---
+// index.astro - Home page of Invoice Free Maker (invoicefreemaker.com)
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import InvoiceEditor from '../components/InvoiceEditor.astro';
+import ComparisonTable from '../components/features/ComparisonTable.astro';
+import FeatureGrid from '../components/features/FeatureGrid.astro';
+import TemplatesShowcase from '../components/features/TemplatesShowcase.astro';
+import FAQ from '../components/features/FAQ.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Invoice Free Maker - 100% Free Online Invoice Generator with Digital Signature & Payment QR"
+  description="Create, customize, digitally sign, and download professional vector PDF invoices instantly. Includes signature pad, UPI/PayPal QR code stamps, multi-currency & tax engine. 100% free with no sign-up or watermarks."
+  canonicalUrl="https://invoicefreemaker.com"
+>
+  <Header />
+  <main class="flex-1">
+    <Hero />
+    <InvoiceEditor />
+    <ComparisonTable />
+    <FeatureGrid />
+    <TemplatesShowcase />
+    <FAQ />
+  </main>
+  <Footer />
+</Layout>
