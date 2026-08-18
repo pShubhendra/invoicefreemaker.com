@@ -4,11 +4,11 @@ Build a modern, high-performance, privacy-first invoice maker web application na
 
 ---
 
-## Competitor Analysis & Ideas to Outperform Refrens.com
+## Competitor Analysis & Ideas to Outperform Other Invoice Tools
 
-Refrens is a popular invoicing & SME platform, but it has significant pain points for freelancers, small business owners, and agencies. Here is how **Invoice Free Maker** will be significantly better:
+Other invoice tools are popular invoicing & SME platforms, but they have significant pain points for freelancers, small business owners, and agencies. Here is how **Invoice Free Maker** will be significantly better:
 
-| Feature / Area | Refrens.com | Invoice Free Maker (Our Advantage) |
+| Feature / Area | Other Invoice Tools | Invoice Free Maker (Our Advantage) |
 | :--- | :--- | :--- |
 | **Friction & Paywalls** | Forces registration, limits free invoice quotas, pushes upsells to CRM/accounting. | **100% Free & Frictionless**: No sign-up required. Instant start directly on the landing page, unlimited downloads with zero watermarks. |
 | **Editing Experience** | Standard web form with disjointed preview update. | **Live WYSIWYG In-Place Canvas**: Direct on-canvas click-to-edit typography paired with a sleek sidebar for layout controls. |
@@ -59,7 +59,7 @@ d:/Dev/Invoice gen/
 │   │   │   ├── InvoiceHistoryModal.astro # Saved invoices list, status tags, search & load
 │   │   │   └── ClientBookModal.astro    # Saved clients & quick auto-fill
 │   │   ├── features/
-│   │   │   ├── ComparisonTable.astro # Invoice Free Maker vs Refrens vs Excel/Word
+│   │   │   ├── ComparisonTable.astro # Invoice Free Maker vs Other Tools vs Excel/Word
 │   │   │   ├── FeatureGrid.astro    # Key highlights & capabilities
 │   │   │   ├── TemplatesShowcase.astro # Visual preview of available invoice styles
 │   │   │   └── FAQ.astro            # Frequently asked questions with structured schema
@@ -133,7 +133,7 @@ d:/Dev/Invoice gen/
 
 ### Phase 6: Marketing Sections, SEO & Responsive Polish
 - **Hero Section**: Eyebrow badge, bold headline with mesh gradient backdrop, fast action buttons.
-- **Competitor Comparison Table**: Head-to-head comparison highlighting zero-cost, no sign-up, signature studio, and privacy over Refrens and traditional templates.
+- **Competitor Comparison Table**: Head-to-head comparison highlighting zero-cost, no sign-up, signature studio, and privacy over other invoice tools and traditional templates.
 - **Template Gallery & Use Cases**: Freelancers, Small Businesses, Contractors, Consultants, Agencies.
 - **FAQ & Structured Data**: Complete Schema.org `WebApplication` and `FAQPage` metadata for high SEO ranking on `invoicefreemaker.com`.
 - Mobile responsive layout optimization and keyboard shortcuts.
