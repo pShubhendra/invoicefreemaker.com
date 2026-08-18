@@ -11,6 +11,18 @@ export async function exportInvoiceToPDF(elementId = 'invoice-paper', filename =
   const originalShadow = element.style.boxShadow;
   element.style.boxShadow = 'none';
 
+  // Hide the logo box when no company logo is uploaded
+  const logoWraps = element.querySelectorAll('#logo-display-wrap');
+  const hiddenLogos = [];
+  logoWraps.forEach(wrap => {
+    const img = wrap.querySelector('#sender-logo-img');
+    const hasLogo = img && img.getAttribute('src') && !img.classList.contains('hidden');
+    if (!hasLogo) {
+      hiddenLogos.push(wrap);
+      wrap.style.display = 'none';
+    }
+  });
+
   try {
     const canvas = await html2canvas(element, {
       scale: 2,
@@ -58,6 +70,8 @@ export async function exportInvoiceToPDF(elementId = 'invoice-paper', filename =
     // Fallback directly to print without annoying alerts
     window.print();
     return false;
+  } finally {
+    hiddenLogos.forEach(wrap => { wrap.style.display = ''; });
   }
 }
 
@@ -67,6 +81,18 @@ export async function exportInvoiceToPNG(elementId = 'invoice-paper', filename =
 
   const originalShadow = element.style.boxShadow;
   element.style.boxShadow = 'none';
+
+  // Hide the logo box when no company logo is uploaded
+  const logoWraps = element.querySelectorAll('#logo-display-wrap');
+  const hiddenLogos = [];
+  logoWraps.forEach(wrap => {
+    const img = wrap.querySelector('#sender-logo-img');
+    const hasLogo = img && img.getAttribute('src') && !img.classList.contains('hidden');
+    if (!hasLogo) {
+      hiddenLogos.push(wrap);
+      wrap.style.display = 'none';
+    }
+  });
 
   try {
     const canvas = await html2canvas(element, {
@@ -88,6 +114,8 @@ export async function exportInvoiceToPNG(elementId = 'invoice-paper', filename =
     element.style.boxShadow = originalShadow;
     console.error('PNG Export Error:', err);
     window.print();
+  } finally {
+    hiddenLogos.forEach(wrap => { wrap.style.display = ''; });
   }
 }
 

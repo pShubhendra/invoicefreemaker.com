@@ -227,6 +227,7 @@ function renderHeader(sym) {
   const removeLogo = document.getElementById('btn-remove-logo');
   if (invoice.sender?.logo) {
     logoImg?.setAttribute('src', invoice.sender.logo);
+    logoImg?.setAttribute('alt', `${invoice.sender?.name || 'Company'} logo`);
     logoImg?.classList.remove('hidden');
     logoPlh?.classList.add('hidden');
     removeLogo?.classList.remove('hidden');
@@ -588,7 +589,6 @@ function bindEvents() {
     finally { if (btn && orig) btn.innerHTML = orig; }
   };
   document.getElementById('btn-download-pdf')?.addEventListener('click', handlePDF);
-  document.getElementById('btn-header-pdf')?.addEventListener('click', handlePDF);
   document.getElementById('btn-print-invoice')?.addEventListener('click', e => { e.preventDefault(); window.print(); });
   document.getElementById('btn-download-png')?.addEventListener('click', e => {
     e.preventDefault(); exportInvoiceToPNG('invoice-paper', `${invoice.invoiceNumber || 'Invoice'}.png`);
