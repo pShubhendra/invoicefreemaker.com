@@ -28,16 +28,16 @@ const faqs = [
 ];
 ---
 
-<section id="faq-section" class="py-16 md:py-24 border-t border-slate-200 bg-slate-50">
+<section id="faq-section" class="py-16 md:py-24 border-t border-slate-200 bg-slate-50 dark:border-neutral-800 dark:bg-[#0d0d0d]">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-14">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-[11px] font-semibold text-slate-700 mb-3 shadow-sm">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-[11px] font-semibold text-slate-700 mb-3 shadow-sm dark:bg-[#111] dark:border-neutral-800 dark:text-neutral-300">
         <span>Frequently Asked Questions</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mb-4">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mb-4 dark:text-white">
         Everything you need to know.
       </h2>
-      <p class="text-sm sm:text-base text-slate-500">
+      <p class="text-sm sm:text-base text-slate-500 dark:text-neutral-400">
         Clear answers about our free invoice generator, privacy, and export options.
       </p>
     </div>
@@ -45,14 +45,14 @@ const faqs = [
     <!-- Accordion List -->
     <div class="space-y-3">
       {faqs.map((faq, index) => (
-        <details class="group bg-white rounded-2xl border border-slate-200 p-5 transition-all open:shadow-level-2 open:border-[#171717]">
-          <summary class="flex items-center justify-between text-sm sm:text-base font-semibold text-slate-900 cursor-pointer list-none select-none">
+        <details class="group bg-white rounded-2xl border border-slate-200 p-5 transition-all open:shadow-level-2 open:border-[#171717] dark:bg-[#111] dark:border-neutral-800 dark:open:border-neutral-500">
+          <summary class="flex items-center justify-between text-sm sm:text-base font-semibold text-slate-900 cursor-pointer list-none select-none dark:text-neutral-100">
             <span>{faq.q}</span>
-            <span class="w-6 h-6 rounded-full bg-[#f5f5f5] border border-[#ebebeb] flex items-center justify-center text-xs group-open:rotate-180 transition-transform text-[#171717] shrink-0 ml-4">
+            <span class="w-6 h-6 rounded-full bg-[#f5f5f5] border border-[#ebebeb] flex items-center justify-center text-xs group-open:rotate-180 transition-transform text-[#171717] shrink-0 ml-4 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-200">
               ↓
             </span>
           </summary>
-          <div class="pt-3 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-100 mt-3">
+          <div class="pt-3 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-100 mt-3 dark:text-neutral-400 dark:border-neutral-800">
             {faq.a}
           </div>
         </details>

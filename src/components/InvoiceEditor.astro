@@ -12,27 +12,27 @@ import ItemCatalogModal from './editor/ItemCatalogModal.astro';
 <section id="generator-section" class="py-8 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
   <div class="mb-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 no-print">
     <div>
-      <span class="px-2 py-0.5 text-[10px] font-mono font-medium uppercase tracking-wider bg-black text-white rounded">Live Studio</span>
-      <h2 class="text-2xl font-bold tracking-tight text-[#171717] mt-1">Interactive Invoice Generator</h2>
+      <span class="px-2 py-0.5 text-[10px] font-mono font-medium uppercase tracking-wider bg-black text-white rounded dark:bg-white dark:text-black">Live Studio</span>
+      <h2 class="text-2xl font-bold tracking-tight text-[#171717] mt-1 dark:text-neutral-100">Interactive Invoice Generator</h2>
     </div>
     <div class="flex items-center gap-2 flex-wrap">
-      <button id="quick-btn-companies" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5">
+      <button id="quick-btn-companies" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5 dark:bg-[#111] dark:hover:bg-[#1a1a1a] dark:border-neutral-800 dark:text-neutral-200">
         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
         My Companies
       </button>
-      <button id="quick-btn-items" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5">
+      <button id="quick-btn-items" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5 dark:bg-[#111] dark:hover:bg-[#1a1a1a] dark:border-neutral-800 dark:text-neutral-200">
         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
         Item Catalog
       </button>
-      <button id="quick-btn-clients" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5">
+      <button id="quick-btn-clients" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5 dark:bg-[#111] dark:hover:bg-[#1a1a1a] dark:border-neutral-800 dark:text-neutral-200">
         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
         Address Book
       </button>
-      <button id="quick-btn-sig" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5">
+      <button id="quick-btn-sig" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5 dark:bg-[#111] dark:hover:bg-[#1a1a1a] dark:border-neutral-800 dark:text-neutral-200">
         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
         Signature
       </button>
-      <button id="quick-btn-qr" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5">
+      <button id="quick-btn-qr" type="button" class="px-3 py-1.5 text-xs font-medium bg-white hover:bg-[#fafafa] border border-[#ebebeb] rounded-full shadow-sm cursor-pointer flex items-center gap-1.5 dark:bg-[#111] dark:hover:bg-[#1a1a1a] dark:border-neutral-800 dark:text-neutral-200">
         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" /></svg>
         Payment QR
       </button>
@@ -293,6 +293,29 @@ function renderLineItems(sym, totals) {
     `;
 
     // Inline events
+    const amountCell = tr.children[7];
+
+    const updateRowAmount = () => {
+      const it = invoice.items[idx];
+      const q = Number(it.quantity) || 0;
+      const r = Number(it.rate) || 0;
+      let lt = q * r;
+      if (showDisc && it.discount) {
+        const d = Number(it.discount);
+        lt -= it.discountType === 'fixed' ? d : (lt * d / 100);
+      }
+      lt = Math.max(0, lt);
+      amountCell.textContent = `${sym}${lt.toFixed(2)}`;
+    };
+
+    const refreshTotals = () => {
+      const totals = calculateTotals(invoice);
+      const s = invoice.currency?.symbol || '₹';
+      renderTotals(totals, s);
+      renderQR(totals.grandTotal);
+      saveCurrentInvoiceToStorage(invoice);
+    };
+
     tr.querySelector('.item-desc')?.addEventListener('blur', e => {
       invoice.items[idx].description = e.target.textContent.trim();
       saveCurrentInvoiceToStorage(invoice);
@@ -307,15 +330,18 @@ function renderLineItems(sym, totals) {
     });
     tr.querySelector('.item-qty')?.addEventListener('input', e => {
       invoice.items[idx].quantity = parseFloat(e.target.value) || 0;
-      renderAll();
+      updateRowAmount();
+      refreshTotals();
     });
     tr.querySelector('.item-rate')?.addEventListener('input', e => {
       invoice.items[idx].rate = parseFloat(e.target.value) || 0;
-      renderAll();
+      updateRowAmount();
+      refreshTotals();
     });
     tr.querySelector('.item-disc')?.addEventListener('input', e => {
       invoice.items[idx].discount = parseFloat(e.target.value) || 0;
-      renderAll();
+      updateRowAmount();
+      refreshTotals();
     });
     tr.querySelector('.btn-del-row')?.addEventListener('click', e => {
       e.stopPropagation();
@@ -374,6 +400,13 @@ function renderTotals(totals, sym) {
     set('sum-shipping', `${sym}${totals.shipping.toFixed(2)}`);
   } else {
     show('sum-row-shipping', false);
+  }
+
+  if (invoice.roundOff && totals.roundOffAdjustment !== 0) {
+    show('sum-row-roundoff', true);
+    set('sum-roundoff', `${totals.roundOffAdjustment > 0 ? '' : '-'}${sym}${Math.abs(totals.roundOffAdjustment).toFixed(2)}`);
+  } else {
+    show('sum-row-roundoff', false);
   }
 
   set('inv-amount-words', totals.amountInWords);
@@ -480,6 +513,7 @@ function syncSidebar() {
     btn.classList.toggle('ring-2', active);
     btn.classList.toggle('ring-offset-2', active);
     btn.classList.toggle('ring-[#171717]', active);
+    btn.classList.toggle('dark:ring-neutral-200', active);
     btn.classList.toggle('scale-110', active);
   });
 
@@ -603,7 +637,11 @@ function bindEvents() {
     const orig = btn?.innerHTML;
     if (btn) btn.innerHTML = '<span>Generating...</span>';
     try {
-      const fname = `${invoice.invoiceNumber || 'Invoice'}_${(invoice.client?.name || 'Client').replace(/\s+/g, '_')}.pdf`;
+      const issueDate = invoice.issueDate || '';
+      const datePart = issueDate ? issueDate.split('-').reverse().join('-') : 'NoDate';
+      const invPart = (invoice.invoiceNumber || 'Invoice').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+      const compPart = (invoice.sender?.name || 'Company').replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+      const fname = `INV-${datePart}-${invPart}_${compPart}.pdf`;
       await exportInvoiceToPDF('invoice-paper', fname);
       saveInvoiceToHistory(invoice);
     } catch(e) { console.error(e); }
@@ -782,9 +820,12 @@ function bindSigStudio() {
   const switchTab = name => {
     sigTab = name;
     Object.entries(tabs).forEach(([k, v]) => {
-      document.getElementById(v.tab)?.classList.toggle('bg-white', k === name);
-      document.getElementById(v.tab)?.classList.toggle('text-[#171717]', k === name);
-      document.getElementById(v.tab)?.classList.toggle('shadow-xs', k === name);
+      const tabEl = document.getElementById(v.tab);
+      tabEl?.classList.toggle('bg-white', k === name);
+      tabEl?.classList.toggle('text-[#171717]', k === name);
+      tabEl?.classList.toggle('dark:bg-[#111]', k === name);
+      tabEl?.classList.toggle('dark:text-neutral-100', k === name);
+      tabEl?.classList.toggle('shadow-xs', k === name);
       document.getElementById(v.content)?.classList.toggle('hidden', k !== name);
     });
   };
@@ -865,9 +906,12 @@ function bindQRStudio() {
     document.getElementById(`qr-tab-${t}`)?.addEventListener('click', () => {
       qrTab = t;
       qrTabs.forEach(k => {
-        document.getElementById(`qr-tab-${k}`)?.classList.toggle('bg-white', k===t);
-        document.getElementById(`qr-tab-${k}`)?.classList.toggle('text-[#171717]', k===t);
-        document.getElementById(`qr-tab-${k}`)?.classList.toggle('shadow-xs', k===t);
+        const tabEl = document.getElementById(`qr-tab-${k}`);
+        tabEl?.classList.toggle('bg-white', k===t);
+        tabEl?.classList.toggle('text-[#171717]', k===t);
+        tabEl?.classList.toggle('dark:bg-[#111]', k===t);
+        tabEl?.classList.toggle('dark:text-neutral-100', k===t);
+        tabEl?.classList.toggle('shadow-xs', k===t);
         document.getElementById(`qr-content-${k}`)?.classList.toggle('hidden', k!==t);
       });
       updateQRPreview();
@@ -908,21 +952,21 @@ function renderHistoryList(q = '') {
   const history = getInvoiceHistory();
   const filtered = q ? history.filter(h => h.invoiceNumber?.toLowerCase().includes(q.toLowerCase()) || h.clientName?.toLowerCase().includes(q.toLowerCase())) : history;
   if (summary) summary.textContent = `${history.length} invoices stored in your browser`;
-  if (!filtered.length) { container.innerHTML = '<p class="text-center text-[#888888] text-xs py-8">No saved invoices found.</p>'; return; }
+  if (!filtered.length) { container.innerHTML = '<p class="text-center text-[#888888] text-xs py-8 dark:text-neutral-500">No saved invoices found.</p>'; return; }
 
   container.innerHTML = filtered.map(h => `
-    <div class="p-3.5 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-center justify-between gap-3">
+    <div class="p-3.5 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-center justify-between gap-3 dark:bg-neutral-800/50 dark:hover:bg-neutral-800 dark:border-neutral-700">
       <div class="space-y-0.5 flex-1 min-w-0">
         <div class="flex items-center gap-2 flex-wrap">
-          <span class="font-bold text-xs font-mono text-[#171717] truncate">${escHtml(h.invoiceNumber)}</span>
-          <span class="px-1.5 text-[10px] rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">${h.status || 'Draft'}</span>
+          <span class="font-bold text-xs font-mono text-[#171717] truncate dark:text-neutral-100">${escHtml(h.invoiceNumber)}</span>
+          <span class="px-1.5 text-[10px] rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-400 dark:border-emerald-900">${h.status || 'Draft'}</span>
         </div>
-        <p class="text-xs text-[#4d4d4d] truncate">${escHtml(h.clientName)}</p>
+        <p class="text-xs text-[#4d4d4d] truncate dark:text-neutral-400">${escHtml(h.clientName)}</p>
       </div>
       <div class="flex items-center gap-2 shrink-0">
-        <span class="text-sm font-bold font-mono">${h.currencySymbol || '₹'}${Number(h.grandTotal).toFixed(2)}</span>
-        <button data-load="${h.id}" class="btn-load px-2.5 py-1 text-xs font-medium text-white bg-[#171717] rounded-lg cursor-pointer">Load</button>
-        <button data-dup="${h.id}" class="btn-dup px-2.5 py-1 text-xs font-medium text-[#171717] bg-[#f5f5f5] border border-[#ebebeb] rounded-lg cursor-pointer">Dupe</button>
+        <span class="text-sm font-bold font-mono dark:text-neutral-200">${h.currencySymbol || '₹'}${Number(h.grandTotal).toFixed(2)}</span>
+        <button data-load="${h.id}" class="btn-load px-2.5 py-1 text-xs font-medium text-white bg-[#171717] rounded-lg cursor-pointer dark:bg-white dark:text-[#171717]">Load</button>
+        <button data-dup="${h.id}" class="btn-dup px-2.5 py-1 text-xs font-medium text-[#171717] bg-[#f5f5f5] border border-[#ebebeb] rounded-lg cursor-pointer dark:text-neutral-200 dark:bg-neutral-700 dark:border-neutral-600">Dupe</button>
         <button data-del="${h.id}" class="btn-del text-red-500 hover:text-red-700 font-bold p-1 cursor-pointer">×</button>
       </div>
     </div>
@@ -948,16 +992,16 @@ function renderClientList() {
   const container = document.getElementById('client-book-list');
   if (!container) return;
   const clients = getClientsVault();
-  if (!clients.length) { container.innerHTML = '<p class="text-center text-xs text-[#888888] py-8">No saved clients. Click "+ Save Current Client" above.</p>'; return; }
+  if (!clients.length) { container.innerHTML = '<p class="text-center text-xs text-[#888888] py-8 dark:text-neutral-500">No saved clients. Click "+ Save Current Client" above.</p>'; return; }
   container.innerHTML = clients.map(c => `
-    <div class="p-3 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-start justify-between gap-3">
+    <div class="p-3 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-start justify-between gap-3 dark:bg-neutral-800/50 dark:hover:bg-neutral-800 dark:border-neutral-700">
       <div class="flex-1 space-y-0.5 text-xs min-w-0">
-        <p class="font-bold text-[#171717] truncate">${escHtml(c.name)}</p>
-        ${c.taxId ? `<p class="font-mono text-[10px] text-[#888888]">GST: ${escHtml(c.taxId)}</p>` : ''}
-        ${c.address ? `<p class="text-[11px] text-[#4d4d4d] whitespace-pre-line">${escHtml(c.address)}</p>` : ''}
+        <p class="font-bold text-[#171717] truncate dark:text-neutral-100">${escHtml(c.name)}</p>
+        ${c.taxId ? `<p class="font-mono text-[10px] text-[#888888] dark:text-neutral-500">GST: ${escHtml(c.taxId)}</p>` : ''}
+        ${c.address ? `<p class="text-[11px] text-[#4d4d4d] whitespace-pre-line dark:text-neutral-400">${escHtml(c.address)}</p>` : ''}
       </div>
       <div class="flex gap-1.5 shrink-0">
-        <button data-cid="${c.id}" class="btn-use-client px-2.5 py-1 text-xs font-medium text-white bg-[#171717] rounded-lg cursor-pointer">Use</button>
+        <button data-cid="${c.id}" class="btn-use-client px-2.5 py-1 text-xs font-medium text-white bg-[#171717] rounded-lg cursor-pointer dark:bg-white dark:text-[#171717]">Use</button>
         <button data-del="${c.id}" class="btn-del-client text-red-500 font-bold p-1 cursor-pointer">×</button>
       </div>
     </div>
@@ -977,16 +1021,16 @@ function renderCompanyList() {
   const container = document.getElementById('company-profiles-list');
   if (!container) return;
   const companies = getCompaniesVault();
-  if (!companies.length) { container.innerHTML = '<p class="text-center text-xs text-[#888888] py-8">No saved company profiles yet.</p>'; return; }
+  if (!companies.length) { container.innerHTML = '<p class="text-center text-xs text-[#888888] py-8 dark:text-neutral-500">No saved company profiles yet.</p>'; return; }
   container.innerHTML = companies.map(c => `
-    <div class="p-3 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-start justify-between gap-3">
+    <div class="p-3 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-start justify-between gap-3 dark:bg-neutral-800/50 dark:hover:bg-neutral-800 dark:border-neutral-700">
       <div class="flex-1 space-y-0.5 text-xs min-w-0">
-        <p class="font-bold text-[#171717] truncate">${escHtml(c.name)}</p>
-        ${c.taxId ? `<p class="font-mono text-[10px] text-[#888888]">GST: ${escHtml(c.taxId)}</p>` : ''}
-        ${c.address ? `<p class="text-[11px] text-[#4d4d4d] whitespace-pre-line">${escHtml(c.address)}</p>` : ''}
+        <p class="font-bold text-[#171717] truncate dark:text-neutral-100">${escHtml(c.name)}</p>
+        ${c.taxId ? `<p class="font-mono text-[10px] text-[#888888] dark:text-neutral-500">GST: ${escHtml(c.taxId)}</p>` : ''}
+        ${c.address ? `<p class="text-[11px] text-[#4d4d4d] whitespace-pre-line dark:text-neutral-400">${escHtml(c.address)}</p>` : ''}
       </div>
       <div class="flex gap-1.5 shrink-0">
-        <button data-cid="${c.id}" class="btn-use-comp px-2.5 py-1 text-xs font-medium text-white bg-[#171717] rounded-lg cursor-pointer">Select</button>
+        <button data-cid="${c.id}" class="btn-use-comp px-2.5 py-1 text-xs font-medium text-white bg-[#171717] rounded-lg cursor-pointer dark:bg-white dark:text-[#171717]">Select</button>
         <button data-del="${c.id}" class="btn-del-comp text-red-500 font-bold p-1 cursor-pointer">×</button>
       </div>
     </div>
@@ -1014,16 +1058,16 @@ function renderCatalogList() {
   if (!container) return;
   const catalog = getItemsCatalog();
   const sym = invoice.currency?.symbol || '₹';
-  if (!catalog.length) { container.innerHTML = '<p class="text-center text-xs text-[#888888] py-8">No catalog items yet. Add one above.</p>'; return; }
+  if (!catalog.length) { container.innerHTML = '<p class="text-center text-xs text-[#888888] py-8 dark:text-neutral-500">No catalog items yet. Add one above.</p>'; return; }
   container.innerHTML = catalog.map(item => `
-    <div class="p-3 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-center justify-between gap-3">
+    <div class="p-3 bg-[#fafafa] hover:bg-white rounded-xl border border-[#ebebeb] flex items-center justify-between gap-3 dark:bg-neutral-800/50 dark:hover:bg-neutral-800 dark:border-neutral-700">
       <div class="flex-1 min-w-0">
-        <p class="font-bold text-xs text-[#171717] truncate">${escHtml(item.description)}</p>
-        <p class="text-[10px] font-mono text-[#888888]">HSN: ${item.hsn || '-'} · ${item.unit || 'No'}</p>
+        <p class="font-bold text-xs text-[#171717] truncate dark:text-neutral-100">${escHtml(item.description)}</p>
+        <p class="text-[10px] font-mono text-[#888888] dark:text-neutral-500">HSN: ${item.hsn || '-'} · ${item.unit || 'No'}</p>
       </div>
       <div class="flex items-center gap-2 shrink-0">
-        <span class="font-mono font-bold text-sm">${sym}${Number(item.rate).toFixed(2)}</span>
-        <button data-iid="${item.id}" class="btn-add-cat px-2.5 py-1 text-xs font-medium text-white bg-[#171717] rounded-lg cursor-pointer">+ Add</button>
+        <span class="font-mono font-bold text-sm dark:text-neutral-200">${sym}${Number(item.rate).toFixed(2)}</span>
+        <button data-iid="${item.id}" class="btn-add-cat px-2.5 py-1 text-xs font-medium text-white bg-[#171717] rounded-lg cursor-pointer dark:bg-white dark:text-[#171717]">+ Add</button>
         <button data-del="${item.id}" class="btn-del-cat text-red-500 font-bold p-1 cursor-pointer">×</button>
       </div>
     </div>

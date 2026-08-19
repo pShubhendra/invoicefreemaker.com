@@ -3,29 +3,29 @@
 ---
 
 <div id="client-book-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-xs p-4 no-print flex items-center justify-center">
-  <div class="bg-white rounded-2xl border border-[#ebebeb] shadow-level-5 max-w-2xl w-full overflow-hidden flex flex-col max-h-[85vh] m-auto">
+  <div class="bg-white rounded-2xl border border-[#ebebeb] shadow-level-5 max-w-2xl w-full overflow-hidden flex flex-col max-h-[85vh] m-auto dark:bg-[#111] dark:border-neutral-800">
     <!-- Header -->
-    <div class="px-6 py-4 border-b border-[#ebebeb] flex items-center justify-between bg-[#fafafa]">
+    <div class="px-6 py-4 border-b border-[#ebebeb] flex items-center justify-between bg-[#fafafa] dark:border-neutral-800 dark:bg-neutral-900">
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-lg bg-[#171717] text-white flex items-center justify-center">
+        <div class="w-8 h-8 rounded-lg bg-[#171717] dark:bg-white text-white dark:text-[#171717] flex items-center justify-center">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
         </div>
         <div>
-          <h3 class="text-sm font-semibold text-[#171717]">Client Address Book</h3>
-          <p class="text-xs text-[#888888]">Save clients with full address & GST for 1-click invoice filling</p>
+          <h3 class="text-sm font-semibold text-[#171717] dark:text-neutral-100">Client Address Book</h3>
+          <p class="text-xs text-[#888888] dark:text-neutral-400">Save clients with full address & GST for 1-click invoice filling</p>
         </div>
       </div>
-      <button id="btn-close-client-modal" type="button" class="text-[#888888] hover:text-[#171717] p-1.5 rounded-lg hover:bg-[#ebebeb] transition-colors cursor-pointer">
+      <button id="btn-close-client-modal" type="button" class="text-[#888888] hover:text-[#171717] p-1.5 rounded-lg hover:bg-[#ebebeb] transition-colors cursor-pointer dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-700">
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
       </button>
     </div>
 
     <!-- Quick Add Current Client -->
-    <div class="px-6 py-3 border-b border-[#ebebeb] bg-white flex items-center justify-between gap-3">
-      <span class="text-xs text-[#4d4d4d]">Select a saved client to autofill billing and shipping info.</span>
-      <button id="btn-save-current-client" type="button" class="px-3 py-1.5 text-xs font-medium text-white bg-[#171717] hover:bg-black rounded-lg transition-colors shrink-0 cursor-pointer">
+    <div class="px-6 py-3 border-b border-[#ebebeb] bg-white flex items-center justify-between gap-3 dark:border-neutral-800 dark:bg-[#111]">
+      <span class="text-xs text-[#4d4d4d] dark:text-neutral-400">Select a saved client to autofill billing and shipping info.</span>
+      <button id="btn-save-current-client" type="button" class="px-3 py-1.5 text-xs font-medium text-white bg-[#171717] hover:bg-black rounded-lg transition-colors shrink-0 cursor-pointer dark:bg-white dark:text-[#171717] dark:hover:bg-neutral-200">
         + Save Current Client
       </button>
     </div>

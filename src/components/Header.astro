@@ -2,11 +2,11 @@
 // Header.astro - Clean professional SaaS navigation bar
 ---
 
-<header class="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/90 backdrop-blur-md transition-all">
+<header class="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/90 backdrop-blur-md transition-all dark:border-neutral-800 dark:bg-[#111]/90">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <!-- Brand Logo -->
     <a href="/" class="flex items-center gap-2.5 group">
-      <div class="w-8 h-8 rounded-lg bg-[#171717] flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
+      <div class="w-8 h-8 rounded-lg bg-[#171717] dark:bg-white flex items-center justify-center text-white dark:text-[#171717] shadow-sm group-hover:scale-105 transition-transform">
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
           <polyline points="14 2 14 8 20 8"></polyline>
@@ -16,36 +16,59 @@
         </svg>
       </div>
       <div class="flex flex-col">
-        <span class="font-semibold text-base tracking-tight text-slate-900 flex items-center gap-1.5">
+        <span class="font-semibold text-base tracking-tight text-slate-900 dark:text-neutral-100 flex items-center gap-1.5">
           Invoice Free Maker
-          <span class="px-1.5 py-0.5 text-[10px] font-mono font-medium uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200/60 rounded">100% Free</span>
+          <span class="px-1.5 py-0.5 text-[10px] font-mono font-medium uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200/60 rounded dark:bg-emerald-950/60 dark:text-emerald-400 dark:border-emerald-900">100% Free</span>
         </span>
       </div>
     </a>
 
     <!-- Desktop Navigation Links -->
-    <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-500">
-      <a href="#generator-section" class="hover:text-slate-900 transition-colors">Generator</a>
-      <a href="#templates-section" class="hover:text-slate-900 transition-colors">Templates</a>
-      <a href="#comparison-section" class="hover:text-slate-900 transition-colors">Why Better</a>
-      <a href="#features-section" class="hover:text-slate-900 transition-colors">Features</a>
-      <a href="#faq-section" class="hover:text-slate-900 transition-colors">FAQ</a>
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-500 dark:text-neutral-400">
+      <a href="#generator-section" class="hover:text-slate-900 dark:hover:text-white transition-colors">Generator</a>
+      <a href="#templates-section" class="hover:text-slate-900 dark:hover:text-white transition-colors">Templates</a>
+      <a href="#comparison-section" class="hover:text-slate-900 dark:hover:text-white transition-colors">Why Better</a>
+      <a href="#features-section" class="hover:text-slate-900 dark:hover:text-white transition-colors">Features</a>
+      <a href="#faq-section" class="hover:text-slate-900 dark:hover:text-white transition-colors">FAQ</a>
     </nav>
 
     <!-- Header Actions -->
     <div class="flex items-center gap-2.5">
       <button
+        id="btn-theme-toggle"
+        type="button"
+        class="inline-flex items-center justify-center w-9 h-9 text-slate-600 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-lg transition-all cursor-pointer dark:text-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:border-neutral-700"
+        title="Toggle dark mode"
+        aria-label="Toggle dark mode"
+      >
+        <svg class="w-4 h-4 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        <svg class="w-4 h-4 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
+      <button
         id="btn-open-history"
         type="button"
-        class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-lg transition-all cursor-pointer"
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-lg transition-all cursor-pointer dark:text-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:border-neutral-700"
         title="View your saved invoices"
       >
-        <svg class="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <svg class="w-3.5 h-3.5 text-slate-500 dark:text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
         <span>Vault</span>
-        <span id="history-count-badge" class="px-1.5 py-0.2 text-[10px] font-mono bg-[#171717] text-white rounded-full">0</span>
+        <span id="history-count-badge" class="px-1.5 py-0.2 text-[10px] font-mono bg-[#171717] text-white rounded-full dark:bg-white dark:text-[#171717]">0</span>
       </button>
     </div>
   </div>
 </header>
+
+<script>
+  document.getElementById('btn-theme-toggle')?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    try {
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    } catch (e) {}
+  });
+</script>

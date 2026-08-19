@@ -3,16 +3,16 @@
 import { THEME_PRESETS } from '../../scripts/invoice-state.js';
 ---
 
-<section id="templates-section" class="py-16 md:py-24 border-t border-slate-200 bg-white">
+<section id="templates-section" class="py-16 md:py-24 border-t border-slate-200 bg-white dark:border-neutral-800 dark:bg-[#0a0a0a]">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto mb-14">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f5f5f5] border border-[#ebebeb] text-[11px] font-semibold text-[#4d4d4d] mb-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f5f5f5] border border-[#ebebeb] text-[11px] font-semibold text-[#4d4d4d] mb-3 dark:bg-neutral-800/60 dark:border-neutral-700 dark:text-neutral-400">
         <span>Designer Templates</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mb-4">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mb-4 dark:text-white">
         Curated invoice templates for every brand.
       </h2>
-      <p class="text-sm sm:text-base text-slate-500 leading-relaxed">
+      <p class="text-sm sm:text-base text-slate-500 leading-relaxed dark:text-neutral-400">
         Choose from clean monochrome minimalism to high-contrast executive styles. Switch instantly with zero data loss.
       </p>
     </div>
@@ -20,7 +20,7 @@ import { THEME_PRESETS } from '../../scripts/invoice-state.js';
     <!-- Template Grid Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {THEME_PRESETS.map((theme) => (
-        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-level-2 hover:shadow-level-4 hover:border-[#171717] transition-all flex flex-col justify-between group">
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-level-2 hover:shadow-level-4 hover:border-[#171717] transition-all flex flex-col justify-between group dark:bg-[#111] dark:border-neutral-800 dark:hover:border-neutral-500">
           <div class="space-y-3 mb-4">
             <!-- Simulated Miniature Invoice Sheet Preview -->
             <div class="aspect-4/3 rounded-xl bg-slate-50 border border-slate-200 p-4 flex overflow-hidden shadow-sm group-hover:scale-[1.02] transition-transform">
@@ -48,10 +48,10 @@ import { THEME_PRESETS } from '../../scripts/invoice-state.js';
 
             <div>
               <div class="flex items-center justify-between">
-                <h3 class="text-sm font-bold text-slate-900">{theme.name}</h3>
-                <span class="text-[10px] font-mono text-slate-500 px-1.5 py-0.5 rounded bg-slate-100">{theme.font}</span>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-neutral-100">{theme.name}</h3>
+                <span class="text-[10px] font-mono text-slate-500 px-1.5 py-0.5 rounded bg-slate-100 dark:bg-neutral-800 dark:text-neutral-400">{theme.font}</span>
               </div>
-              <p class="text-xs text-slate-500 mt-1">
+              <p class="text-xs text-slate-500 mt-1 dark:text-neutral-400">
                 {theme.id === 'gst_tally' && "Corporate GST / Tally-style layout with a bold ink header band and formal tabular line items."}
                 {theme.id === 'minimal' && "Ultra-clean white minimal layout with hairline separators, built for modern agencies and freelancers."}
                 {theme.id === 'executive' && "Executive split layout with a deep ink accent sidebar for premium consulting firms."}
@@ -61,7 +61,7 @@ import { THEME_PRESETS } from '../../scripts/invoice-state.js';
 
           <a
             href="#generator-section"
-            class="w-full py-2 px-3 text-xs font-medium text-center text-[#171717] bg-[#f5f5f5] hover:bg-[#171717] hover:text-white rounded-xl border border-[#ebebeb] transition-all"
+            class="w-full py-2 px-3 text-xs font-medium text-center text-[#171717] bg-[#f5f5f5] hover:bg-[#171717] hover:text-white rounded-xl border border-[#ebebeb] transition-all dark:text-neutral-200 dark:bg-neutral-800/60 dark:border-neutral-700 dark:hover:bg-white dark:hover:text-[#171717]"
           >
             Use this Template →
           </a>

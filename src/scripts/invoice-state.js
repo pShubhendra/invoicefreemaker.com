@@ -284,7 +284,7 @@ export function calculateTotals(invoice) {
 
   const shipping = Number(invoice.shipping) || 0;
   const rawTotal = taxableAmount + taxAmount + shipping;
-  const grandTotal = invoice.roundOff ? Math.round(rawTotal * 100) / 100 : rawTotal;
+  const grandTotal = invoice.roundOff ? Math.round(rawTotal) : rawTotal;
   const roundOffAdjustment = invoice.roundOff ? Number((grandTotal - rawTotal).toFixed(2)) : 0;
 
   return {
